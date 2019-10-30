@@ -25,7 +25,7 @@ func Battle(heros1 []*models.Hero, heros2 []*models.Hero) *BattleResult {
 	beego.Informational(heros1, heros2)
 
 	selfHeros := make([]*models.Hero, 0)
-	otherHeros := make([]*models.Hero, 1)
+	otherHeros := make([]*models.Hero, 0)
 
 	for _, h := range heros1 {
 		hh := new(models.Hero)
@@ -33,14 +33,11 @@ func Battle(heros1 []*models.Hero, heros2 []*models.Hero) *BattleResult {
 		selfHeros = append(selfHeros, hh)
 	}
 
-	tool.Clone(heros2, otherHeros)
-
-	for _, h := range otherHeros {
-		beego.Informational(h.Props.HP)
-
+	for _, h := range heros2 {
+		hh := new(models.Hero)
+		tool.Clone(h, hh)
+		otherHeros = append(otherHeros, hh)
 	}
-
-	// tool.Clone(heros1, selfHeros)
 
 	beego.Informational(selfHeros, otherHeros)
 
