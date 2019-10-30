@@ -1,0 +1,45 @@
+package controllers
+
+import (
+	"subway/models"
+
+	"github.com/astaxie/beego"
+)
+
+type GuanKaController struct {
+	beego.Controller
+}
+
+// @Title GetNearGuanKa
+// @Description get near GuanKa
+// @Param	uid		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /getNearGuanKa [post]
+func (g *GuanKaController) GetNearGuanKa() {
+	uid := g.GetString("uid")
+	gks := models.GetNearGuanKa(uid)
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: gks}
+	g.ServeJSON()
+}
+
+// @Title GetSelfCopy
+// @Description get self Copy
+// @Param	uid		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /getSelfCopy [post]
+func (g *GuanKaController) GetSelfCopy() {
+	uid := g.GetString("uid")
+	cps := models.GetSelfCopy(uid)
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: cps}
+	g.ServeJSON()
+}
+
+// @Title GetAllCopy
+// @Description get near GuanKa
+// @Success 200 {object} models.Hero
+// @router /getAllCopy [post]
+func (g *GuanKaController) GetAllCopy() {
+	cps := models.GetAllCopy()
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: cps}
+	g.ServeJSON()
+}

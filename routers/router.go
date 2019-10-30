@@ -35,6 +35,26 @@ func init() {
 				&controllers.HeroController{},
 			),
 		),
+		beego.NSNamespace("/tech",
+			beego.NSInclude(
+				&controllers.TechController{},
+			),
+		),
+		beego.NSNamespace("/gk",
+			beego.NSInclude(
+				&controllers.GuanKaController{},
+			),
+		),
+		beego.NSNamespace("/bag",
+			beego.NSInclude(
+				&controllers.BagController{},
+			),
+		),
+		beego.NSNamespace("/battle",
+			beego.NSInclude(
+				&controllers.BattleController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
