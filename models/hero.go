@@ -14,21 +14,19 @@ var (
 func init() {
 	HeroDefineList = make(map[string]*Hero)
 	h1 := &Hero{
-		Info:   HeroInfo{HeroId: "1000", Name: "敌法师", Level: 1, Desc: "第一个英雄"},
-		Props:  HeroProperties{HP: 100, AD: 20},
+		Info:   HeroInfo{HeroId: "1000", Type: 2, Name: "敌法师", Level: 1, Desc: "前排刺客，可以出现在敌人背后，对法师有致命的威胁。"},
+		Props:  HeroProperties{HP: 100, AD: 10, SPD: 1000},
 		Secret: HeroSecretInfo{OriginLevelUpGold: 1000, StepGold: 100, StepGold2: 2}}
 	HeroDefineList[h1.Info.HeroId] = h1
 
 	HeroFloorDefine = make(map[string]map[int16][]string)
 
 	Hero1000Floor := make(map[int16][]string)
-	Hero1000Floor[1] = []string{"1000", "1000", "1000", "1000", "1002", "1001"}
-	Hero1000Floor[2] = []string{"1001", "1001", "1001", "1001", "1002", "1001"}
-	Hero1000Floor[3] = []string{"1002", "1002", "1002", "1001", "1002", "1001"}
+	Hero1000Floor[1] = []string{"1000", "1000", "1001", "1002", "1003", "1004"}
 	HeroFloorDefine["1000"] = Hero1000Floor
 
 	HeroSkillDefine = make(map[string][]string)
-	HeroSkillDefine["1000"] = []string{"1000"}
+	HeroSkillDefine["1000"] = []string{"1001", "1002", "1003", "1004"}
 }
 
 type Hero struct {
@@ -41,8 +39,15 @@ type Hero struct {
 	Status int8 // 0 正常  1 上阵
 }
 
+const (
+	HeroTypeStrength    int8 = 1
+	HeroTypeAgility     int8 = 2
+	HeroTypeIntelligent int8 = 3
+)
+
 type HeroInfo struct {
 	HeroId      string
+	Type        int8
 	Name        string
 	Level       int32
 	LevelUpGold int32
@@ -51,12 +56,16 @@ type HeroInfo struct {
 }
 
 type HeroProperties struct {
-	HP    int
-	AD    int
-	AP    int
-	ADDef int
-	APDef int
-	SPD   int
+	HP          int32
+	MP          int32
+	AD          int32
+	AP          int32
+	ADDef       int32
+	APDef       int32
+	SPD         int32 // 毫秒数
+	Agility     int32
+	Intelligent int32
+	Strength    int32
 }
 
 type HeroSecretInfo struct {

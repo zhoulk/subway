@@ -10,10 +10,23 @@ var (
 
 func init() {
 	SkillDefineList = make(map[string]*Skill)
-	s := &Skill{
-		Info:   SkillInfo{SkillId: "1000", Name: "闪烁", Level: 0, Desc: ""},
+	s1001 := &Skill{
+		Info:   SkillInfo{SkillId: "1001", Name: "能量虚空", Level: 1, Desc: "敌法闪烁到智力最高的敌人身后，以目标为中心施放能量虚空，造成巨大的魔法伤害。"},
+		Secret: SkillSecretInfo{OriginLevelUpGold: 1800, StepGold: 500, StepGold2: 100}}
+	s1002 := &Skill{
+		Info:   SkillInfo{SkillId: "1002", Name: "能量燃烧", Level: 1, Desc: "敌法闪烁到智力最高的敌人身边攻击，造成小范围物理伤害并额外损毁敌人的能量。"},
+		Secret: SkillSecretInfo{OriginLevelUpGold: 600, StepGold: 200, StepGold2: 2}}
+	s1003 := &Skill{
+		Info:   SkillInfo{SkillId: "1003", Name: "战刃技巧", Level: 1, Desc: "敌法加速旋转他的刀刃，增加他的敏捷。"},
+		Secret: SkillSecretInfo{OriginLevelUpGold: 700, StepGold: 200, StepGold2: 2}}
+	s1004 := &Skill{
+		Info:   SkillInfo{SkillId: "1004", Name: "魔法盾", Level: 1, Desc: "敌法利用对魔法能量的理解减少受到的伤害，增加魔抗。"},
 		Secret: SkillSecretInfo{OriginLevelUpGold: 800, StepGold: 200, StepGold2: 2}}
-	SkillDefineList[s.Info.SkillId] = s
+	SkillDefineList[s1001.Info.SkillId] = s1001
+	SkillDefineList[s1002.Info.SkillId] = s1002
+	SkillDefineList[s1003.Info.SkillId] = s1003
+	SkillDefineList[s1004.Info.SkillId] = s1004
+
 }
 
 type Skill struct {
@@ -26,6 +39,7 @@ type SkillInfo struct {
 	SkillId string
 	Name    string
 	Level   int32
+	Type    int8 // 1 主动  2  被动
 	Desc    string
 }
 

@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "subway/routers"
+	_ "subway/timer"
 
 	"github.com/astaxie/beego"
 )
