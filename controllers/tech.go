@@ -17,8 +17,12 @@ type TechController struct {
 // @router /gainFirstHero [post]
 func (t *TechController) GainFirstHero() {
 	uid := t.GetString("uid")
-	if models.AddHero(uid, "1000") {
-		t.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
+	if h := models.AddHero(uid, "1002"); h != nil {
+		if models.SelectHero(uid, h.Uid) {
+			t.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
+		} else {
+			t.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
+		}
 	} else {
 		t.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
 	}

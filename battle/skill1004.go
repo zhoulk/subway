@@ -16,9 +16,8 @@ func Skill1004Execute(h *Hero, s *Skill, context *BattleContext) {
 				&BattleItem{
 					MilliSeconds: context.MilliSeconds,
 					FromHero:     ReportHero{HeroId: h.Uid, HP: h.Props.HP},
-					ToHeros:      []ReportHero{ReportHero{HeroId: h.Uid, HP: h.Props.HP}},
+					ToHeros:      []ReportHero{ReportHero{HeroId: h.Uid, HP: h.Props.HP, Effect: &BattleInfo{APDef: eff}}},
 					Skill:        ReportSkill{SkillId: s.Info.SkillId},
-					Effect:       &BattleInfo{APDef: eff},
 				})
 		}
 	}

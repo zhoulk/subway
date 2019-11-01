@@ -14,10 +14,17 @@ type Hero struct {
 }
 
 type BattleInfo struct {
-	APDef   int32
-	Agility int32
-	MP      int32
-	HP      int32
+	AD          int32
+	AP          int32
+	APDef       int32
+	MP          int32
+	HP          int32
+	Strength    int32
+	Agility     int32
+	Intelligent int32
+
+	Dizzy   int32
+	Silence int32
 }
 
 func (h *Hero) IncreaseHP(from *Hero, hp int32) int32 {
@@ -63,4 +70,18 @@ func (h *Hero) DecreaseMP(from *Hero, mp int32) int32 {
 		h.Props.MP -= mp
 	}
 	return mp
+}
+
+func (h *Hero) SetDizzy(dizzy int32) {
+	if dizzy < 0 {
+		dizzy = 0
+	}
+	h.Runing.Dizzy = dizzy
+}
+
+func (h *Hero) SetSilence(silence int32) {
+	if silence < 0 {
+		silence = 0
+	}
+	h.Runing.Silence = silence
 }

@@ -1,10 +1,11 @@
 package battle
 
-//  敌法闪烁到智力最高的敌人身后，以目标为中心施放能量虚空，造成巨大的魔法伤害。
-//  造成  lv *  500 点物理伤害
-//  mp 达到 100 施放
-func Skill1001Execute(h *Hero, s *Skill, context *BattleContext) {
+//  "箭雨",  "对敌人连续射出多只箭矢，造成成吨的伤害。技能等级越高，射出的箭矢数量越多。
+//   level * 500
+///  mp 达到 100 施放
+func Skill1011Execute(h *Hero, s *Skill, context *BattleContext) {
 	// beego.Informational("Skill1001  execute")
+
 	if h.Props.MP >= h.MaxMP {
 		h.DecreaseMP(h, h.MaxMP)
 

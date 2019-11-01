@@ -21,14 +21,14 @@ type BattleItem struct {
 	FromHero     ReportHero
 	ToHeros      []ReportHero
 	Skill        ReportSkill
-	Effect       *BattleInfo
-	Deffect      *BattleInfo
 }
 
 // 用于战斗记录
 type ReportHero struct {
-	HeroId string
-	HP     int32
+	HeroId  string
+	HP      int32
+	Effect  *BattleInfo
+	Deffect *BattleInfo
 }
 
 type ReportSkill struct {
@@ -36,10 +36,20 @@ type ReportSkill struct {
 }
 
 func BattleGuanKa(uid string, gkId int) *BattleResult {
-	res := Battle(models.GetSelfHeros(uid), models.GetSelfHeros(uid))
+
+	// 获取关卡阵容
+	gkHeros := make([]*models.Hero, 0)
+	for _, h := range models.GetGuanKa(gkId).Heros {
+		gkHeros = append(gkHeros, h.Hero)
+	}
+	// 获取阵容
+	selfHeros := models.GetSelectedHeros(uid)
+
+	res := Battle(selfHeros, gkHeros)
 
 	if res.Result == BattleResultWin {
-		models.ChangeGuanKaId(uid, gkId)
+		u, _ := models.GetUser(uid)
+		u.SetGuanKaId(gkId)
 	}
 
 	return res
@@ -106,52 +116,68 @@ func executeEquipEffect(context *BattleContext) {
 // 执行被动技能
 func executePassiveSkill(context *BattleContext) {
 	context.MilliSeconds = -1
-	for _, h := range context.SelfHeros {
-		ExecuteSkill(h, nil, context)
-		for _, s := range h.Skills {
-			ExecuteSkill(h, &Skill{s}, context)
-		}
-	}
 
-	for _, h := range context.OtherHeros {
+	executeHeroSkills(context.SelfHeros, context)
+	executeHeroSkills(context.OtherHeros, context)
+}
+
+// 执行一个英雄的技能
+func executeHeroSkills(heros []*Hero, context *BattleContext) {
+	for _, h := range heros {
+
+		if !canExecute(h) {
+			executeDebuffer(h)
+			continue
+		}
+
+		// 普攻
 		ExecuteSkill(h, nil, context)
+
+		if !canExecuteSkill(h) {
+			executeDebuffer(h)
+			continue
+		}
 		for _, s := range h.Skills {
 			ExecuteSkill(h, &Skill{s}, context)
 		}
 	}
 }
 
+func canExecute(h *Hero) bool {
+	return h.Runing.Dizzy == 0
+}
+
+func canExecuteSkill(h *Hero) bool {
+	return h.Runing.Silence == 0
+}
+
+func executeDebuffer(h *Hero) {
+	h.SetDizzy(h.Runing.Dizzy - BattleLogicRate)
+	h.SetSilence(h.Runing.Silence - BattleLogicRate)
+}
+
 // 执行主动技能
 func executeActiveSkill(context *BattleContext) int8 {
-	milliSeconds := int32(10)
-	result := int8(0)
+	milliSeconds := BattleLogicRate
+	result := BattleResultEqual
 	for isLive(context.SelfHeros) && isLive(context.OtherHeros) {
 		// 执行技能
 		context.MilliSeconds = milliSeconds
-		for _, h := range context.SelfHeros {
-			ExecuteSkill(h, nil, context)
-			for _, s := range h.Skills {
-				ExecuteSkill(h, &Skill{s}, context)
-			}
-		}
+		executeHeroSkills(context.SelfHeros, context)
 
 		// 如果对面没人了
 		if !isLive(context.OtherHeros) {
-			result = 1
+			result = BattleResultWin
 			break
 		}
 
-		for _, h := range context.OtherHeros {
-			ExecuteSkill(h, nil, context)
-			for _, s := range h.Skills {
-				ExecuteSkill(h, &Skill{s}, context)
-			}
-		}
-		milliSeconds += 10
+		executeHeroSkills(context.OtherHeros, context)
+
+		milliSeconds += BattleLogicRate
 	}
 	// 如果己方没人了
 	if !isLive(context.SelfHeros) {
-		result = 2
+		result = BattleResultLose
 	}
 
 	return result

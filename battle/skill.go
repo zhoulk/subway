@@ -28,5 +28,29 @@ func ExecuteSkill(h *Hero, s *Skill, c *BattleContext) {
 	case "1004":
 		Skill1004Execute(h, s, c)
 		break
+	case "1011":
+		Skill1011Execute(h, s, c)
+		break
+	case "1012":
+		Skill1012Execute(h, s, c)
+		break
+	case "1013":
+		Skill1013Execute(h, s, c)
+		break
+	case "1014":
+		Skill1014Execute(h, s, c)
+		break
+	case "1021":
+		Skill1021Execute(h, s, c)
+		break
+	case "1022":
+		Skill1022Execute(h, s, c)
+		break
+	case "1023":
+		Skill1023Execute(h, s, c)
+		break
+	case "1024":
+		Skill1024Execute(h, s, c)
+		break
 	}
 }

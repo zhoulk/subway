@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"subway/models"
+
 	"github.com/astaxie/beego"
 )
 
@@ -20,13 +21,13 @@ type UserController struct {
 func (u *UserController) Login() {
 	openId := u.GetString("openId")
 	userName := u.GetString("userName")
-	if user:= models.Login(openId, userName); user != nil {
-		u.Data["json"] = models.Response{Code:200, Msg:"login success", Data:user.Info}
+	if user := models.Login(openId, userName); user != nil {
+		u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user}
 	} else {
-		if user :=models.AddUser(openId, userName); user != nil {
-			u.Data["json"] = models.Response{Code:200, Msg:"login success", Data:user.Info}
-		}else {
-			u.Data["json"] = models.Response{Code:201, Msg:"login fail", Data:nil}
+		if user := models.AddUser(openId, userName); user != nil {
+			u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user}
+		} else {
+			u.Data["json"] = models.Response{Code: 201, Msg: "login fail", Data: nil}
 		}
 	}
 	u.ServeJSON()
@@ -40,4 +41,3 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
-

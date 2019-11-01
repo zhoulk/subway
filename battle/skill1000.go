@@ -1,5 +1,9 @@
 package battle
 
+import (
+	"subway/models"
+)
+
 //  普通攻击
 //  依赖 英雄攻速
 func Skill1000Execute(h *Hero, s *Skill, context *BattleContext) {
@@ -15,6 +19,23 @@ func Skill1000Execute(h *Hero, s *Skill, context *BattleContext) {
 				hpEff = h.Props.AP
 			}
 
+			// 属性加成
+			if h.Info.Type == models.HeroTypeStrength {
+				hpEff += h.Runing.Strength * 2
+			}
+			if h.Info.Type == models.HeroTypeAgility {
+				hpEff += h.Runing.Agility * 2
+			}
+			if h.Info.Type == models.HeroTypeIntelligent {
+				hpEff += h.Runing.Intelligent * 2
+			}
+			if h.Props.AD > 0 {
+				hpEff += h.Runing.AD
+			}
+			if h.Props.AP > 0 {
+				hpEff += h.Runing.AP
+			}
+
 			hpEff = target.DecreaseHP(h, hpEff)
 
 			// 增加能量
@@ -25,9 +46,8 @@ func Skill1000Execute(h *Hero, s *Skill, context *BattleContext) {
 				&BattleItem{
 					MilliSeconds: context.MilliSeconds,
 					FromHero:     ReportHero{HeroId: h.Uid, HP: h.Props.HP},
-					ToHeros:      []ReportHero{ReportHero{HeroId: target.Uid, HP: target.Props.HP}},
+					ToHeros:      []ReportHero{ReportHero{HeroId: target.Uid, HP: target.Props.HP, Deffect: &BattleInfo{HP: hpEff}}},
 					Skill:        ReportSkill{SkillId: "1000"},
-					Deffect:      &BattleInfo{HP: hpEff},
 				})
 		}
 	}

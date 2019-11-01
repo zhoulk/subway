@@ -2,8 +2,6 @@ package timer
 
 import (
 	"time"
-
-	"github.com/astaxie/beego"
 )
 
 var (
@@ -16,7 +14,7 @@ func init() {
 		for range ticker.C {
 			index++
 			go func() {
-				beego.Informational("timer ", index)
+				// beego.Informational("timer ", index)
 			}()
 		}
 	}()

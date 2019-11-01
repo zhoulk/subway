@@ -28,9 +28,8 @@ type UserInfo struct {
 }
 
 type UserProfile struct {
-	Gold          int64
-	GuanKaId      int
-	GoldGainSpeed int64 // 金币增长速度  个/秒
+	Gold     int64
+	GuanKaId int
 }
 
 func GetUser(uid string) (u *User, err error) {
@@ -58,7 +57,7 @@ func AddUser(openId string, username string) *User {
 		uid := tool.UniqueId()
 		UserList[uid] = &User{
 			Info:    UserInfo{uid, openId, username},
-			Profile: UserProfile{Gold: 10000, GuanKaId: 1, GoldGainSpeed: 1}}
+			Profile: UserProfile{Gold: 10000, GuanKaId: 1}}
 		return UserList[uid]
 	}
 	return nil
@@ -68,9 +67,6 @@ func DeleteUser(uid string) {
 	delete(UserList, uid)
 }
 
-func ChangeGuanKaId(uid string, gkId int) {
-	u, _ := GetUser(uid)
-	if u != nil {
-		u.Profile.GoldGainSpeed = int64(gkId * 10)
-	}
+func (u *User) SetGuanKaId(gkId int) {
+	u.Profile.GuanKaId = gkId
 }
