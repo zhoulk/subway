@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1004", Skill1004Execute)
+}
+
 //  敌法利用对魔法能量的理解减少受到的伤害，增加魔抗。
 //  1级 增加  1点
 //  被动

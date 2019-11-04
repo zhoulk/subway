@@ -4,6 +4,10 @@ import (
 	"subway/models"
 )
 
+func init() {
+	RegisterSkillExecute("1000", Skill1000Execute)
+}
+
 //  普通攻击
 //  依赖 英雄攻速
 func Skill1000Execute(h *Hero, s *Skill, context *BattleContext) {
@@ -34,6 +38,11 @@ func Skill1000Execute(h *Hero, s *Skill, context *BattleContext) {
 			}
 			if h.Props.AP > 0 {
 				hpEff += h.Runing.AP
+			}
+
+			// 物理暴击
+			if h.Props.AD > 0 {
+				hpEff *= int32(float32(100+h.Runing.ADCrit) / 100)
 			}
 
 			hpEff = target.DecreaseHP(h, hpEff)

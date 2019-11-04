@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1014", Skill1014Execute)
+}
+
 //    "射手天赋", "增加全体队友攻击力。"},
 //  1级 增加  4点 攻击力
 //  被动
@@ -18,7 +22,7 @@ func Skill1014Execute(h *Hero, s *Skill, context *BattleContext) {
 					target.Runing.AD += eff
 					target.Runing.AP += eff
 
-					toHeros = append(toHeros, ReportHero{HeroId: target.Uid, HP: target.Props.HP, Deffect: &BattleInfo{AD: eff, AP: eff}})
+					toHeros = append(toHeros, ReportHero{HeroId: target.Uid, HP: target.Props.HP, Effect: &BattleInfo{AD: eff, AP: eff}})
 				}
 
 				// 记录

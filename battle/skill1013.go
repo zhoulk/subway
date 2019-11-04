@@ -2,6 +2,10 @@ package battle
 
 import "math/rand"
 
+func init() {
+	RegisterSkillExecute("1013", Skill1013Execute)
+}
+
 //  "沉默",  "使数个敌人陷入沉默，无法释放任何带魔法伤害的技能。"
 //   3个
 // 沉默 3秒

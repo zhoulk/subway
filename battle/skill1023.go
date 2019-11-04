@@ -2,6 +2,10 @@ package battle
 
 import "math/rand"
 
+func init() {
+	RegisterSkillExecute("1023", Skill1023Execute)
+}
+
 //   "水刀", Level: 1, Desc: "对自身小范围内的敌人造成魔法伤害。"
 //  造成  lv * 20 伤害  随机两个目标
 //  4 秒

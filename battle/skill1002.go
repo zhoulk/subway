@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1002", Skill1002Execute)
+}
+
 //  敌法闪烁到智力最高的敌人身边攻击，造成小范围物理伤害并额外损毁敌人的能量。
 //  造成  lv *  50 点物理伤害
 //  消耗  lv  * 1 点魔法

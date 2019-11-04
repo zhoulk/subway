@@ -2,6 +2,10 @@ package battle
 
 import "math/rand"
 
+func init() {
+	RegisterSkillExecute("1022", Skill1022Execute)
+}
+
 //   "洪流", Level: 1, Desc: "用水流击飞一个随机敌人，造成魔法伤害。"
 //  造成  lv * 30 伤害
 //  6 秒

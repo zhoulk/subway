@@ -15,6 +15,7 @@ type Hero struct {
 
 type BattleInfo struct {
 	AD          int32
+	ADCrit      int32 // 物理暴击
 	AP          int32
 	APDef       int32
 	MP          int32

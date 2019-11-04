@@ -1,14 +1,18 @@
 package battle
 
+import (
+	"math/rand"
+)
+
 func init() {
-	RegisterSkillExecute("1011", Skill1011Execute)
+	RegisterSkillExecute("1031", Skill1031Execute)
 }
 
-//  "箭雨",  "对敌人连续射出多只箭矢，造成成吨的伤害。技能等级越高，射出的箭矢数量越多。
-//   level * 500
-///  mp 达到 100 施放
-func Skill1011Execute(h *Hero, s *Skill, context *BattleContext) {
-	// beego.Informational("Skill1001  execute")
+//   神灭斩",  "对目标射出一道闪电，造成巨量的魔法伤害。
+//  造成  lv *  1000 点物理伤害
+//  mp 达到 100 施放
+func Skill1031Execute(h *Hero, s *Skill, context *BattleContext) {
+	// beego.Informational("Skill1024  execute ", h.Props.MP, h.MaxMP)
 
 	if h.Props.MP >= h.MaxMP {
 		h.DecreaseMP(h, h.MaxMP)
@@ -16,14 +20,9 @@ func Skill1011Execute(h *Hero, s *Skill, context *BattleContext) {
 		targets := context.GetOtherHeros(h.Group)
 
 		if targets != nil && len(targets) > 0 {
-			target := targets[0]
-			for _, h := range targets {
-				if h.Props.Intelligent > target.Props.Intelligent {
-					target = h
-				}
-			}
+			target := targets[rand.Intn(len(targets))]
 
-			damageEff := s.Info.Level * 500
+			damageEff := s.Info.Level * 1000
 			damageEff = target.DecreaseHP(h, damageEff)
 
 			// 记录

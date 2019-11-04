@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1003", Skill1003Execute)
+}
+
 //  敌法加速旋转他的刀刃，增加他的敏捷。
 //  1 级增加 5点
 //  被动

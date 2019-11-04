@@ -62,16 +62,16 @@ func init() {
 	SkillDefineList[s1024.Info.SkillId] = s1024
 
 	s1031 := &Skill{
-		Info:   SkillInfo{SkillId: "1021", Name: "神灭斩", Level: 1, Desc: "对目标射出一道闪电，造成巨量的魔法伤害。"},
+		Info:   SkillInfo{SkillId: "1031", Name: "神灭斩", Level: 1, Desc: "对目标射出一道闪电，造成巨量的魔法伤害。"},
 		Secret: SkillSecretInfo{OriginLevelUpGold: 1800, StepGold: 500, StepGold2: 100}}
 	s1032 := &Skill{
-		Info:   SkillInfo{SkillId: "1022", Name: "龙破斩", Level: 1, Desc: "用火焰斩击，造成大范围魔法伤害。"},
+		Info:   SkillInfo{SkillId: "1032", Name: "龙破斩", Level: 1, Desc: "用火焰斩击，造成大范围魔法伤害。"},
 		Secret: SkillSecretInfo{OriginLevelUpGold: 600, StepGold: 200, StepGold2: 2}}
 	s1033 := &Skill{
-		Info:   SkillInfo{SkillId: "1023", Name: "光击阵", Level: 1, Desc: "从随机敌人脚下召唤火圈，造成小范围魔法伤害和眩晕。"},
+		Info:   SkillInfo{SkillId: "1033", Name: "光击阵", Level: 1, Desc: "从随机敌人脚下召唤火圈，造成小范围魔法伤害和眩晕。"},
 		Secret: SkillSecretInfo{OriginLevelUpGold: 700, StepGold: 200, StepGold2: 2}}
 	s1034 := &Skill{
-		Info:   SkillInfo{SkillId: "1024", Name: "焰魂", Level: 1, Desc: "增加物理攻击的暴击。"},
+		Info:   SkillInfo{SkillId: "1034", Name: "焰魂", Level: 1, Desc: "增加物理攻击的暴击。"},
 		Secret: SkillSecretInfo{OriginLevelUpGold: 800, StepGold: 200, StepGold2: 2}}
 	SkillDefineList[s1031.Info.SkillId] = s1031
 	SkillDefineList[s1032.Info.SkillId] = s1032

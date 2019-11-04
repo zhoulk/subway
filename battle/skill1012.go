@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1012", Skill1012Execute)
+}
+
 //  "冰箭", "射出一只冰箭，对目标造成物理伤害。"
 //   level * 25
 //  4 秒 CD

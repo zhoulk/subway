@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1001", Skill1001Execute)
+}
+
 //  敌法闪烁到智力最高的敌人身后，以目标为中心施放能量虚空，造成巨大的魔法伤害。
 //  造成  lv *  500 点物理伤害
 //  mp 达到 100 施放

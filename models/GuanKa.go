@@ -9,7 +9,8 @@ func init() {
 
 	g1 := &GuanKa{Info: GuanKaInfo{GuanKaId: 1, Name: "1号线-苹果园"},
 		Heros: []*GuanKaHero{&GuanKaHero{HeroId: "1001", Level: 1, Floor: 0, Star: 0, SkillLevels: []int32{1, 1, 1, 1}}}}
-	g2 := &GuanKa{Info: GuanKaInfo{GuanKaId: 2, Name: "1号线-苹果园1"}}
+	g2 := &GuanKa{Info: GuanKaInfo{GuanKaId: 2, Name: "1号线-苹果园1"},
+		Heros: []*GuanKaHero{&GuanKaHero{HeroId: "1003", Level: 1, Floor: 0, Star: 0, SkillLevels: []int32{1, 1, 1, 1}}}}
 	g3 := &GuanKa{Info: GuanKaInfo{GuanKaId: 3, Name: "1号线-苹果园2"}}
 	g4 := &GuanKa{Info: GuanKaInfo{GuanKaId: 4, Name: "1号线-苹果园3"}}
 	g5 := &GuanKa{Info: GuanKaInfo{GuanKaId: 5, Name: "1号线-苹果园4"}}

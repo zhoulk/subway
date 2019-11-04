@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1033", Skill1033Execute)
+}
+
 //   "光击阵",  "从随机敌人脚下召唤火圈，造成小范围魔法伤害和眩晕。"},
 //  造成  lv * 30 伤害
 // 眩晕 2 秒

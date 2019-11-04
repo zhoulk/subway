@@ -5,19 +5,16 @@ import (
 )
 
 func init() {
-	RegisterSkillExecute("1021", Skill1021Execute)
+	RegisterSkillExecute("1032", Skill1032Execute)
 }
 
-//   "幽灵船", "召唤幽灵船冲向对方，造成大范围的眩晕和魔法伤害。"
-//  造成  lv *  100 点物理伤害  三个目标
-//  眩晕  3秒
-//  mp 达到 100 施放
-func Skill1021Execute(h *Hero, s *Skill, context *BattleContext) {
+//   "龙破斩",  "用火焰斩击，造成大范围魔法伤害。"
+//  造成  lv *  50 点物理伤害  三个目标
+//  CD  4秒
+func Skill1032Execute(h *Hero, s *Skill, context *BattleContext) {
 	// beego.Informational("Skill1024  execute ", h.Props.MP, h.MaxMP)
 
-	if h.Props.MP >= h.MaxMP {
-		h.DecreaseMP(h, h.MaxMP)
-
+	if context.MilliSeconds%4000 == 0 {
 		targets := context.GetOtherHeros(h.Group)
 
 		if targets != nil && len(targets) > 0 {
@@ -26,13 +23,10 @@ func Skill1021Execute(h *Hero, s *Skill, context *BattleContext) {
 			one := rand.Intn(len(targets))
 			target := targets[one]
 
-			damageEff := s.Info.Level * 100
+			damageEff := s.Info.Level * 50
 			damageEff = target.DecreaseHP(h, damageEff)
 
-			dizzy := int32(3000)
-			target.SetDizzy(dizzy)
-
-			toHeros = append(toHeros, ReportHero{HeroId: target.Uid, HP: target.Props.HP, Deffect: &BattleInfo{HP: damageEff, Dizzy: dizzy}})
+			toHeros = append(toHeros, ReportHero{HeroId: target.Uid, HP: target.Props.HP, Deffect: &BattleInfo{HP: damageEff}})
 
 			for i := 1; i < 3; i++ {
 				two := (one + i) % len(targets)
@@ -43,9 +37,7 @@ func Skill1021Execute(h *Hero, s *Skill, context *BattleContext) {
 					damageEff = s.Info.Level * 30
 					damageEff = target2.DecreaseHP(h, damageEff)
 
-					target2.SetDizzy(dizzy)
-
-					toHeros = append(toHeros, ReportHero{HeroId: target2.Uid, HP: target2.Props.HP, Deffect: &BattleInfo{HP: damageEff, Dizzy: dizzy}})
+					toHeros = append(toHeros, ReportHero{HeroId: target2.Uid, HP: target2.Props.HP, Deffect: &BattleInfo{HP: damageEff}})
 				}
 			}
 

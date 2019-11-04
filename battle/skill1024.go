@@ -1,5 +1,9 @@
 package battle
 
+func init() {
+	RegisterSkillExecute("1024", Skill1024Execute)
+}
+
 //   "力量强化"  "力量强化船长专注地磨练自己的身体，增加力量。"
 //  1级 增加  2点 力量
 //  被动
