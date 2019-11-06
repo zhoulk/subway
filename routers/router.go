@@ -8,6 +8,7 @@
 package routers
 
 import (
+	"github.com/beego/bee/plugins/cors"
 	"subway/controllers"
 
 	"github.com/astaxie/beego"
@@ -57,4 +58,12 @@ func init() {
 		),
 	)
 	beego.AddNamespace(ns)
+	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
+		AllowAllOrigins:true,
+		//AllowOrigins:      []string{"https://192.168.0.102"},
+		AllowMethods:[]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:[]string{"token", "key", "Origin", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
+		ExposeHeaders:[]string{"Content-Length", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
+		AllowCredentials:true,
+		}))
 }
