@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "subway/db"
 	_ "subway/routers"
 	_ "subway/timer"
 
