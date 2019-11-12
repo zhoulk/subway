@@ -13,18 +13,20 @@ type UserController struct {
 
 // @Title Login
 // @Description Logs user into the system
+// @Param	zoneId		query 	int	true		"The username for login"
 // @Param	openId		query 	string	true		"The username for login"
 // @Param	userName		query 	string	true		"The password for login"
 // @Success 200 {string} login success
 // @Failure 403 user not exist
-// @router /login [get]
+// @router /login [post]
 func (u *UserController) Login() {
+	zoneId,_ := u.GetInt("zoneId")
 	openId := u.GetString("openId")
 	userName := u.GetString("userName")
-	if user := models.Login(openId, userName); user != nil {
+	if user := models.Login(zoneId, openId, userName); user != nil {
 		u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user}
 	} else {
-		if user := models.AddUser(openId, userName); user != nil {
+		if user := models.AddUser(zoneId, openId, userName); user != nil {
 			u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user}
 		} else {
 			u.Data["json"] = models.Response{Code: 201, Msg: "login fail", Data: nil}

@@ -43,7 +43,7 @@ func GetAllUsers() map[string]*User {
 	return UserList
 }
 
-func Login(openId string, username string) *User {
+func Login(zoneId int, openId string, username string) *User {
 	for _, u := range UserList {
 		if u.Info.OpenId == openId {
 			return u
@@ -52,7 +52,7 @@ func Login(openId string, username string) *User {
 	return nil
 }
 
-func AddUser(openId string, username string) *User {
+func AddUser(zoneId int,openId string, username string) *User {
 	if _, ok := UserList[openId]; !ok {
 		uid := tool.UniqueId()
 		UserList[uid] = &User{

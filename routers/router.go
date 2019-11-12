@@ -15,7 +15,7 @@ import (
 )
 
 func init() {
-	ns := beego.NewNamespace("/v1",
+	ns := beego.NewNamespace("/subway",
 		beego.NSNamespace("/object",
 			beego.NSInclude(
 				&controllers.ObjectController{},
@@ -60,7 +60,7 @@ func init() {
 	beego.AddNamespace(ns)
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowAllOrigins:true,
-		//AllowOrigins:      []string{"https://192.168.0.102"},
+		AllowOrigins:[]string{"https://192.168.0.102", "http://localhost:7456"},
 		AllowMethods:[]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:[]string{"token", "key", "Origin", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
 		ExposeHeaders:[]string{"Content-Length", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
