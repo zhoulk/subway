@@ -1,0 +1,66 @@
+[
+    {
+        "HeroId": "1000",
+        "SkillId": "1001"
+    },
+    {
+        "HeroId": "1000",
+        "SkillId": "1002"
+    },
+    {
+        "HeroId": "1000",
+        "SkillId": "1003"
+    },
+    {
+        "HeroId": "1000",
+        "SkillId": "1004"
+    },
+    {
+        "HeroId": "1001",
+        "SkillId": "1011"
+    },
+    {
+        "HeroId": "1001",
+        "SkillId": "1012"
+    },
+    {
+        "HeroId": "1001",
+        "SkillId": "1013"
+    },
+    {
+        "HeroId": "1001",
+        "SkillId": "1014"
+    },
+    {
+        "HeroId": "1002",
+        "SkillId": "1021"
+    },
+    {
+        "HeroId": "1002",
+        "SkillId": "1022"
+    },
+    {
+        "HeroId": "1002",
+        "SkillId": "1023"
+    },
+    {
+        "HeroId": "1002",
+        "SkillId": "1024"
+    },
+    {
+        "HeroId": "1003",
+        "SkillId": "1031"
+    },
+    {
+        "HeroId": "1003",
+        "SkillId": "1032"
+    },
+    {
+        "HeroId": "1003",
+        "SkillId": "1033"
+    },
+    {
+        "HeroId": "1003",
+        "SkillId": "1034"
+    }
+]

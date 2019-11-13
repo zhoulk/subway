@@ -1,0 +1,62 @@
+[
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1000"
+    },
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1000"
+    },
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1001"
+    },
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1002"
+    },
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1003"
+    },
+    {
+        "HeroId": "1000",
+        "Floor": 1,
+        "EquipId": "1004"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1000"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1000"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1001"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1002"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1003"
+    },
+    {
+        "HeroId": "1001",
+        "Floor": 1,
+        "EquipId": "1004"
+    }
+]

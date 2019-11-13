@@ -1,0 +1,46 @@
+[
+    {
+        "EquipId": "1000",
+        "Name": "树枝",
+        "Level": 1,
+        "Strength": 1,
+        "Agility": 1,
+        "Intelligent": 1,
+        "Desc": "带上它以确保一局GG",
+        "Power": 3
+    },
+    {
+        "EquipId": "1001",
+        "Name": "敏捷丝袜",
+        "Level": 1,
+        "Agility": 3,
+        "Desc": "蜘蛛侠Cosplay套装组件",
+        "Power": 3
+    },
+    {
+        "EquipId": "1002",
+        "Name": "小圆盾",
+        "Level": 1,
+        "ADDef": 2,
+        "Desc": "曾经是某人的马桶盖子",
+        "Power": 4
+    },
+    {
+        "EquipId": "1003",
+        "Name": "补刀斧",
+        "Level": 1,
+        "AD": 6,
+        "Desc": "无",
+        "Power": 4
+    },
+    {
+        "EquipId": "1004",
+        "Name": "贵族头环",
+        "Level": 1,
+        "Strength": 2,
+        "Agility": 2,
+        "Intelligent": 2,
+        "Desc": "明明是屌丝头环啊亲！",
+        "Power": 5
+    }
+]

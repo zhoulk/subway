@@ -35,11 +35,11 @@ type HeroDefine struct {
 }
 
 func init()  {
-	create()
-	initData()
+	createHeroDefineTable()
+	initHeroData()
 }
 
-func create()  {
+func createHeroDefineTable()  {
 	if !context.DB().HasTable(&HeroDefine{}) {
 		if err := context.DB().Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8").CreateTable(&HeroDefine{}).Error; err != nil {
 			panic(err)
@@ -47,7 +47,7 @@ func create()  {
 	}
 }
 
-func initData(){
+func initHeroData(){
 
 	data, err := ioutil.ReadFile("./static/data/hero.json")
     if err != nil {
