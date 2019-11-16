@@ -29,7 +29,33 @@ func (h *HeroController) AllHeros() {
 func (h *HeroController) SelfHeros() {
 	uid := h.GetString("uid")
 	heros := models.GetSelfHeros(uid)
-	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: heros}
+	resData := make([]HeroResponse, 0)
+	for _, hero := range heros {
+		resData = append(resData, HeroResponse{
+			Uid:    hero.Uid,
+			HeroId: hero.Info.HeroId,
+			Type:   hero.Info.Type,
+			Name:   hero.Info.Name,
+			Level:  hero.Info.Level,
+			Floor:  hero.Info.Floor,
+			Star:   hero.Info.Star,
+		})
+	}
+	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: resData}
+	h.ServeJSON()
+}
+
+// @Title heroDetail
+// @Description get all Heros
+// @Param	uid		query 	string	true		"The username for login"
+// @Param	heroUid		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /heroDetail [post]
+func (h *HeroController) HeroDetail() {
+	uid := h.GetString("uid")
+	heroUid := h.GetString("heroUid")
+	hero := models.GetHero(uid, heroUid)
+	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: hero}
 	h.ServeJSON()
 }
 
@@ -156,4 +182,14 @@ func (h *HeroController) ExchangeHero() {
 		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
 	}
 	h.ServeJSON()
+}
+
+type HeroResponse struct {
+	Uid    string
+	HeroId string
+	Type   int8
+	Name   string
+	Level  int32
+	Floor  int16 // 阶别
+	Star   int16 // 星星
 }

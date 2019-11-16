@@ -1,6 +1,7 @@
 package timer
 
 import (
+	"subway/models"
 	"time"
 )
 
@@ -9,12 +10,14 @@ var (
 )
 
 func init() {
-	ticker := time.NewTicker(time.Second * time.Duration(1))
+	ticker := time.NewTicker(time.Second * time.Duration(5))
 	go func() {
 		for range ticker.C {
 			index++
 			go func() {
 				// beego.Informational("timer ", index)
+
+				models.Persistent()
 			}()
 		}
 	}()

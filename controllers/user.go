@@ -20,9 +20,10 @@ type UserController struct {
 // @Failure 403 user not exist
 // @router /login [post]
 func (u *UserController) Login() {
-	zoneId,_ := u.GetInt("zoneId")
+	zoneId, _ := u.GetInt("zoneId")
 	openId := u.GetString("openId")
 	userName := u.GetString("userName")
+	// beego.Debug("Login ", zoneId, openId, userName)
 	if user := models.Login(zoneId, openId, userName); user != nil {
 		u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user}
 	} else {

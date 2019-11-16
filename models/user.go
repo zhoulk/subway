@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"subway/db/tables"
 	"subway/tool"
 )
 
@@ -22,6 +23,7 @@ type User struct {
 }
 
 type UserInfo struct {
+	ZoneId   int
 	Uid      string
 	OpenId   string
 	Username string
@@ -32,10 +34,28 @@ type UserProfile struct {
 	GuanKaId int
 }
 
+func (u *User) SetGuanKaId(gkId int) {
+	u.Profile.GuanKaId = gkId
+}
+
 func GetUser(uid string) (u *User, err error) {
 	if u, ok := UserList[uid]; ok {
 		return u, nil
 	}
+
+	t_user := tables.LoadUserByUid(uid)
+	if t_user != nil {
+		UserList[t_user.Uid] = &User{
+			Info: UserInfo{
+				Uid:    t_user.Uid,
+				OpenId: t_user.OpenId,
+				ZoneId: t_user.ZoneId,
+			},
+		}
+		GetSelfHeros(t_user.Uid)
+		return UserList[t_user.Uid], nil
+	}
+
 	return nil, errors.New("User not exists")
 }
 
@@ -49,14 +69,27 @@ func Login(zoneId int, openId string, username string) *User {
 			return u
 		}
 	}
+
+	t_user := tables.LoadUser(zoneId, openId)
+	if t_user != nil {
+		UserList[t_user.Uid] = &User{
+			Info: UserInfo{
+				Uid:    t_user.Uid,
+				OpenId: t_user.OpenId,
+				ZoneId: t_user.ZoneId,
+			},
+		}
+		return UserList[t_user.Uid]
+	}
+
 	return nil
 }
 
-func AddUser(zoneId int,openId string, username string) *User {
+func AddUser(zoneId int, openId string, username string) *User {
 	if _, ok := UserList[openId]; !ok {
 		uid := tool.UniqueId()
 		UserList[uid] = &User{
-			Info:    UserInfo{uid, openId, username},
+			Info:    UserInfo{zoneId, uid, openId, username},
 			Profile: UserProfile{Gold: 10000, GuanKaId: 1}}
 		return UserList[uid]
 	}
@@ -67,6 +100,34 @@ func DeleteUser(uid string) {
 	delete(UserList, uid)
 }
 
-func (u *User) SetGuanKaId(gkId int) {
-	u.Profile.GuanKaId = gkId
+func PersistentUser() {
+	users := make([]*tables.User, 0)
+	userHeros := make([]*tables.UserHero, 0)
+	heroEquips := make([]*tables.HeroEquip, 0)
+	heroSkills := make([]*tables.HeroSkill, 0)
+
+	for _, u := range UserList {
+		users = append(users, &tables.User{
+			Uid:    u.Info.Uid,
+			OpenId: u.Info.OpenId,
+			ZoneId: u.Info.ZoneId,
+		})
+
+		for _, u_h := range u.Heros {
+			userHeros = append(userHeros, CreateUserHeroFromHero(u.Info.Uid, u_h))
+
+			for _, u_h_e := range u_h.Equips {
+				heroEquips = append(heroEquips, CreateHeroEquipFromEquip(u_h.Uid, u_h_e))
+			}
+
+			for _, u_h_s := range u_h.Skills {
+				heroSkills = append(heroSkills, CreateHeroSkillFromSkill(u_h.Uid, u_h_s))
+			}
+		}
+	}
+
+	tables.PersistentUser(users)
+	tables.PersistentUserHero(userHeros)
+	tables.PersistentHeroEquip(heroEquips)
+	tables.PersistentHeroSkill(heroSkills)
 }

@@ -52,7 +52,7 @@ func GetGuanKa(guanKaId int) *GuanKa {
 					h.Hero.SetHeroLevel(h.Level)
 					h.Hero.SetFloorLevel(h.Floor)
 					h.Hero.SetStar(h.Star)
-					h.Hero.Skills = GetSkills(HeroSkillDefine[h.HeroId])
+					h.Hero.Skills = GetSkillDefines(HeroSkillDefine[h.HeroId])
 					if h.Hero.Skills != nil {
 						for i, s := range h.Hero.Skills {
 							if i < len(h.SkillLevels) {

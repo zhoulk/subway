@@ -1,8 +1,8 @@
 package battle
 
 import (
-	"subway/models"
 	"subway/tool"
+	"subway/models"
 )
 
 const (

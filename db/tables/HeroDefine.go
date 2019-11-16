@@ -1,20 +1,21 @@
 package tables
 
 import (
-	"io/ioutil"
-	"github.com/astaxie/beego"
 	"encoding/json"
+	"io/ioutil"
 	"subway/db/context"
+
+	"github.com/astaxie/beego"
 )
 
 // 英雄定义表
 type HeroDefine struct {
-	HeroId      string `gorm:"size:64;unique;not null"`
-	Name    	string `gorm:"size:64"`
-	Type        int8
-	Level       int32
-	Floor       int16 // 阶别
-	Star        int16 // 星星
+	HeroId string `gorm:"size:64;unique;not null"`
+	Name   string `gorm:"size:64"`
+	Type   int8
+	Level  int32
+	Floor  int16 // 阶别
+	Star   int16 // 星星
 
 	HP              int32
 	MP              int32
@@ -31,15 +32,15 @@ type HeroDefine struct {
 	AgilityGrow     int32
 	IntelligentGrow int32
 
-	Desc        string
+	Desc string
 }
 
-func init()  {
+func init() {
 	createHeroDefineTable()
 	initHeroData()
 }
 
-func createHeroDefineTable()  {
+func createHeroDefineTable() {
 	if !context.DB().HasTable(&HeroDefine{}) {
 		if err := context.DB().Set("gorm:table_options", "ENGINE=InnoDB DEFAULT CHARSET=utf8").CreateTable(&HeroDefine{}).Error; err != nil {
 			panic(err)
@@ -47,28 +48,35 @@ func createHeroDefineTable()  {
 	}
 }
 
-func initHeroData(){
+func initHeroData() {
 
 	data, err := ioutil.ReadFile("./static/data/hero.json")
-    if err != nil {
+	if err != nil {
 		beego.Error("initData failed", err.Error())
-        return
-    }
+		return
+	}
 
 	var heros []HeroDefine
 
-    //读取的数据为json格式，需要进行解码
-    err = json.Unmarshal(data, &heros)
-    if err != nil {
+	//读取的数据为json格式，需要进行解码
+	err = json.Unmarshal(data, &heros)
+	if err != nil {
 		beego.Error("initData failed", err.Error())
-        return
-    }
+		return
+	}
 
 	context.DB().Unscoped().Delete(&HeroDefine{})
 
-	tx := context.DB().Begin()	  
-	for _,h := range heros{
+	tx := context.DB().Begin()
+	for _, h := range heros {
 		tx.Create(h)
 	}
 	tx.Commit()
+}
+
+func LoadHeroDefine() []*HeroDefine {
+	var heros []*HeroDefine
+	context.DB().Where("1=1").Find(&heros)
+
+	return heros
 }
