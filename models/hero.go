@@ -353,15 +353,15 @@ func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
 }
 
 func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
-	return &Hero{
-		Uid: t_u_h.Uid,
-		Info: HeroInfo{
-			HeroId: t_u_h.HeroId,
-			Level:  t_u_h.Level,
-			Floor:  t_u_h.Floor,
-			Star:   t_u_h.Star,
-		},
-		Props: HeroProperties{
+	if h, ok := HeroDefineList[t_u_h.HeroId]; ok {
+		res := new(Hero)
+		tool.Clone(h, res)
+		res.Uid = t_u_h.Uid
+		res.Info.HeroId = t_u_h.HeroId
+		res.Info.Level = t_u_h.Level
+		res.Info.Floor = t_u_h.Floor
+		res.Info.Star = t_u_h.Star
+		res.Props = HeroProperties{
 			HP:              t_u_h.HP,
 			MP:              t_u_h.MP,
 			AD:              t_u_h.AD,
@@ -376,10 +376,12 @@ func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
 			StrengthGrow:    t_u_h.StrengthGrow,
 			AgilityGrow:     t_u_h.AgilityGrow,
 			IntelligentGrow: t_u_h.IntelligentGrow,
-		},
-		Equips: make([]*Equip, 0),
-		Skills: make([]*Skill, 0),
+		}
+		res.Equips = make([]*Equip, 0)
+		res.Skills = make([]*Skill, 0)
+		return res
 	}
+	return nil
 }
 
 func CreateUserHeroFromHero(uid string, u_h *Hero) *tables.UserHero {
