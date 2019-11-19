@@ -36,6 +36,15 @@ func init() {
 
     beego.GlobalControllerRouter["subway/controllers:GuanKaController"] = append(beego.GlobalControllerRouter["subway/controllers:GuanKaController"],
         beego.ControllerComments{
+            Method: "GetCopyItems",
+            Router: `/getCopyItems`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/controllers:GuanKaController"] = append(beego.GlobalControllerRouter["subway/controllers:GuanKaController"],
+        beego.ControllerComments{
             Method: "GetNearGuanKa",
             Router: `/getNearGuanKa`,
             AllowHTTPMethods: []string{"post"},

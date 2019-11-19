@@ -43,3 +43,15 @@ func (g *GuanKaController) GetAllCopy() {
 	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: cps}
 	g.ServeJSON()
 }
+
+// @Title GetCopyItems
+// @Description get copy items
+// @Param	copyId		query 	int	true
+// @Success 200 {object} models.Hero
+// @router /getCopyItems [post]
+func (g *GuanKaController) GetCopyItems() {
+	copyId, _ := g.GetInt("copyId")
+	copyItems := models.GetCopyItems(copyId)
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: copyItems}
+	g.ServeJSON()
+}

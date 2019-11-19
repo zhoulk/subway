@@ -1,0 +1,182 @@
+[
+    {
+        "CopyId": 1001,
+        "Name": "西直门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1002,
+        "Name": "车公庄",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1003,
+        "Name": "阜成门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1004,
+        "Name": "复兴门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1005,
+        "Name": "长椿街",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1006,
+        "Name": "宣武门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1007,
+        "Name": "和平门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1008,
+        "Name": "前门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1009,
+        "Name": "崇文门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1010,
+        "Name": "北京站",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1011,
+        "Name": "建国门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1012,
+        "Name": "朝阳门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1013,
+        "Name": "东四十条",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1014,
+        "Name": "东直门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1015,
+        "Name": "雍和宫",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1016,
+        "Name": "安定门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1017,
+        "Name": "鼓楼大街",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "CopyId": 1018,
+        "Name": "积水潭",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    }
+]

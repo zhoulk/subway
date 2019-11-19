@@ -1,29 +1,56 @@
 package models
 
+import "subway/db/tables"
+
 var (
-	CopyList []*Copy
+	CopyList  []*Copy
+	CopyItems map[int][]*CopyItem
 )
 
 func init() {
 	CopyList = make([]*Copy, 0)
+	CopyItems = make(map[int][]*CopyItem)
 
-	items1 := []*CopyItem{&CopyItem{CopyItemId: 1001, Name: "苹果园"}}
-	c1 := &Copy{Info: CopyInfo{CopyId: 1, Name: "1号线"}, Items: items1}
-	c2 := &Copy{Info: CopyInfo{CopyId: 2, Name: "2号线"},
-		Items: []*CopyItem{&CopyItem{
-			CopyItemId: 2001,
-			Name:       "苹果园",
-			Goods: []*CopyGoodItem{
-				&CopyGoodItem{
-					Type:    1,
-					GoodId:  "1000",
-					Count:   1,
-					Percent: 100,
-				},
+	defines := tables.LoadCopyData()
+	for _, def := range defines {
+		itemDefines := tables.LoadCopyItems(def.CopyId)
+
+		items := make([]*CopyItem, 0)
+		for _, itemDef := range itemDefines {
+			items = append(items, &CopyItem{
+				CopyItemId: itemDef.CopyId,
+				Name:       itemDef.Name,
+				Star:       3,
+			})
+		}
+		CopyItems[def.CopyId] = items
+
+		CopyList = append(CopyList, &Copy{
+			Info: CopyInfo{
+				CopyId: def.CopyId,
+				Name:   def.Name,
 			},
-		}}}
-	CopyList = append(CopyList, c1)
-	CopyList = append(CopyList, c2)
+			Star: len(itemDefines) * 3,
+		})
+	}
+
+	// items1 := []*CopyItem{&CopyItem{CopyItemId: 1001, Name: "苹果园"}}
+	// c1 := &Copy{Info: CopyInfo{CopyId: 1, Name: "1号线"}, Items: items1}
+	// c2 := &Copy{Info: CopyInfo{CopyId: 2, Name: "2号线"},
+	// 	Items: []*CopyItem{&CopyItem{
+	// 		CopyItemId: 2001,
+	// 		Name:       "苹果园",
+	// 		Goods: []*CopyGoodItem{
+	// 			&CopyGoodItem{
+	// 				Type:    1,
+	// 				GoodId:  "1000",
+	// 				Count:   1,
+	// 				Percent: 100,
+	// 			},
+	// 		},
+	// 	}}}
+	// CopyList = append(CopyList, c1)
+	// CopyList = append(CopyList, c2)
 }
 
 const (
@@ -49,6 +76,7 @@ type CopyInfo struct {
 type CopyItem struct {
 	CopyItemId int
 	Name       string
+	Star       int
 
 	Goods []*CopyGoodItem
 }
@@ -66,6 +94,10 @@ type CopyGoodItem struct {
 
 func GetAllCopy() []*Copy {
 	return CopyList
+}
+
+func GetCopyItems(copyId int) []*CopyItem {
+	return CopyItems[copyId]
 }
 
 func GetSelfCopy(uid string) []*Copy {
