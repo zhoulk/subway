@@ -18,7 +18,17 @@ type GuanKaController struct {
 func (g *GuanKaController) GetNearGuanKa() {
 	uid := g.GetString("uid")
 	gks := models.GetNearGuanKa(uid)
-	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: gks}
+	res := make([]*models.GuanKaInfo, 0)
+	if gks != nil {
+		for _, gk := range gks {
+			if gk != nil {
+				res = append(res, &gk.Info)
+			} else {
+				res = append(res, nil)
+			}
+		}
+	}
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: res}
 	g.ServeJSON()
 }
 

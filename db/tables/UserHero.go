@@ -29,6 +29,8 @@ type UserHero struct {
 	AgilityGrow     int32
 	IntelligentGrow int32
 
+	Status int8
+
 	gorm.Model
 }
 

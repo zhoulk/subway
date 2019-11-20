@@ -1,5 +1,10 @@
 package models
 
+import (
+	"math"
+	"subway/db/tables"
+)
+
 var (
 	GuanKaList []*GuanKa
 )
@@ -7,18 +12,21 @@ var (
 func init() {
 	GuanKaList = make([]*GuanKa, 0)
 
-	g1 := &GuanKa{Info: GuanKaInfo{GuanKaId: 1, Name: "1号线-苹果园"},
-		Heros: []*GuanKaHero{&GuanKaHero{HeroId: "1001", Level: 1, Floor: 0, Star: 0, SkillLevels: []int32{1, 1, 1, 1}}}}
-	g2 := &GuanKa{Info: GuanKaInfo{GuanKaId: 2, Name: "1号线-苹果园1"},
-		Heros: []*GuanKaHero{&GuanKaHero{HeroId: "1003", Level: 1, Floor: 0, Star: 0, SkillLevels: []int32{1, 1, 1, 1}}}}
-	g3 := &GuanKa{Info: GuanKaInfo{GuanKaId: 3, Name: "1号线-苹果园2"}}
-	g4 := &GuanKa{Info: GuanKaInfo{GuanKaId: 4, Name: "1号线-苹果园3"}}
-	g5 := &GuanKa{Info: GuanKaInfo{GuanKaId: 5, Name: "1号线-苹果园4"}}
-	GuanKaList = append(GuanKaList, g1)
-	GuanKaList = append(GuanKaList, g2)
-	GuanKaList = append(GuanKaList, g3)
-	GuanKaList = append(GuanKaList, g4)
-	GuanKaList = append(GuanKaList, g5)
+	defines := tables.LoadGuanKaData()
+	for _, def := range defines {
+
+		heros := make([]*GuanKaHero, 0)
+		for _, gkHero := range def.Heros {
+			heros = append(heros, &GuanKaHero{HeroId: gkHero.HeroId, Level: gkHero.Level, Floor: gkHero.Floor, Star: gkHero.Star, SkillLevels: gkHero.SkillLevels})
+		}
+		GuanKaList = append(GuanKaList, &GuanKa{
+			Info: GuanKaInfo{
+				GuanKaId: def.GuanKaId,
+				Name:     def.Name,
+			},
+			Heros: heros,
+		})
+	}
 }
 
 type GuanKa struct {
@@ -42,9 +50,10 @@ type GuanKaHero struct {
 	SkillLevels []int32
 }
 
-func GetGuanKa(guanKaId int) *GuanKa {
-	if guanKaId-1 >= 0 && guanKaId-1 < len(GuanKaList) {
-		gk := GuanKaList[guanKaId-1]
+func GetGuanKa(gkId int) *GuanKa {
+	index := int(math.Ceil(float64(gkId) / float64(10)))
+	if index-1 >= 0 && index-1 < len(GuanKaList) {
+		gk := GuanKaList[index-1]
 		if gk.Heros != nil {
 			for _, h := range gk.Heros {
 				if h.Hero == nil {
@@ -63,6 +72,7 @@ func GetGuanKa(guanKaId int) *GuanKa {
 				}
 			}
 		}
+		gk.Info.GuanKaId = gkId
 		return gk
 	}
 	return nil
@@ -72,11 +82,11 @@ func GetNearGuanKa(uid string) []*GuanKa {
 	res := make([]*GuanKa, 0)
 	u, _ := GetUser(uid)
 	if u != nil {
-		preGuanKaId := u.Profile.GuanKaId - 1
-		NextGuanKaId := u.Profile.GuanKaId + 1
-		res = append(res, GetGuanKa(preGuanKaId))
+		// preGuanKaId := u.Profile.GuanKaId - 1
+		// NextGuanKaId := u.Profile.GuanKaId + 1
+		//res = append(res, GetGuanKa(preGuanKaId))
 		res = append(res, GetGuanKa(u.Profile.GuanKaId))
-		res = append(res, GetGuanKa(NextGuanKaId))
+		//res = append(res, GetGuanKa(NextGuanKaId))
 	}
 	return res
 }

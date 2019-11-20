@@ -1,0 +1,240 @@
+[
+    {
+        "GuanKaId": 1001,
+        "Name": "苹果园",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "GuanKaId": 1002,
+        "Name": "古城",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1003,
+        "Name": "八角游乐园",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1004,
+        "Name": "八宝山",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1005,
+        "Name": "玉泉路",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1006,
+        "Name": "五棵松",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1007,
+        "Name": "万寿路",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1008,
+        "Name": "公主坟",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1009,
+        "Name": "军事博物馆",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1010,
+        "Name": "木樨地",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1011,
+        "Name": "南礼士路",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1012,
+        "Name": "复兴门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1013,
+        "Name": "西单",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1014,
+        "Name": "天安门西",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1015,
+        "Name": "天安门东",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1016,
+        "Name": "王府井",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1017,
+        "Name": "东单",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1018,
+        "Name": "建国门",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1019,
+        "Name": "永安里",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1020,
+        "Name": "国贸",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1021,
+        "Name": "大望路",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1022,
+        "Name": "四惠",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    },
+    {
+        "GuanKaId": 1023,
+        "Name": "四惠东",
+        "Equips": [
+            1000
+        ],
+        "HeroParts": [
+            1002
+        ]
+    }
+]

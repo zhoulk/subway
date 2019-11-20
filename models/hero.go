@@ -232,14 +232,11 @@ func Wear(uid string, heroUid string, equipId string) bool {
 
 func GetSelectedHeros(uid string) []*Hero {
 	res := make([]*Hero, 0)
-	u, _ := GetUser(uid)
-	if u != nil {
-		heros := u.Heros
-		if heros != nil {
-			for _, h := range heros {
-				if h.Status == 1 {
-					res = append(res, h)
-				}
+	heros := GetSelfHeros(uid)
+	if heros != nil {
+		for _, h := range heros {
+			if h.Status == 1 {
+				res = append(res, h)
 			}
 		}
 	}
@@ -377,6 +374,7 @@ func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
 			AgilityGrow:     t_u_h.AgilityGrow,
 			IntelligentGrow: t_u_h.IntelligentGrow,
 		}
+		res.Status = t_u_h.Status
 		res.Equips = make([]*Equip, 0)
 		res.Skills = make([]*Skill, 0)
 		return res
@@ -406,5 +404,7 @@ func CreateUserHeroFromHero(uid string, u_h *Hero) *tables.UserHero {
 		StrengthGrow:    u_h.Props.StrengthGrow,
 		AgilityGrow:     u_h.Props.AgilityGrow,
 		IntelligentGrow: u_h.Props.IntelligentGrow,
+
+		Status: u_h.Status,
 	}
 }

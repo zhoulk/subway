@@ -44,12 +44,18 @@ func GetUser(uid string) (u *User, err error) {
 	}
 
 	t_user := tables.LoadUserByUid(uid)
+	t_baseInfo := tables.LoadUserBaseInfo(uid)
+	t_extendInfo := tables.LoadUserExtendInfo(uid)
 	if t_user != nil {
 		UserList[t_user.Uid] = &User{
 			Info: UserInfo{
 				Uid:    t_user.Uid,
 				OpenId: t_user.OpenId,
 				ZoneId: t_user.ZoneId,
+			},
+			Profile: UserProfile{
+				Gold:     t_baseInfo.Gold,
+				GuanKaId: t_extendInfo.GuanKaId,
 			},
 		}
 		GetSelfHeros(t_user.Uid)
@@ -105,13 +111,14 @@ func PersistentUser() {
 	userHeros := make([]*tables.UserHero, 0)
 	heroEquips := make([]*tables.HeroEquip, 0)
 	heroSkills := make([]*tables.HeroSkill, 0)
+	userBaseInfos := make([]*tables.UserBaseInfo, 0)
+	userExtendInfos := make([]*tables.UserExtendInfo, 0)
 
 	for _, u := range UserList {
-		users = append(users, &tables.User{
-			Uid:    u.Info.Uid,
-			OpenId: u.Info.OpenId,
-			ZoneId: u.Info.ZoneId,
-		})
+		users = append(users, CreateTableUserFromUser(u))
+
+		userBaseInfos = append(userBaseInfos, CreateUserBaseInfoFromUser(u))
+		userExtendInfos = append(userExtendInfos, CreateUserExtendInfoFromUser(u))
 
 		for _, u_h := range u.Heros {
 			userHeros = append(userHeros, CreateUserHeroFromHero(u.Info.Uid, u_h))
@@ -130,4 +137,28 @@ func PersistentUser() {
 	tables.PersistentUserHero(userHeros)
 	tables.PersistentHeroEquip(heroEquips)
 	tables.PersistentHeroSkill(heroSkills)
+	tables.PersistentUserBaseInfo(userBaseInfos)
+	tables.PersistentUserExtendInfo(userExtendInfos)
+}
+
+func CreateTableUserFromUser(u *User) *tables.User {
+	return &tables.User{
+		Uid:    u.Info.Uid,
+		OpenId: u.Info.OpenId,
+		ZoneId: u.Info.ZoneId,
+	}
+}
+
+func CreateUserBaseInfoFromUser(u *User) *tables.UserBaseInfo {
+	return &tables.UserBaseInfo{
+		Uid:  u.Info.Uid,
+		Gold: u.Profile.Gold,
+	}
+}
+
+func CreateUserExtendInfoFromUser(u *User) *tables.UserExtendInfo {
+	return &tables.UserExtendInfo{
+		Uid:      u.Info.Uid,
+		GuanKaId: u.Profile.GuanKaId,
+	}
 }
