@@ -3,6 +3,8 @@ package models
 import (
 	"math"
 	"subway/db/tables"
+
+	"github.com/astaxie/beego"
 )
 
 var (
@@ -51,6 +53,7 @@ type GuanKaHero struct {
 }
 
 func GetGuanKa(gkId int) *GuanKa {
+	beego.Debug("GetGuanKa  ", gkId)
 	index := int(math.Ceil(float64(gkId) / float64(10)))
 	if index-1 >= 0 && index-1 < len(GuanKaList) {
 		gk := GuanKaList[index-1]

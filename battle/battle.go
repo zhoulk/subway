@@ -1,8 +1,8 @@
 package battle
 
 import (
-	"subway/tool"
 	"subway/models"
+	"subway/tool"
 )
 
 const (
@@ -12,8 +12,10 @@ const (
 )
 
 type BattleResult struct {
-	Result int8 // 1 胜利  2 失败   3  平局
-	Items  []*BattleItem
+	SelfHeros  []*BattleHeroInfo
+	OtherHeros []*BattleHeroInfo
+	Result     int8 // 1 胜利  2 失败   3  平局
+	Items      []*BattleItem
 }
 
 type BattleItem struct {
@@ -21,6 +23,13 @@ type BattleItem struct {
 	FromHero     ReportHero
 	ToHeros      []ReportHero
 	Skill        ReportSkill
+}
+
+type BattleHeroInfo struct {
+	HeroId string
+	HP     int32
+	Name   string
+	Level  int32
 }
 
 // 用于战斗记录
@@ -37,13 +46,30 @@ type ReportSkill struct {
 
 func BattleGuanKa(uid string, gkId int) *BattleResult {
 
+	otherHeroInfos := make([]*BattleHeroInfo, 0)
+	selfHeroInfos := make([]*BattleHeroInfo, 0)
 	// 获取关卡阵容
 	gkHeros := make([]*models.Hero, 0)
 	for _, h := range models.GetGuanKa(gkId).Heros {
 		gkHeros = append(gkHeros, h.Hero)
+		otherHeroInfos = append(otherHeroInfos, &BattleHeroInfo{
+			HeroId: h.Uid,
+			HP:     h.Props.HP,
+			Level:  h.Info.Level,
+			Name:   h.Info.Name,
+		})
 	}
 	// 获取阵容
 	selfHeros := models.GetSelectedHeros(uid)
+
+	for _, h := range selfHeros {
+		selfHeroInfos = append(selfHeroInfos, &BattleHeroInfo{
+			HeroId: h.Uid,
+			HP:     h.Props.HP,
+			Level:  h.Info.Level,
+			Name:   h.Info.Name,
+		})
+	}
 
 	res := Battle(selfHeros, gkHeros)
 
@@ -51,6 +77,9 @@ func BattleGuanKa(uid string, gkId int) *BattleResult {
 		u, _ := models.GetUser(uid)
 		u.SetGuanKaId(gkId)
 	}
+
+	res.OtherHeros = otherHeroInfos
+	res.SelfHeros = selfHeroInfos
 
 	return res
 }
