@@ -78,13 +78,8 @@ func Login(zoneId int, openId string, username string) *User {
 
 	t_user := tables.LoadUser(zoneId, openId)
 	if t_user != nil {
-		UserList[t_user.Uid] = &User{
-			Info: UserInfo{
-				Uid:    t_user.Uid,
-				OpenId: t_user.OpenId,
-				ZoneId: t_user.ZoneId,
-			},
-		}
+		u, _ := GetUser(t_user.Uid)
+		UserList[t_user.Uid] = u
 		return UserList[t_user.Uid]
 	}
 
