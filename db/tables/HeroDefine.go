@@ -10,12 +10,13 @@ import (
 
 // 英雄定义表
 type HeroDefine struct {
-	HeroId string `gorm:"size:64;unique;not null"`
-	Name   string `gorm:"size:64"`
-	Type   int8
-	Level  int32
-	Floor  int16 // 阶别
-	Star   int16 // 星星
+	HeroId  string `gorm:"size:64;unique;not null"`
+	Name    string `gorm:"size:64"`
+	Type    int8
+	AtkType int8
+	Level   int32
+	Floor   int16 // 阶别
+	Star    int16 // 星星
 
 	HP              int32
 	MP              int32

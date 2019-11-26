@@ -2,6 +2,7 @@
     {
         "HeroId": "1000",
         "Type": 2,
+        "AtkType": 1,
         "Name": "敌法师",
         "Level": 1,
         "Floor": 1,
@@ -9,7 +10,7 @@
         "Desc": "前排刺客，可以出现在敌人背后，对法师有致命的威胁。",
         "HP": 468,
         "AD": 58,
-        "AP":38,
+        "AP": 38,
         "ADDef": 4,
         "APDef": 2,
         "SPD": 1000,
@@ -24,6 +25,7 @@
     {
         "HeroId": "1001",
         "Type": 2,
+        "AtkType": 1,
         "Name": "小黑",
         "Level": 1,
         "Floor": 1,
@@ -46,6 +48,7 @@
     {
         "HeroId": "1002",
         "Type": 1,
+        "AtkType": 1,
         "Name": "船长",
         "Level": 1,
         "Floor": 1,
@@ -68,6 +71,7 @@
     {
         "HeroId": "1003",
         "Type": 3,
+        "AtkType": 2,
         "Name": "火女",
         "Level": 1,
         "Floor": 1,

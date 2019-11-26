@@ -63,8 +63,14 @@ const (
 	HeroTypeIntelligent int8 = 3
 )
 
+const (
+	HeroAtkTypeAD int8 = 1
+	HeroAtkTypeAP int8 = 2
+)
+
 type HeroInfo struct {
 	HeroId      string
+	AtkType     int8
 	Type        int8
 	Name        string
 	Level       int32
@@ -322,13 +328,14 @@ func (h *Hero) SetStar(star int16) {
 func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
 	return &Hero{
 		Info: HeroInfo{
-			HeroId: def.HeroId,
-			Type:   def.Type,
-			Name:   def.Name,
-			Level:  def.Level,
-			Floor:  def.Floor,
-			Star:   def.Star,
-			Desc:   def.Desc,
+			HeroId:  def.HeroId,
+			Type:    def.Type,
+			AtkType: def.AtkType,
+			Name:    def.Name,
+			Level:   def.Level,
+			Floor:   def.Floor,
+			Star:    def.Star,
+			Desc:    def.Desc,
 		},
 		Props: HeroProperties{
 			HP:              def.HP,
