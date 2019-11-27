@@ -34,8 +34,16 @@ type UserProfile struct {
 	GuanKaId int
 }
 
+const (
+	IncreaseGoldReasonGK int8 = 1 // 过关奖励
+)
+
 func (u *User) SetGuanKaId(gkId int) {
 	u.Profile.GuanKaId = gkId
+}
+
+func (u *User) IncreaseGold(gold int64, reason int8) {
+	u.Profile.Gold = u.Profile.Gold + gold
 }
 
 func GetUser(uid string) (u *User, err error) {

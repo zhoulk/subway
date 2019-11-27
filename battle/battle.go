@@ -45,12 +45,12 @@ type ReportSkill struct {
 }
 
 func BattleGuanKa(uid string, gkId int) *BattleResult {
-
 	otherHeroInfos := make([]*BattleHeroInfo, 0)
 	selfHeroInfos := make([]*BattleHeroInfo, 0)
 	// 获取关卡阵容
 	gkHeros := make([]*models.Hero, 0)
-	for _, h := range models.GetGuanKa(gkId).Heros {
+	currentGK := models.GetGuanKa(gkId)
+	for _, h := range currentGK.Heros {
 		gkHeros = append(gkHeros, h.Hero)
 		otherHeroInfos = append(otherHeroInfos, &BattleHeroInfo{
 			HeroId: h.Uid,
@@ -73,9 +73,24 @@ func BattleGuanKa(uid string, gkId int) *BattleResult {
 
 	res := Battle(selfHeros, gkHeros)
 
+	// 战斗胜利 更新关卡
 	if res.Result == BattleResultWin {
 		u, _ := models.GetUser(uid)
-		u.SetGuanKaId(gkId)
+		u.SetGuanKaId(gkId + 1)
+	}
+	// 计算收益
+	// 胜利 100%  失败  50%   平局 50%
+	if res.Result == BattleResultWin {
+		// gold = 100 + 2 * gkId
+		gold := 100 + 2*currentGK.Info.GuanKaId
+
+		u, _ := models.GetUser(uid)
+		u.IncreaseGold(int64(gold), models.IncreaseGoldReasonGK)
+	} else {
+		gold := 50 + 1*currentGK.Info.GuanKaId
+
+		u, _ := models.GetUser(uid)
+		u.IncreaseGold(int64(gold), models.IncreaseGoldReasonGK)
 	}
 
 	res.OtherHeros = otherHeroInfos

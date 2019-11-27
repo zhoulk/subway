@@ -44,3 +44,15 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
+
+// @Title userInfo
+// @Description userInfo
+// @Param	uid		query 	string	true		"The username for login"
+// @Success 200 {string}
+// @router /userInfo [post]
+func (u *UserController) UserInfo() {
+	uid := u.GetString("uid")
+	user, _ := models.GetUser(uid)
+	u.Data["json"] = models.Response{Code: 200, Msg: "login success", Data: user.Profile}
+	u.ServeJSON()
+}
