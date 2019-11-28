@@ -32,6 +32,7 @@ type UserInfo struct {
 type UserProfile struct {
 	Gold     int64
 	GuanKaId int
+	Tech     int
 }
 
 const (
@@ -64,6 +65,7 @@ func GetUser(uid string) (u *User, err error) {
 			Profile: UserProfile{
 				Gold:     t_baseInfo.Gold,
 				GuanKaId: t_extendInfo.GuanKaId,
+				Tech:     t_extendInfo.Tech,
 			},
 		}
 		GetSelfHeros(t_user.Uid)
@@ -163,5 +165,6 @@ func CreateUserExtendInfoFromUser(u *User) *tables.UserExtendInfo {
 	return &tables.UserExtendInfo{
 		Uid:      u.Info.Uid,
 		GuanKaId: u.Profile.GuanKaId,
+		Tech:     u.Profile.Tech,
 	}
 }

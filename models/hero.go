@@ -315,6 +315,9 @@ func ExchangeHero(uid string, fromHeroUid string, toHeroUid string) bool {
 
 func (h *Hero) SetHeroLevel(level int32) {
 	h.Info.Level = level
+
+	// 增加属性
+	RefreshHero(h)
 }
 
 func (h *Hero) SetFloorLevel(floor int16) {
@@ -413,5 +416,42 @@ func CreateUserHeroFromHero(uid string, u_h *Hero) *tables.UserHero {
 		IntelligentGrow: u_h.Props.IntelligentGrow,
 
 		Status: u_h.Status,
+	}
+}
+
+// 	力量：一点力量增加18点生命值上限和0.14护甲，额外增加力量英雄1点物理攻击。
+// 　　智力：一点智力增加2.4魔法强度和0.1魔法抗性，额外增加智力英雄1点物理攻击。
+// 　　敏捷：一点敏捷增加0.4攻击强度和0.07护甲以及0.4物理暴击，额外增加敏捷英雄1点物理攻击。
+// 　　生命最大值：一点力量增加18点生命最大值。
+// 　　物理攻击力：一点主属性增加一点物理攻击力，一点敏捷增加0.4物理攻击力，对方无护甲情况下一点物理攻击力等于一点平砍伤害，增加物理技能伤害，伤害数值由各个技能公式决定。
+// 　　魔法强度：一点智力增加2.4魔法强度，增加法术技能伤害，伤害数值由各个技能公式决定。
+// 　　物理护甲：一点力量增加0.14护甲，一点敏捷增加0.07护甲，护甲会降低受到物理伤害的暴击率，护甲减伤为百分比减伤，目前公式暂缺。
+// 　　魔法抗性：一点智力增加0.1魔法抗性，魔法抗性会降低受到法术伤害的暴击率，魔法抗性减伤为百分比减伤，目前公式暂缺。
+// 　　物理暴击：一点敏捷增加0.4物理暴击，暴击伤害为200%,目前暴击等级与暴击率转换公式暂缺。
+// 　　魔法暴击：魔法暴击与三围无关，由装备提供，暴击伤害为200%,目前暴击等级与暴击率转换公式暂缺。
+// 　　生命回复：过场时回复的生命值，与三围无关，由装备提供。
+// 　　能量回复：过场时回复的能量值，与三围无关，由装备提供。
+func RefreshHero(h *Hero) {
+
+	def := HeroDefineList[h.Info.HeroId]
+
+	h.Props.Strength = h.Props.StrengthGrow * h.Info.Level / 100
+	h.Props.Agility = h.Props.AgilityGrow * h.Info.Level / 100
+	h.Props.Intelligent = h.Props.IntelligentGrow * h.Info.Level / 100
+
+	h.Props.HP = def.Props.HP + h.Props.Strength*18
+	h.Props.ADDef = def.Props.ADDef + (h.Props.Strength*14+h.Props.Agility*7)/100
+	h.Props.AP = def.Props.AP + h.Props.Intelligent*24/10
+	h.Props.APDef = def.Props.APDef + h.Props.Intelligent*1/10
+	h.Props.ADCrit = def.Props.ADCrit + h.Props.Agility*4/10
+
+	if def.Info.Type == HeroTypeStrength {
+		h.Props.AD = def.Props.AD + (h.Props.Strength*10+h.Props.Agility*4)/10
+	}
+	if def.Info.Type == HeroTypeIntelligent {
+		h.Props.AD = def.Props.AD + (h.Props.Intelligent*10+h.Props.Agility*4)/10
+	}
+	if def.Info.Type == HeroTypeAgility {
+		h.Props.AD = def.Props.AD + h.Props.Agility*14/10
 	}
 }

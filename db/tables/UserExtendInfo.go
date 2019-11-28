@@ -10,6 +10,7 @@ import (
 type UserExtendInfo struct {
 	Uid      string `gorm:"size:64;unique;not null"`
 	GuanKaId int
+	Tech     int
 
 	gorm.Model
 }
