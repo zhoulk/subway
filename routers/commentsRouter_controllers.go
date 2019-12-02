@@ -18,6 +18,15 @@ func init() {
 
     beego.GlobalControllerRouter["subway/controllers:BattleController"] = append(beego.GlobalControllerRouter["subway/controllers:BattleController"],
         beego.ControllerComments{
+            Method: "BattleCopy",
+            Router: `/battleCopy`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/controllers:BattleController"] = append(beego.GlobalControllerRouter["subway/controllers:BattleController"],
+        beego.ControllerComments{
             Method: "BattleGK",
             Router: `/battleGK`,
             AllowHTTPMethods: []string{"post"},

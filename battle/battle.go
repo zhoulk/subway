@@ -1,6 +1,7 @@
 package battle
 
 import (
+	"math/rand"
 	"subway/models"
 	"subway/tool"
 )
@@ -91,6 +92,76 @@ func BattleGuanKa(uid string, gkId int) *BattleResult {
 
 		u, _ := models.GetUser(uid)
 		u.IncreaseGold(int64(gold), models.IncreaseGoldReasonGK)
+	}
+
+	res.OtherHeros = otherHeroInfos
+	res.SelfHeros = selfHeroInfos
+
+	return res
+}
+
+func BattleCopy(uid string, copyId int) *BattleResult {
+	otherHeroInfos := make([]*BattleHeroInfo, 0)
+	selfHeroInfos := make([]*BattleHeroInfo, 0)
+	// 获取关卡阵容
+	gkHeros := make([]*models.Hero, 0)
+	cp := models.GetCopyItemDefine(copyId)
+	for _, h := range cp.Heros {
+		gkHeros = append(gkHeros, h.Hero)
+		otherHeroInfos = append(otherHeroInfos, &BattleHeroInfo{
+			HeroId: h.Uid,
+			HP:     h.Props.HP,
+			Level:  h.Info.Level,
+			Name:   h.Info.Name,
+		})
+	}
+	// 获取阵容
+	selfHeros := models.GetSelectedHeros(uid)
+
+	for _, h := range selfHeros {
+		selfHeroInfos = append(selfHeroInfos, &BattleHeroInfo{
+			HeroId: h.Uid,
+			HP:     h.Props.HP,
+			Level:  h.Info.Level,
+			Name:   h.Info.Name,
+		})
+	}
+
+	res := Battle(selfHeros, gkHeros)
+
+	// 战斗胜利 更新副本
+	if res.Result == BattleResultWin {
+		models.CompleteCopy(uid, copyId)
+	}
+	// 计算收益
+	// 胜利 100%  失败  50%   平局 50%
+	if res.Result == BattleResultWin {
+		// gold = 100 + 2 * gkId
+		gold := 100 + 2*cp.CopyItemId
+
+		u, _ := models.GetUser(uid)
+		u.IncreaseGold(int64(gold), models.IncreaseGoldReasonCopy)
+
+		// 装备
+		// 碎片
+		for _, cpGoods := range cp.Goods {
+			rd := int8(rand.Intn(100))
+			if rd < cpGoods.Percent {
+				if cpGoods.Type == models.CopyGoodItemTypeEquip {
+					models.GainABagItem(uid, &models.BagItem{
+						Type:    models.BagItemEquip,
+						GoodsId: cpGoods.GoodId,
+						Count:   cpGoods.Count,
+					})
+				}
+			}
+		}
+
+	} else {
+		gold := 50 + 1*cp.CopyItemId
+
+		u, _ := models.GetUser(uid)
+		u.IncreaseGold(int64(gold), models.IncreaseGoldReasonCopy)
 	}
 
 	res.OtherHeros = otherHeroInfos
@@ -228,7 +299,7 @@ func executeActiveSkill(context *BattleContext) int8 {
 }
 
 func equipEffect(h *Hero, e *models.Equip) {
-	if e.Status == models.EquipStatusWearOff {
+	if e.Status != models.EquipStatusWearComplete {
 		return
 	}
 

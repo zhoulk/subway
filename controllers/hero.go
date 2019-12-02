@@ -39,6 +39,7 @@ func (h *HeroController) SelfHeros() {
 			Level:  hero.Info.Level,
 			Floor:  hero.Info.Floor,
 			Star:   hero.Info.Star,
+			Status: hero.Status,
 		})
 	}
 	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: resData}
@@ -55,7 +56,24 @@ func (h *HeroController) HeroDetail() {
 	uid := h.GetString("uid")
 	heroUid := h.GetString("heroUid")
 	hero := models.GetHero(uid, heroUid)
-	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: hero}
+
+	resData := HeroDetailResponse{
+		Uid:    hero.Uid,
+		Info:   hero.Info,
+		Props:  hero.Props,
+		Equips: hero.Equips,
+		Skills: make([]*SkillResponse, 0),
+		Status: hero.Status,
+	}
+
+	for _, s := range hero.Skills {
+		resData.Skills = append(resData.Skills, &SkillResponse{
+			Uid:  s.Uid,
+			Info: s.Info,
+		})
+	}
+
+	h.Data["json"] = models.Response{Code: 200, Msg: "", Data: resData}
 	h.ServeJSON()
 }
 
@@ -166,7 +184,7 @@ func (h *HeroController) UnSelectHero() {
 }
 
 // @Title ExchangeHero
-// @Description level up skill
+// @Description ExchangeHero
 // @Param	uid		query 	string	true		"The username for login"
 // @Param	fromHeroUid		query 	string	true		"The username for login"
 // @Param	toHeroUid		query 	string	true		"The username for login"
@@ -192,4 +210,19 @@ type HeroResponse struct {
 	Level  int32
 	Floor  int16 // 阶别
 	Star   int16 // 星星
+	Status int8
+}
+
+type HeroDetailResponse struct {
+	Uid    string
+	Info   models.HeroInfo
+	Props  models.HeroProperties
+	Equips []*models.Equip
+	Skills []*SkillResponse
+	Status int8 // 1 正常  2 上阵
+}
+
+type SkillResponse struct {
+	Uid  string
+	Info models.SkillInfo
 }

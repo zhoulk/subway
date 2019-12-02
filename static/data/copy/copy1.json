@@ -2,6 +2,20 @@
     {
         "CopyId": 1001,
         "Name": "苹果园",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
@@ -12,6 +26,20 @@
     {
         "CopyId": 1002,
         "Name": "古城",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],

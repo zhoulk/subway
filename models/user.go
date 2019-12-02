@@ -18,8 +18,11 @@ type User struct {
 	Info    UserInfo
 	Profile UserProfile
 
-	Heros []*Hero
-	Copys []*Copy
+	Heros       []*Hero
+	Copys       []*Copy
+	CopyItems   []*CopyItem
+	CopyDic     map[int]*Copy
+	CopyItemDic map[int]*CopyItem
 }
 
 type UserInfo struct {
@@ -36,7 +39,9 @@ type UserProfile struct {
 }
 
 const (
-	IncreaseGoldReasonGK int8 = 1 // 过关奖励
+	IncreaseGoldReasonGK   int8 = 1 // 过关奖励
+	IncreaseGoldReasonCopy int8 = 1 // 副本奖励
+
 )
 
 func (u *User) SetGuanKaId(gkId int) {
@@ -45,6 +50,22 @@ func (u *User) SetGuanKaId(gkId int) {
 
 func (u *User) IncreaseGold(gold int64, reason int8) {
 	u.Profile.Gold = u.Profile.Gold + gold
+}
+
+// 开启一个新的副本
+func (u *User) AddCopyItem(cpItem *CopyItem) {
+	if _, ok := u.CopyItemDic[cpItem.CopyItemId]; !ok {
+		u.CopyItems = append(u.CopyItems, cpItem)
+		u.CopyItemDic[cpItem.CopyItemId] = cpItem
+	}
+}
+
+// 开启一个章节
+func (u *User) AddCopy(cp *Copy) {
+	if _, ok := u.CopyDic[cp.Info.CopyId]; !ok {
+		u.Copys = append(u.Copys, cp)
+		u.CopyDic[cp.Info.CopyId] = cp
+	}
 }
 
 func GetUser(uid string) (u *User, err error) {
@@ -118,6 +139,9 @@ func PersistentUser() {
 	heroSkills := make([]*tables.HeroSkill, 0)
 	userBaseInfos := make([]*tables.UserBaseInfo, 0)
 	userExtendInfos := make([]*tables.UserExtendInfo, 0)
+	userCopys := make([]*tables.UserCopy, 0)
+	userCopyItems := make([]*tables.UserCopyItem, 0)
+	userBags := make([]*tables.UserBag, 0)
 
 	for _, u := range UserList {
 		users = append(users, CreateTableUserFromUser(u))
@@ -136,6 +160,19 @@ func PersistentUser() {
 				heroSkills = append(heroSkills, CreateHeroSkillFromSkill(u_h.Uid, u_h_s))
 			}
 		}
+
+		for _, u_c := range u.Copys {
+			userCopys = append(userCopys, CreateUserCopyFromCopy(u.Info.Uid, u_c))
+		}
+
+		for _, u_c_i := range u.CopyItems {
+			userCopyItems = append(userCopyItems, CreateUserCopyItemFromCopyItem(u.Info.Uid, u_c_i))
+		}
+
+		bag := GetBag(u.Info.Uid)
+		for _, u_b_i := range bag.Items {
+			userBags = append(userBags, CreateUserBagFromBagItem(u.Info.Uid, u_b_i))
+		}
 	}
 
 	tables.PersistentUser(users)
@@ -144,6 +181,9 @@ func PersistentUser() {
 	tables.PersistentHeroSkill(heroSkills)
 	tables.PersistentUserBaseInfo(userBaseInfos)
 	tables.PersistentUserExtendInfo(userExtendInfos)
+	tables.PersistentUserCopy(userCopys)
+	tables.PersistentUserCopyItem(userCopyItems)
+	tables.PersistentUserBags(userBags)
 }
 
 func CreateTableUserFromUser(u *User) *tables.User {

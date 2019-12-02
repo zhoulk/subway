@@ -20,6 +20,7 @@ type CopyItemDefine struct {
 	Name      string
 	Equips    []int
 	HeroParts []int
+	Heros     []*GuanKaHeroDefine
 }
 
 func init() {

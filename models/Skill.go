@@ -25,11 +25,12 @@ type Skill struct {
 }
 
 type SkillInfo struct {
-	SkillId string
-	Name    string
-	Level   int32
-	Type    int8 // 1 主动  2  被动
-	Desc    string
+	SkillId     string
+	Name        string
+	Level       int32
+	Type        int8 // 1 主动  2  被动
+	LevelUpGold int32
+	Desc        string
 }
 
 type SkillSecretInfo struct {
@@ -38,11 +39,23 @@ type SkillSecretInfo struct {
 	StepGold2         int32
 }
 
+func (s *Skill) SetSkillLevel(lv int32) {
+	s.Info.Level = lv
+
+	// 增加效果
+	//RefreshHero(h)
+
+	// 修改升级需要的金币
+	nextLevel := s.Info.Level + 1
+	s.Info.LevelUpGold = int32(s.Secret.OriginLevelUpGold + s.Secret.StepGold*nextLevel + nextLevel*nextLevel)
+}
+
 func GetSkillDefine(skillId string) *Skill {
 	if s, ok := SkillDefineList[skillId]; ok {
 		res := new(Skill)
 		tool.Clone(s, res)
 		res.Uid = tool.UniqueId()
+		res.Info.LevelUpGold = s.Secret.OriginLevelUpGold
 		return res
 	}
 	return nil
@@ -92,9 +105,9 @@ func SkillLevelUp(uid string, heroUid string, skillUid string) bool {
 		// 不超过英雄等级 * 2
 		if targetHero.Info.Level*2 >= endLevel {
 			// 计算升级需要的金币
-			needGold := int64(targetSkill.Secret.OriginLevelUpGold + targetSkill.Secret.StepGold*endLevel + endLevel*endLevel)
+			needGold := int64(targetSkill.Info.LevelUpGold)
 			if u.Profile.Gold >= needGold {
-				targetSkill.Info.Level = endLevel
+				targetSkill.SetSkillLevel(endLevel)
 				u.Profile.Gold -= needGold
 				return true
 			}
@@ -102,10 +115,6 @@ func SkillLevelUp(uid string, heroUid string, skillUid string) bool {
 	}
 
 	return false
-}
-
-func (s *Skill) SetSkillLevel(lv int32) {
-	s.Info.Level = lv
 }
 
 func CreateSkillFromSkillDefine(t_s_d *tables.SkillDefine) *Skill {
@@ -126,6 +135,7 @@ func CreateSkillFromHeroSkill(t_h_s *tables.HeroSkill) *Skill {
 		tool.Clone(s, res)
 		res.Uid = t_h_s.Uid
 		res.Info.Level = t_h_s.Level
+		res.SetSkillLevel(res.Info.Level)
 		return res
 	}
 	return nil

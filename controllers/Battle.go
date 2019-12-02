@@ -24,3 +24,17 @@ func (b *BattleController) BattleGK() {
 	b.Data["json"] = models.Response{Code: 200, Msg: "", Data: res}
 	b.ServeJSON()
 }
+
+// @Title BattleCopy
+// @Description get near GuanKa
+// @Param	uid		query 	string	true		"The username for login"
+// @Param	copyId		query 	int	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /battleCopy [post]
+func (b *BattleController) BattleCopy() {
+	uid := b.GetString("uid")
+	copyId, _ := b.GetInt("copyId")
+	res := battle.BattleCopy(uid, copyId)
+	b.Data["json"] = models.Response{Code: 200, Msg: "", Data: res}
+	b.ServeJSON()
+}

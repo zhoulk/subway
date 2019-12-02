@@ -39,8 +39,15 @@ func (g *GuanKaController) GetNearGuanKa() {
 // @router /getSelfCopy [post]
 func (g *GuanKaController) GetSelfCopy() {
 	uid := g.GetString("uid")
-	cps := models.GetSelfCopy(uid)
-	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: cps}
+	allCps := models.GetAllCopy()
+	_, cpDic := models.GetSelfCopy(uid)
+	for _, cp := range allCps {
+		if c, ok := cpDic[cp.Info.CopyId]; ok {
+			cp.Status = c.Status
+			cp.Star = c.Star
+		}
+	}
+	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: allCps}
 	g.ServeJSON()
 }
 
@@ -56,12 +63,21 @@ func (g *GuanKaController) GetAllCopy() {
 
 // @Title GetCopyItems
 // @Description get copy items
+// @Param	uid		query 	string	true		"The username for login"
 // @Param	copyId		query 	int	true
 // @Success 200 {object} models.Hero
 // @router /getCopyItems [post]
 func (g *GuanKaController) GetCopyItems() {
+	uid := g.GetString("uid")
 	copyId, _ := g.GetInt("copyId")
 	copyItems := models.GetCopyItems(copyId)
+	_, cpItemDic := models.GetSelfCopyItem(uid)
+	for _, cpItem := range copyItems {
+		if c, ok := cpItemDic[cpItem.CopyItemId]; ok {
+			cpItem.Status = c.Status
+			cpItem.Star = c.Star
+		}
+	}
 	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: copyItems}
 	g.ServeJSON()
 }

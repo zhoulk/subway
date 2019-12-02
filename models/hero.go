@@ -54,8 +54,13 @@ type Hero struct {
 	Secret HeroSecretInfo
 	Equips []*Equip
 	Skills []*Skill
-	Status int8 // 0 正常  1 上阵
+	Status int8 // 1 正常  2 上阵
 }
+
+const (
+	HeroStatusNormal   int8 = 1
+	HeroStatusSelected int8 = 2
+)
 
 const (
 	HeroTypeStrength    int8 = 1
@@ -103,6 +108,25 @@ type HeroSecretInfo struct {
 	StepGold2         int32
 }
 
+func (h *Hero) SetHeroLevel(level int32) {
+	h.Info.Level = level
+
+	// 增加属性
+	RefreshHero(h)
+
+	// 修改升级需要的金币
+	nextLevel := h.Info.Level + 1
+	h.Info.LevelUpGold = int32(h.Secret.OriginLevelUpGold + h.Secret.StepGold*nextLevel + nextLevel*nextLevel)
+}
+
+func (h *Hero) SetFloorLevel(floor int16) {
+	h.Info.Floor = floor
+}
+
+func (h *Hero) SetStar(star int16) {
+	h.Info.Star = star
+}
+
 func GetAllHeros() []*Hero {
 	heros := make([]*Hero, 0)
 	for _, h := range HeroDefineList {
@@ -116,6 +140,7 @@ func GetHeroDefine(heroId string) *Hero {
 		res := new(Hero)
 		tool.Clone(h, res)
 		res.Uid = tool.UniqueId()
+		res.Info.LevelUpGold = h.Secret.OriginLevelUpGold
 		return res
 	}
 	return nil
@@ -164,7 +189,6 @@ func AddHero(uid string, heroId string) *Hero {
 		beego.Debug(HeroFloorDefine)
 
 		if h != nil {
-			h.Info.LevelUpGold = h.Secret.OriginLevelUpGold
 			h.Equips = GetEquipDefines(HeroFloorDefine[h.Info.HeroId][h.Info.Floor])
 			h.Skills = GetSkillDefines(HeroSkillDefine[h.Info.HeroId])
 			u.Heros = append(u.Heros, h)
@@ -181,7 +205,7 @@ func HeroLevelUp(uid string, heroUid string) bool {
 	if target != nil {
 		endLevel := target.Info.Level + 1
 		// 计算升级需要的金币
-		needGold := int64(target.Secret.OriginLevelUpGold + target.Secret.StepGold*endLevel + endLevel*endLevel)
+		needGold := int64(target.Info.LevelUpGold) //int64(target.Secret.OriginLevelUpGold + target.Secret.StepGold*endLevel + endLevel*endLevel)
 		if u.Profile.Gold >= needGold {
 			target.SetHeroLevel(endLevel)
 			u.Profile.Gold -= needGold
@@ -220,7 +244,7 @@ func Wear(uid string, heroUid string, equipId string) bool {
 		// 装备是否穿戴完毕
 		var targetEquip *Equip
 		for _, e := range target.Equips {
-			if e.Status == 0 && e.Info.EquipId == equipId {
+			if e.Status != EquipStatusWearComplete && e.Info.EquipId == equipId {
 				targetEquip = e
 				break
 			}
@@ -228,7 +252,7 @@ func Wear(uid string, heroUid string, equipId string) bool {
 		// 是否拥有
 		if targetEquip != nil {
 			if BagContainEquip(uid, equipId) {
-				targetEquip.Status = 1
+				targetEquip.Status = EquipStatusWearComplete
 				return true
 			}
 		}
@@ -241,7 +265,7 @@ func GetSelectedHeros(uid string) []*Hero {
 	heros := GetSelfHeros(uid)
 	if heros != nil {
 		for _, h := range heros {
-			if h.Status == 1 {
+			if h.Status == HeroStatusSelected {
 				res = append(res, h)
 			}
 		}
@@ -256,7 +280,7 @@ func SelectedHerosCount(uid string) int {
 		heros := u.Heros
 		if heros != nil {
 			for _, h := range heros {
-				if h.Status == 1 {
+				if h.Status == HeroStatusSelected {
 					res++
 				}
 			}
@@ -287,7 +311,7 @@ func SelectHero(uid string, heroUid string) bool {
 
 	if target != nil {
 		if SelectedHerosCount(uid) < 5 {
-			target.Status = 1
+			target.Status = HeroStatusSelected
 			return true
 		}
 	}
@@ -299,7 +323,7 @@ func UnSelectHero(uid string, heroUid string) bool {
 	target := GetHero(uid, heroUid)
 
 	if target != nil {
-		target.Status = 0
+		target.Status = HeroStatusNormal
 		return true
 	}
 
@@ -311,21 +335,6 @@ func ExchangeHero(uid string, fromHeroUid string, toHeroUid string) bool {
 		return SelectHero(uid, toHeroUid)
 	}
 	return false
-}
-
-func (h *Hero) SetHeroLevel(level int32) {
-	h.Info.Level = level
-
-	// 增加属性
-	RefreshHero(h)
-}
-
-func (h *Hero) SetFloorLevel(floor int16) {
-	h.Info.Floor = floor
-}
-
-func (h *Hero) SetStar(star int16) {
-	h.Info.Star = star
 }
 
 func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
@@ -368,6 +377,8 @@ func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
 		res.Info.Level = t_u_h.Level
 		res.Info.Floor = t_u_h.Floor
 		res.Info.Star = t_u_h.Star
+		nextLevel := res.Info.Level + 1
+		res.Info.LevelUpGold = int32(h.Secret.OriginLevelUpGold + h.Secret.StepGold*nextLevel + nextLevel*nextLevel)
 		res.Props = HeroProperties{
 			HP:              t_u_h.HP,
 			MP:              t_u_h.MP,
