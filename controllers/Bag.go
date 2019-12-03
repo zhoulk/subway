@@ -18,6 +18,6 @@ type BagController struct {
 func (b *BagController) GetSelfBag() {
 	uid := b.GetString("uid")
 	bag := models.GetBag(uid)
-	b.Data["json"] = models.Response{Code: 200, Msg: "", Data: bag}
+	b.Data["json"] = models.Response{Code: 200, Msg: "", Data: bag.Items}
 	b.ServeJSON()
 }

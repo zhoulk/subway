@@ -21,7 +21,9 @@ type Bag struct {
 }
 
 const (
-	BagItemEquip int8 = 1
+	BagItemEquip    int8 = 1
+	BagItemHeroPart int8 = 2
+	BagItemOther    int8 = 3
 )
 
 type BagItem struct {
@@ -39,6 +41,16 @@ func GetBag(uid string) *Bag {
 
 	b := new(Bag)
 	b.Equips = make(map[int]*BagItem)
+
+	t_u_bs := tables.LoadUserBags(uid)
+	for _, t_u_b := range t_u_bs {
+		item := CreateBagItemFromUserBag(t_u_b)
+		if item.Type == BagItemEquip {
+			b.Equips[item.GoodsId] = item
+		}
+		b.Items = append(b.Items, item)
+	}
+
 	BagList[uid] = b
 	return b
 }
@@ -77,5 +89,14 @@ func CreateUserBagFromBagItem(uid string, bagItem *BagItem) *tables.UserBag {
 		ItemId:   bagItem.GoodsId,
 		Count:    bagItem.Count,
 		ItemType: bagItem.Type,
+	}
+}
+
+func CreateBagItemFromUserBag(t_u_b *tables.UserBag) *BagItem {
+	return &BagItem{
+		Uid:     t_u_b.Uid,
+		Type:    t_u_b.ItemType,
+		GoodsId: t_u_b.ItemId,
+		Count:   t_u_b.Count,
 	}
 }
