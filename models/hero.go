@@ -237,21 +237,21 @@ func HeroFloorUp(uid string, heroUid string) bool {
 	return false
 }
 
-func Wear(uid string, heroUid string, equipId string) bool {
+func Wear(uid string, heroUid string, equipUid string) bool {
 	var target *Hero = GetHero(uid, heroUid)
 
 	if target != nil {
 		// 装备是否穿戴完毕
 		var targetEquip *Equip
 		for _, e := range target.Equips {
-			if e.Status != EquipStatusWearComplete && e.Info.EquipId == equipId {
+			if e.Status != EquipStatusWearComplete && e.Uid == equipUid {
 				targetEquip = e
 				break
 			}
 		}
 		// 是否拥有
 		if targetEquip != nil {
-			if BagContainEquip(uid, equipId) {
+			if UseAEquip(uid, targetEquip.Info.EquipId) {
 				targetEquip.Status = EquipStatusWearComplete
 				return true
 			}
@@ -303,6 +303,16 @@ func GetHero(uid string, heroUid string) *Hero {
 			}
 		}
 	}
+
+	// 计算装备状态
+	for _, e := range target.Equips {
+		if e.Status != EquipStatusWearComplete {
+			if BagContainEquip(uid, e.Info.EquipId) {
+				e.Status = EquipStatusWearAcquire
+			}
+		}
+	}
+
 	return target
 }
 

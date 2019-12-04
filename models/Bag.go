@@ -32,6 +32,11 @@ type BagItem struct {
 	Type    int8
 	GoodsId int
 	Count   int
+	Name    string
+	Cost    int32
+	Desc    string
+
+	EquipInfo
 }
 
 func GetBag(uid string) *Bag {
@@ -46,6 +51,13 @@ func GetBag(uid string) *Bag {
 	for _, t_u_b := range t_u_bs {
 		item := CreateBagItemFromUserBag(t_u_b)
 		if item.Type == BagItemEquip {
+			if e, ok := EquipDefineList[strconv.Itoa(item.GoodsId)]; ok {
+				item.Name = e.Info.Name
+				item.Desc = e.Info.Desc
+				item.Cost = e.Info.Cost
+
+				item.EquipInfo = e.Info
+			}
 			b.Equips[item.GoodsId] = item
 		}
 		b.Items = append(b.Items, item)
@@ -59,7 +71,7 @@ func BagContainEquip(uid string, equipId string) bool {
 	b := GetBag(uid)
 	if b != nil {
 		for _, e := range b.Equips {
-			if strconv.Itoa(e.GoodsId) == equipId {
+			if strconv.Itoa(e.GoodsId) == equipId && e.Count > 0 {
 				return true
 			}
 		}
@@ -80,6 +92,20 @@ func GainABagItem(uid string, item *BagItem) {
 			b.Items = append(b.Items, item)
 		}
 	}
+}
+
+// 消耗物品
+func UseAEquip(uid string, equipId string) bool {
+	b := GetBag(uid)
+	if b != nil {
+		for _, e := range b.Equips {
+			if strconv.Itoa(e.GoodsId) == equipId && e.Count > 0 {
+				e.Count--
+				return true
+			}
+		}
+	}
+	return false
 }
 
 func CreateUserBagFromBagItem(uid string, bagItem *BagItem) *tables.UserBag {

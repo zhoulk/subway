@@ -28,6 +28,7 @@ type EquipDefine struct {
 	Desc        string
 	From        string
 	Power       int32
+	Cost        int32
 }
 
 func init() {

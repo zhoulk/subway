@@ -7,7 +7,8 @@
         "Agility": 1,
         "Intelligent": 1,
         "Desc": "带上它以确保一局GG",
-        "Power": 3
+        "Power": 3,
+        "Cost": 1
     },
     {
         "EquipId": "1001",
@@ -15,7 +16,8 @@
         "Level": 1,
         "Agility": 3,
         "Desc": "蜘蛛侠Cosplay套装组件",
-        "Power": 3
+        "Power": 3,
+        "Cost": 1
     },
     {
         "EquipId": "1002",

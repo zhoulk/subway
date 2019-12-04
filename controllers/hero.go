@@ -98,14 +98,14 @@ func (h *HeroController) LevelUpHero() {
 // @Description Wear equip
 // @Param	uid		query 	string	true		"The username for login"
 // @Param	heroUid		query 	string	true		"The username for login"
-// @Param	equipId		query 	string	true		"The username for login"
+// @Param	equipUid		query 	string	true		"The username for login"
 // @Success 200 {object} models.Hero
 // @router /Wear [post]
 func (h *HeroController) Wear() {
 	uid := h.GetString("uid")
 	heroUid := h.GetString("heroUid")
-	equipId := h.GetString("equipId")
-	if models.Wear(uid, heroUid, equipId) {
+	equipUid := h.GetString("equipUid")
+	if models.Wear(uid, heroUid, equipUid) {
 		h.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
 	} else {
 		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}

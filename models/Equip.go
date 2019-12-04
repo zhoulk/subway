@@ -36,6 +36,7 @@ func init() {
 				Desc:        def.Desc,
 				From:        def.From,
 				Power:       def.Power,
+				Cost:        def.Cost,
 			},
 		}
 	}
@@ -73,6 +74,7 @@ type EquipInfo struct {
 	Desc        string
 	From        string
 	Power       int32
+	Cost        int32
 }
 
 func GetEquipDefines(equipIds []string) []*Equip {
