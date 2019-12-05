@@ -83,6 +83,8 @@ type HeroInfo struct {
 	Floor       int16 // 阶别
 	Star        int16 // 星星
 	Desc        string
+	Parts       int32 // 碎片数
+	StarUp      int32 // 升星碎片数
 }
 
 type HeroProperties struct {
@@ -312,6 +314,11 @@ func GetHero(uid string, heroUid string) *Hero {
 			}
 		}
 	}
+	// 计算碎片
+	bagItem := GetBagItemOfHeroPart(uid, target.Info.HeroId)
+	if bagItem != nil {
+		target.Info.Parts = int32(bagItem.Count)
+	}
 
 	return target
 }
@@ -389,6 +396,7 @@ func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
 		res.Info.Star = t_u_h.Star
 		nextLevel := res.Info.Level + 1
 		res.Info.LevelUpGold = int32(h.Secret.OriginLevelUpGold + h.Secret.StepGold*nextLevel + nextLevel*nextLevel)
+		res.Info.StarUp = int32(20 + (res.Info.Star-1)*10)
 		res.Props = HeroProperties{
 			HP:              t_u_h.HP,
 			MP:              t_u_h.MP,

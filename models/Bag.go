@@ -15,7 +15,8 @@ func init() {
 }
 
 type Bag struct {
-	Equips map[int]*BagItem
+	Equips    map[int]*BagItem
+	HeroParts map[int]*BagItem
 
 	Items []*BagItem
 }
@@ -36,7 +37,9 @@ type BagItem struct {
 	Cost    int32
 	Desc    string
 
-	EquipInfo
+	EquipInfo EquipInfo
+	HeroInfo  HeroInfo
+	HeroProps HeroProperties
 }
 
 func GetBag(uid string) *Bag {
@@ -46,19 +49,17 @@ func GetBag(uid string) *Bag {
 
 	b := new(Bag)
 	b.Equips = make(map[int]*BagItem)
+	b.HeroParts = make(map[int]*BagItem)
 
 	t_u_bs := tables.LoadUserBags(uid)
 	for _, t_u_b := range t_u_bs {
 		item := CreateBagItemFromUserBag(t_u_b)
 		if item.Type == BagItemEquip {
-			if e, ok := EquipDefineList[strconv.Itoa(item.GoodsId)]; ok {
-				item.Name = e.Info.Name
-				item.Desc = e.Info.Desc
-				item.Cost = e.Info.Cost
-
-				item.EquipInfo = e.Info
-			}
+			completeBagItemEquip(item)
 			b.Equips[item.GoodsId] = item
+		} else if item.Type == BagItemHeroPart {
+			completeBagItemHeroPart(item)
+			b.HeroParts[item.GoodsId] = item
 		}
 		b.Items = append(b.Items, item)
 	}
@@ -79,6 +80,17 @@ func BagContainEquip(uid string, equipId string) bool {
 	return false
 }
 
+func GetBagItemOfHeroPart(uid string, heroId string) *BagItem {
+	b := GetBag(uid)
+	num, err := strconv.Atoi(heroId)
+	if err == nil {
+		if item, ok := b.HeroParts[num]; ok {
+			return item
+		}
+	}
+	return nil
+}
+
 // 获得一个物品
 func GainABagItem(uid string, item *BagItem) {
 	b := GetBag(uid)
@@ -88,7 +100,16 @@ func GainABagItem(uid string, item *BagItem) {
 		if _, ok := b.Equips[item.GoodsId]; ok {
 			b.Equips[item.GoodsId].Count += item.Count
 		} else {
+			completeBagItemEquip(item)
 			b.Equips[item.GoodsId] = item
+			b.Items = append(b.Items, item)
+		}
+	} else if item.Type == BagItemHeroPart {
+		if _, ok := b.HeroParts[item.GoodsId]; ok {
+			b.HeroParts[item.GoodsId].Count += item.Count
+		} else {
+			completeBagItemHeroPart(item)
+			b.HeroParts[item.GoodsId] = item
 			b.Items = append(b.Items, item)
 		}
 	}
@@ -124,5 +145,26 @@ func CreateBagItemFromUserBag(t_u_b *tables.UserBag) *BagItem {
 		Type:    t_u_b.ItemType,
 		GoodsId: t_u_b.ItemId,
 		Count:   t_u_b.Count,
+	}
+}
+
+func completeBagItemEquip(item *BagItem) {
+	if e, ok := EquipDefineList[strconv.Itoa(item.GoodsId)]; ok {
+		item.Name = e.Info.Name
+		item.Desc = e.Info.Desc
+		item.Cost = e.Info.Cost
+
+		item.EquipInfo = e.Info
+	}
+}
+
+func completeBagItemHeroPart(item *BagItem) {
+	if h, ok := HeroDefineList[strconv.Itoa(item.GoodsId)]; ok {
+		item.Name = h.Info.Name + "(碎片)"
+		item.Desc = h.Info.Desc
+		item.Cost = 1
+
+		item.HeroInfo = h.Info
+		item.HeroProps = h.Props
 	}
 }

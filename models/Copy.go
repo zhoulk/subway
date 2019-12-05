@@ -40,6 +40,14 @@ func init() {
 					Percent: 100,
 				})
 			}
+			for _, cpHeroPart := range itemDef.HeroParts {
+				goods = append(goods, &CopyGoodItem{
+					Type:    CopyGoodItemTypeHeroPart,
+					GoodId:  cpHeroPart,
+					Count:   1,
+					Percent: 100,
+				})
+			}
 
 			cpItem := &CopyItem{
 				CopyItemId: itemDef.CopyId,
@@ -101,7 +109,9 @@ type CopyItem struct {
 }
 
 const (
-	CopyGoodItemTypeEquip int8 = 1 // 装备
+	CopyGoodItemTypeEquip    int8 = 1 // 装备
+	CopyGoodItemTypeHeroPart int8 = 2 // 灵魂石
+
 )
 
 type CopyGoodItem struct {

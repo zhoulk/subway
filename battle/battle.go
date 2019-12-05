@@ -153,6 +153,12 @@ func BattleCopy(uid string, copyId int) *BattleResult {
 						GoodsId: cpGoods.GoodId,
 						Count:   cpGoods.Count,
 					})
+				} else if cpGoods.Type == models.CopyGoodItemTypeHeroPart {
+					models.GainABagItem(uid, &models.BagItem{
+						Type:    models.BagItemHeroPart,
+						GoodsId: cpGoods.GoodId,
+						Count:   cpGoods.Count,
+					})
 				}
 			}
 		}
