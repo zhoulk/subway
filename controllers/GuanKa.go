@@ -76,6 +76,7 @@ func (g *GuanKaController) GetCopyItems() {
 		if c, ok := cpItemDic[cpItem.CopyItemId]; ok {
 			cpItem.Status = c.Status
 			cpItem.Star = c.Star
+			cpItem.Times = c.Times
 		}
 	}
 	g.Data["json"] = models.Response{Code: 200, Msg: "", Data: copyItems}

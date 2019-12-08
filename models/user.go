@@ -19,6 +19,7 @@ type User struct {
 	Profile UserProfile
 
 	Heros       []*Hero
+	HeroDic     map[string]*Hero
 	Copys       []*Copy
 	CopyItems   []*CopyItem
 	CopyDic     map[int]*Copy

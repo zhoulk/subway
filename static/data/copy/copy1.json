@@ -50,46 +50,116 @@
     {
         "CopyId": 1003,
         "Name": "八角游乐园",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1004,
         "Name": "八宝山",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1005,
         "Name": "玉泉路",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1006,
         "Name": "五棵松",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1007,
         "Name": "万寿路",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
@@ -100,161 +170,385 @@
     {
         "CopyId": 1008,
         "Name": "公主坟",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1009,
         "Name": "军事博物馆",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1010,
         "Name": "木樨地",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1011,
         "Name": "南礼士路",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1012,
         "Name": "复兴门",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1013,
         "Name": "西单",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1014,
         "Name": "天安门西",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1015,
         "Name": "天安门东",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1016,
         "Name": "王府井",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1017,
         "Name": "东单",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1003
         ]
     },
     {
         "CopyId": 1018,
         "Name": "建国门",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1019,
         "Name": "永安里",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1020,
         "Name": "国贸",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1021,
         "Name": "大望路",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1022,
         "Name": "四惠",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     },
     {
         "CopyId": 1023,
         "Name": "四惠东",
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ],
         "Equips": [
             1000
         ],
         "HeroParts": [
-            1002
+            1001
         ]
     }
 ]

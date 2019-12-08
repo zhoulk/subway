@@ -129,6 +129,20 @@ func UseAEquip(uid string, equipId string) bool {
 	return false
 }
 
+// 消耗英雄碎片
+func UseHeroParts(uid string, heroId string, count int) bool {
+	b := GetBag(uid)
+	if b != nil {
+		for _, e := range b.HeroParts {
+			if strconv.Itoa(e.GoodsId) == heroId && e.Count >= count {
+				e.Count -= count
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func CreateUserBagFromBagItem(uid string, bagItem *BagItem) *tables.UserBag {
 	return &tables.UserBag{
 		Uid:      bagItem.Uid,

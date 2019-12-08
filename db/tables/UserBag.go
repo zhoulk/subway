@@ -34,7 +34,10 @@ func PersistentUserBags(userBags []*UserBag) {
 		if u_b.Uid != oldUserBag.Uid {
 			tx.Create(&u_b)
 		} else {
-			tx.Model(&u_b).Where("uid = ? ", u_b.Uid).Updates(u_b)
+			data := make(map[string]interface{})
+			data["Count"] = u_b.Count
+			data["UpdatedAt"] = u_b.UpdatedAt
+			tx.Model(&u_b).Where("uid = ? ", u_b.Uid).Updates(data)
 		}
 	}
 

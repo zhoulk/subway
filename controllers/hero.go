@@ -28,7 +28,9 @@ func (h *HeroController) AllHeros() {
 // @router /self [post]
 func (h *HeroController) SelfHeros() {
 	uid := h.GetString("uid")
-	heros := models.GetSelfHeros(uid)
+	heros, _ := models.GetSelfHeros(uid)
+	unCollectHeros := models.GetUnCollectHeros(uid)
+	heros = append(heros, unCollectHeros...)
 	resData := make([]HeroResponse, 0)
 	for _, hero := range heros {
 		resData = append(resData, HeroResponse{
@@ -39,6 +41,8 @@ func (h *HeroController) SelfHeros() {
 			Level:  hero.Info.Level,
 			Floor:  hero.Info.Floor,
 			Star:   hero.Info.Star,
+			Parts:  hero.Info.Parts,
+			StarUp: hero.Info.StarUp,
 			Status: hero.Status,
 		})
 	}
@@ -94,6 +98,23 @@ func (h *HeroController) LevelUpHero() {
 	h.ServeJSON()
 }
 
+// @Title StarUpHero
+// @Description star up hero
+// @Param	uid		query 	string	true		"The username for login"
+// @Param	heroUid		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /starUp [post]
+func (h *HeroController) StarUpHero() {
+	uid := h.GetString("uid")
+	heroUid := h.GetString("heroUid")
+	if models.HeroStarUp(uid, heroUid) {
+		h.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
+	} else {
+		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
+	}
+	h.ServeJSON()
+}
+
 // @Title Wear
 // @Description Wear equip
 // @Param	uid		query 	string	true		"The username for login"
@@ -123,6 +144,23 @@ func (h *HeroController) FloorUpHero() {
 	uid := h.GetString("uid")
 	heroUid := h.GetString("heroUid")
 	if models.HeroFloorUp(uid, heroUid) {
+		h.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
+	} else {
+		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
+	}
+	h.ServeJSON()
+}
+
+// @Title ComposeHero
+// @Description compose hero
+// @Param	uid		query 	string	true		"The username for login"
+// @Param	heroId		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /composeHero [post]
+func (h *HeroController) ComposeHero() {
+	uid := h.GetString("uid")
+	heroId := h.GetString("heroId")
+	if models.HeroCompose(uid, heroId) {
 		h.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
 	} else {
 		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
@@ -210,6 +248,8 @@ type HeroResponse struct {
 	Level  int32
 	Floor  int16 // 阶别
 	Star   int16 // 星星
+	Parts  int32 // 碎片数
+	StarUp int32 // 合成需要碎片数
 	Status int8
 }
 

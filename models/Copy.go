@@ -1,8 +1,10 @@
 package models
 
 import (
+	"strconv"
 	"subway/db/tables"
 	"subway/tool"
+	"time"
 
 	"github.com/astaxie/beego"
 )
@@ -49,10 +51,31 @@ func init() {
 				})
 			}
 
+			for _, gd := range goods {
+				if gd.Type == CopyGoodItemTypeEquip {
+					eqpDefs := tables.LoadEquipDefine()
+					for _, e_def := range eqpDefs {
+						if e_def.EquipId == strconv.Itoa(gd.GoodId) {
+							gd.Name = e_def.Name
+							break
+						}
+					}
+				} else if gd.Type == CopyGoodItemTypeHeroPart {
+					heroDefs := tables.LoadHeroDefine()
+					for _, h_def := range heroDefs {
+						if h_def.HeroId == strconv.Itoa(gd.GoodId) {
+							gd.Name = h_def.Name + "(碎片)"
+							break
+						}
+					}
+				}
+			}
+
 			cpItem := &CopyItem{
 				CopyItemId: itemDef.CopyId,
 				Name:       itemDef.Name,
 				TotalStar:  3,
+				TotalTimes: 3,
 				Heros:      heros,
 				Goods:      goods,
 				Status:     CopyStatusLock,
@@ -97,12 +120,15 @@ type CopyInfo struct {
 }
 
 type CopyItem struct {
-	Uid        string
-	CopyItemId int
-	Name       string
-	Star       int
-	TotalStar  int
-	Status     int8 // 0 未知   1 已解锁   2 未解锁  3 已通关
+	Uid           string
+	CopyItemId    int
+	Name          string
+	Star          int
+	TotalStar     int
+	Times         int
+	TotalTimes    int
+	Status        int8 // 0 未知   1 已解锁   2 未解锁  3 已通关
+	LastTimesDate time.Time
 
 	Heros []*GuanKaHero
 	Goods []*CopyGoodItem
@@ -119,6 +145,7 @@ type CopyGoodItem struct {
 	GoodId  int
 	Count   int
 	Percent int8
+	Name    string
 }
 
 func GetAllCopy() []*Copy {
@@ -171,9 +198,18 @@ func GetSelfCopyItem(uid string) ([]*CopyItem, map[int]*CopyItem) {
 				tool.Clone(CopyItemList[0], cp)
 				cp.Uid = tool.UniqueId()
 				cp.Status = CopyStatusNormal
+				cp.LastTimesDate = time.Now()
 				u.AddCopyItem(cp)
 			}
 		}
+
+		// 刷新次数
+		for _, cpItem := range u.CopyItems {
+			if time.Now().Day() != cpItem.LastTimesDate.Day() {
+				cpItem.Times = 0
+			}
+		}
+
 		return u.CopyItems, u.CopyItemDic
 	}
 	return nil, nil
@@ -214,6 +250,7 @@ func CompleteCopy(uid string, cpId int) {
 		if cpItem, ok := u.CopyItemDic[cpId]; ok {
 			cpItem.Status = CopyStatusCompleted
 			cpItem.Star = 3
+			cpItem.Times++
 		}
 
 		// 刷新章节 star  状态
@@ -243,6 +280,7 @@ func CompleteCopy(uid string, cpId int) {
 				tool.Clone(cpItem, cp)
 				cp.Uid = tool.UniqueId()
 				cp.Status = CopyStatusNormal
+				cp.LastTimesDate = time.Now()
 				u.AddCopyItem(cp)
 			}
 		}
@@ -283,20 +321,29 @@ func CreateUserCopyFromCopy(uid string, cp *Copy) *tables.UserCopy {
 }
 
 func CreateCopyItemFromUserCopyItem(t_u_c_i *tables.UserCopyItem) *CopyItem {
-	return &CopyItem{
-		Uid:        t_u_c_i.Uid,
-		CopyItemId: t_u_c_i.CopyItemId,
-		Star:       t_u_c_i.Star,
-		Status:     t_u_c_i.Status,
+	res := &CopyItem{
+		Uid:           t_u_c_i.Uid,
+		CopyItemId:    t_u_c_i.CopyItemId,
+		Star:          t_u_c_i.Star,
+		Times:         t_u_c_i.Times,
+		Status:        t_u_c_i.Status,
+		LastTimesDate: time.Now(),
 	}
+	if cpItemDef, ok := CopyItemDic[t_u_c_i.CopyItemId]; ok {
+		res.TotalTimes = cpItemDef.TotalTimes
+		res.TotalStar = cpItemDef.TotalStar
+	}
+	return res
 }
 
 func CreateUserCopyItemFromCopyItem(uid string, cpItem *CopyItem) *tables.UserCopyItem {
 	return &tables.UserCopyItem{
-		Uid:        cpItem.Uid,
-		UserId:     uid,
-		CopyItemId: cpItem.CopyItemId,
-		Star:       cpItem.Star,
-		Status:     cpItem.Status,
+		Uid:           cpItem.Uid,
+		UserId:        uid,
+		CopyItemId:    cpItem.CopyItemId,
+		Star:          cpItem.Star,
+		Times:         cpItem.Times,
+		LastTimesDate: cpItem.LastTimesDate,
+		Status:        cpItem.Status,
 	}
 }

@@ -4,6 +4,8 @@ import (
 	"math/rand"
 	"subway/models"
 	"subway/tool"
+
+	"github.com/astaxie/beego"
 )
 
 const (
@@ -106,6 +108,17 @@ func BattleCopy(uid string, copyId int) *BattleResult {
 	// 获取关卡阵容
 	gkHeros := make([]*models.Hero, 0)
 	cp := models.GetCopyItemDefine(copyId)
+
+	_, cpItemDic := models.GetSelfCopyItem(uid)
+	if cpItem, ok := cpItemDic[copyId]; ok {
+		if cpItem.TotalTimes <= cpItem.Times {
+			beego.Debug(cpItem.TotalTimes, cpItem.Times)
+			return nil
+		}
+	} else {
+		return nil
+	}
+
 	for _, h := range cp.Heros {
 		gkHeros = append(gkHeros, h.Hero)
 		otherHeroInfos = append(otherHeroInfos, &BattleHeroInfo{

@@ -3,8 +3,6 @@ package models
 import (
 	"subway/db/tables"
 	"subway/tool"
-
-	"github.com/astaxie/beego"
 )
 
 var (
@@ -19,7 +17,9 @@ func init() {
 
 	defines := tables.LoadHeroDefine()
 	for _, def := range defines {
-		HeroDefineList[def.HeroId] = CreateHeroFromHeroDefine(def)
+		h := CreateHeroFromHeroDefine(def)
+		h.Status = HeroStatusPart
+		HeroDefineList[def.HeroId] = h
 	}
 
 	HeroFloorDefine = make(map[string]map[int16][]string)
@@ -60,6 +60,7 @@ type Hero struct {
 const (
 	HeroStatusNormal   int8 = 1
 	HeroStatusSelected int8 = 2
+	HeroStatusPart     int8 = 3 //碎片模式  未获得
 )
 
 const (
@@ -127,6 +128,8 @@ func (h *Hero) SetFloorLevel(floor int16) {
 
 func (h *Hero) SetStar(star int16) {
 	h.Info.Star = star
+
+	h.Info.StarUp = int32(20 + (h.Info.Star-1)*10)
 }
 
 func GetAllHeros() []*Hero {
@@ -148,11 +151,13 @@ func GetHeroDefine(heroId string) *Hero {
 	return nil
 }
 
-func GetSelfHeros(uid string) []*Hero {
+// 获取已获得英雄
+func GetSelfHeros(uid string) ([]*Hero, map[string]*Hero) {
 	u, _ := GetUser(uid)
 	if u != nil {
 		if u.Heros == nil {
 			u.Heros = make([]*Hero, 0)
+			u.HeroDic = make(map[string]*Hero)
 			t_u_hs := tables.LoadUserHeros(u.Info.Uid)
 			for _, t_u_h := range t_u_hs {
 
@@ -169,11 +174,36 @@ func GetSelfHeros(uid string) []*Hero {
 				}
 
 				u.Heros = append(u.Heros, hero)
+				u.HeroDic[hero.Info.HeroId] = hero
+			}
+		} else {
+
+		}
+		return u.Heros, u.HeroDic
+	}
+	return nil, nil
+}
+
+// 获取未获得英雄
+func GetUnCollectHeros(uid string) []*Hero {
+	_, selfHeros := GetSelfHeros(uid)
+	heros := make([]*Hero, 0)
+	if selfHeros != nil {
+		for _, h := range HeroDefineList {
+			if _, ok := selfHeros[h.Info.HeroId]; !ok {
+
+				// 计算碎片
+				bagItem := GetBagItemOfHeroPart(uid, h.Info.HeroId)
+				if bagItem != nil {
+					h.Info.Parts = int32(bagItem.Count)
+				}
+				h.SetStar(h.Info.Star)
+				heros = append(heros, h)
 			}
 		}
-		return u.Heros
 	}
-	return nil
+
+	return heros
 }
 
 func AddHero(uid string, heroId string) *Hero {
@@ -183,23 +213,28 @@ func AddHero(uid string, heroId string) *Hero {
 	if u != nil {
 		if u.Heros == nil {
 			u.Heros = make([]*Hero, 0)
+			u.HeroDic = make(map[string]*Hero)
 		}
 
-		h := GetHeroDefine(heroId)
-		// beego.Debug(h)
-
-		beego.Debug(HeroFloorDefine)
-
-		if h != nil {
-			h.Equips = GetEquipDefines(HeroFloorDefine[h.Info.HeroId][h.Info.Floor])
-			h.Skills = GetSkillDefines(HeroSkillDefine[h.Info.HeroId])
-			u.Heros = append(u.Heros, h)
-			return h
+		if target, ok := u.HeroDic[heroId]; ok {
+			target.Status = HeroStatusNormal
+			return target
+		} else {
+			h := GetHeroDefine(heroId)
+			h.Status = HeroStatusNormal
+			if h != nil {
+				h.Equips = GetEquipDefines(HeroFloorDefine[h.Info.HeroId][h.Info.Floor])
+				h.Skills = GetSkillDefines(HeroSkillDefine[h.Info.HeroId])
+				u.Heros = append(u.Heros, h)
+				u.HeroDic[h.Info.HeroId] = h
+				return h
+			}
 		}
 	}
 	return nil
 }
 
+// 英雄升级
 func HeroLevelUp(uid string, heroUid string) bool {
 	target := GetHero(uid, heroUid)
 	u, _ := GetUser(uid)
@@ -218,6 +253,25 @@ func HeroLevelUp(uid string, heroUid string) bool {
 	return false
 }
 
+// 英雄升星
+func HeroStarUp(uid string, heroUid string) bool {
+	target := GetHero(uid, heroUid)
+	if target != nil {
+		bagItem := GetBagItemOfHeroPart(uid, target.Info.HeroId)
+		if bagItem != nil {
+			if int32(bagItem.Count) >= target.Info.StarUp {
+				if UseHeroParts(uid, target.Info.HeroId, int(target.Info.StarUp)) {
+					target.SetStar(target.Info.Star + 1)
+					return true
+				}
+			}
+		}
+	}
+
+	return false
+}
+
+// 英雄进阶
 func HeroFloorUp(uid string, heroUid string) bool {
 	var target *Hero = GetHero(uid, heroUid)
 
@@ -236,6 +290,23 @@ func HeroFloorUp(uid string, heroUid string) bool {
 		}
 	}
 
+	return false
+}
+
+// 英雄合成
+func HeroCompose(uid string, heroId string) bool {
+	bagItem := GetBagItemOfHeroPart(uid, heroId)
+	if bagItem != nil {
+		if def, ok := HeroDefineList[heroId]; ok {
+			def.SetStar(def.Info.Star)
+			if int32(bagItem.Count) >= def.Info.StarUp {
+				if UseHeroParts(uid, heroId, int(def.Info.StarUp)) {
+					AddHero(uid, heroId)
+					return true
+				}
+			}
+		}
+	}
 	return false
 }
 
@@ -264,7 +335,7 @@ func Wear(uid string, heroUid string, equipUid string) bool {
 
 func GetSelectedHeros(uid string) []*Hero {
 	res := make([]*Hero, 0)
-	heros := GetSelfHeros(uid)
+	heros, _ := GetSelfHeros(uid)
 	if heros != nil {
 		for _, h := range heros {
 			if h.Status == HeroStatusSelected {
@@ -291,6 +362,7 @@ func SelectedHerosCount(uid string) int {
 	return res
 }
 
+// 获取英雄详情
 func GetHero(uid string, heroUid string) *Hero {
 	var target *Hero
 
@@ -355,34 +427,36 @@ func ExchangeHero(uid string, fromHeroUid string, toHeroUid string) bool {
 }
 
 func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
-	return &Hero{
+	h := &Hero{
 		Info: HeroInfo{
 			HeroId:  def.HeroId,
 			Type:    def.Type,
 			AtkType: def.AtkType,
 			Name:    def.Name,
-			Level:   def.Level,
 			Floor:   def.Floor,
-			Star:    def.Star,
 			Desc:    def.Desc,
 		},
-		Props: HeroProperties{
-			HP:              def.HP,
-			MP:              def.MP,
-			AD:              def.AD,
-			AP:              def.AP,
-			ADDef:           def.ADDef,
-			APDef:           def.APDef,
-			SPD:             def.SPD,
-			Agility:         def.Agility,
-			Intelligent:     def.Intelligent,
-			Strength:        def.Strength,
-			ADCrit:          def.ADCrit,
-			StrengthGrow:    def.StrengthGrow,
-			AgilityGrow:     def.AgilityGrow,
-			IntelligentGrow: def.IntelligentGrow,
-		},
 	}
+	h.Props = HeroProperties{
+		HP:              def.HP,
+		MP:              def.MP,
+		AD:              def.AD,
+		AP:              def.AP,
+		ADDef:           def.ADDef,
+		APDef:           def.APDef,
+		SPD:             def.SPD,
+		Agility:         def.Agility,
+		Intelligent:     def.Intelligent,
+		Strength:        def.Strength,
+		ADCrit:          def.ADCrit,
+		StrengthGrow:    def.StrengthGrow,
+		AgilityGrow:     def.AgilityGrow,
+		IntelligentGrow: def.IntelligentGrow,
+	}
+
+	h.SetStar(def.Star)
+
+	return h
 }
 
 func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
@@ -391,12 +465,9 @@ func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
 		tool.Clone(h, res)
 		res.Uid = t_u_h.Uid
 		res.Info.HeroId = t_u_h.HeroId
-		res.Info.Level = t_u_h.Level
 		res.Info.Floor = t_u_h.Floor
-		res.Info.Star = t_u_h.Star
-		nextLevel := res.Info.Level + 1
-		res.Info.LevelUpGold = int32(h.Secret.OriginLevelUpGold + h.Secret.StepGold*nextLevel + nextLevel*nextLevel)
-		res.Info.StarUp = int32(20 + (res.Info.Star-1)*10)
+		res.SetHeroLevel(t_u_h.Level)
+		res.SetStar(t_u_h.Star)
 		res.Props = HeroProperties{
 			HP:              t_u_h.HP,
 			MP:              t_u_h.MP,

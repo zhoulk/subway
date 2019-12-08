@@ -2,17 +2,20 @@ package tables
 
 import (
 	"subway/db/context"
+	"time"
 
 	"github.com/jinzhu/gorm"
 )
 
 // 用户副本
 type UserCopyItem struct {
-	Uid        string `gorm:"size:64;unique;not null"`
-	UserId     string
-	CopyItemId int
-	Star       int
-	Status     int8
+	Uid           string `gorm:"size:64;unique;not null"`
+	UserId        string
+	CopyItemId    int
+	Star          int
+	Times         int
+	Status        int8
+	LastTimesDate time.Time
 
 	gorm.Model
 }
