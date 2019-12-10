@@ -44,5 +44,30 @@
         "Intelligent": 2,
         "Desc": "明明是屌丝头环啊亲！",
         "Power": 5
+    },
+    {
+        "EquipId": "1005",
+        "Name": "智力挂件",
+        "Level": 1,
+        "Strength": 3,
+        "Agility": 3,
+        "Intelligent": 6,
+        "Desc": "考场违禁物品",
+        "Power": 13,
+        "Mix": "[1007,1006,1004]"
+    },
+    {
+        "EquipId": "1006",
+        "Name": "智力之篷",
+        "Level": 1,
+        "Intelligent": 3,
+        "Desc": "无",
+        "Power": 3
+    },
+    {
+        "EquipId": "1007",
+        "Name": "智力挂件卷轴",
+        "Level": 1,
+        "Desc": "可以合成智力挂件"
     }
 ]

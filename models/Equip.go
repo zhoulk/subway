@@ -1,6 +1,8 @@
 package models
 
 import (
+	"encoding/json"
+	"strconv"
 	"subway/db/tables"
 	"subway/tool"
 
@@ -16,7 +18,7 @@ func init() {
 
 	defines := tables.LoadEquipDefine()
 	for _, def := range defines {
-		EquipDefineList[def.EquipId] = &Equip{
+		e := &Equip{
 			Info: EquipInfo{
 				EquipId:     def.EquipId,
 				Name:        def.Name,
@@ -39,6 +41,24 @@ func init() {
 				Cost:        def.Cost,
 			},
 		}
+		EquipDefineList[def.EquipId] = e
+	}
+
+	for _, def := range defines {
+
+		if len(def.Mix) > 0 {
+			var mixArr []int
+			//读取的数据为json格式，需要进行解码
+			err := json.Unmarshal([]byte(def.Mix), &mixArr)
+			if err == nil {
+				e := EquipDefineList[def.EquipId]
+				e.Mix = make([]*Equip, 0)
+				for _, equipId := range mixArr {
+					e.Mix = append(e.Mix, EquipDefineList[strconv.Itoa(equipId)])
+				}
+			}
+		}
+
 	}
 }
 
@@ -52,6 +72,7 @@ type Equip struct {
 	Uid    string
 	Info   EquipInfo
 	Mix    []*Equip
+	Parts  int
 	Status int8 // EquipStatusWear
 }
 
@@ -75,6 +96,7 @@ type EquipInfo struct {
 	From        string
 	Power       int32
 	Cost        int32
+	MixCnt      int32
 }
 
 func GetEquipDefines(equipIds []string) []*Equip {

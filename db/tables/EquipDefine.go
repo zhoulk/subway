@@ -29,6 +29,8 @@ type EquipDefine struct {
 	From        string
 	Power       int32
 	Cost        int32
+
+	Mix string
 }
 
 func init() {
