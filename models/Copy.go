@@ -50,6 +50,14 @@ func init() {
 					Percent: 100,
 				})
 			}
+			for _, cpEquipPart := range itemDef.EquipParts {
+				goods = append(goods, &CopyGoodItem{
+					Type:    CopyGoodItemTypeEquipPart,
+					GoodId:  cpEquipPart,
+					Count:   1,
+					Percent: 100,
+				})
+			}
 
 			for _, gd := range goods {
 				if gd.Type == CopyGoodItemTypeEquip {
@@ -65,6 +73,14 @@ func init() {
 					for _, h_def := range heroDefs {
 						if h_def.HeroId == strconv.Itoa(gd.GoodId) {
 							gd.Name = h_def.Name + "(碎片)"
+							break
+						}
+					}
+				} else if gd.Type == CopyGoodItemTypeEquipPart {
+					eqpDefs := tables.LoadEquipDefine()
+					for _, e_def := range eqpDefs {
+						if e_def.EquipId == strconv.Itoa(gd.GoodId) {
+							gd.Name = e_def.Name + "(碎片)"
 							break
 						}
 					}
@@ -135,9 +151,9 @@ type CopyItem struct {
 }
 
 const (
-	CopyGoodItemTypeEquip    int8 = 1 // 装备
-	CopyGoodItemTypeHeroPart int8 = 2 // 灵魂石
-
+	CopyGoodItemTypeEquip     int8 = 1 // 装备
+	CopyGoodItemTypeHeroPart  int8 = 2 // 灵魂石
+	CopyGoodItemTypeEquipPart int8 = 3 // 装备碎片
 )
 
 type CopyGoodItem struct {

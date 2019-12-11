@@ -134,6 +134,24 @@ func (h *HeroController) Wear() {
 	h.ServeJSON()
 }
 
+// @Title Compose equip
+// @Description compose equip
+// @Param	uid		query 	string	true		"The username for login"
+// @Param	equipUid		query 	string	true		"The username for login"
+// @Success 200 {object} models.Hero
+// @router /composeEquip [post]
+func (h *HeroController) ComposeEquip() {
+	uid := h.GetString("uid")
+	heroUid := h.GetString("heroUid")
+	equipUid := h.GetString("equipUid")
+	if models.ComposeEquip(uid, heroUid, equipUid) {
+		h.Data["json"] = models.Response{Code: 200, Msg: "", Data: nil}
+	} else {
+		h.Data["json"] = models.Response{Code: 201, Msg: "", Data: nil}
+	}
+	h.ServeJSON()
+}
+
 // @Title FloorUpHero
 // @Description floor up hero
 // @Param	uid		query 	string	true		"The username for login"

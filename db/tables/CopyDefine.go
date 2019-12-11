@@ -16,11 +16,12 @@ type CopyDefine struct {
 
 // 副本小关卡定义
 type CopyItemDefine struct {
-	CopyId    int
-	Name      string
-	Equips    []int
-	HeroParts []int
-	Heros     []*GuanKaHeroDefine
+	CopyId     int
+	Name       string
+	Equips     []int
+	EquipParts []int
+	HeroParts  []int
+	Heros      []*GuanKaHeroDefine
 }
 
 func init() {

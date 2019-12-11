@@ -39,6 +39,7 @@ func init() {
 				From:        def.From,
 				Power:       def.Power,
 				Cost:        def.Cost,
+				MixCnt:      def.MixCnt,
 			},
 		}
 		EquipDefineList[def.EquipId] = e
@@ -73,6 +74,7 @@ type Equip struct {
 	Info   EquipInfo
 	Mix    []*Equip
 	Parts  int
+	Cnt    int
 	Status int8 // EquipStatusWear
 }
 

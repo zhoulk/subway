@@ -90,6 +90,15 @@ func init() {
 
     beego.GlobalControllerRouter["subway/controllers:HeroController"] = append(beego.GlobalControllerRouter["subway/controllers:HeroController"],
         beego.ControllerComments{
+            Method: "ComposeEquip",
+            Router: `/composeEquip`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/controllers:HeroController"] = append(beego.GlobalControllerRouter["subway/controllers:HeroController"],
+        beego.ControllerComments{
             Method: "ComposeHero",
             Router: `/composeHero`,
             AllowHTTPMethods: []string{"post"},

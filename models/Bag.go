@@ -15,16 +15,18 @@ func init() {
 }
 
 type Bag struct {
-	Equips    map[int]*BagItem
-	HeroParts map[int]*BagItem
+	Equips     map[int]*BagItem
+	HeroParts  map[int]*BagItem
+	EquipParts map[int]*BagItem
 
 	Items []*BagItem
 }
 
 const (
-	BagItemEquip    int8 = 1
-	BagItemHeroPart int8 = 2
-	BagItemOther    int8 = 3
+	BagItemEquip     int8 = 1
+	BagItemHeroPart  int8 = 2
+	BagItemEquipPart int8 = 3
+	BagItemOther     int8 = 99
 )
 
 type BagItem struct {
@@ -50,6 +52,7 @@ func GetBag(uid string) *Bag {
 	b := new(Bag)
 	b.Equips = make(map[int]*BagItem)
 	b.HeroParts = make(map[int]*BagItem)
+	b.EquipParts = make(map[int]*BagItem)
 
 	t_u_bs := tables.LoadUserBags(uid)
 	for _, t_u_b := range t_u_bs {
@@ -60,6 +63,9 @@ func GetBag(uid string) *Bag {
 		} else if item.Type == BagItemHeroPart {
 			completeBagItemHeroPart(item)
 			b.HeroParts[item.GoodsId] = item
+		} else if item.Type == BagItemEquipPart {
+			completeBagItemEquipPart(item)
+			b.EquipParts[item.GoodsId] = item
 		}
 		b.Items = append(b.Items, item)
 	}
@@ -80,11 +86,62 @@ func BagContainEquip(uid string, equipId string) bool {
 	return false
 }
 
+// 合成装备
+func ComposeAEquip(uid string, equipId string) bool {
+	// 判断装备是否可以合成
+	if e, ok := EquipDefineList[equipId]; ok {
+		if e.Mix != nil {
+			canCompose := true
+			for _, chid := range e.Mix {
+				if !BagContainEquip(uid, chid.Info.EquipId) {
+					canCompose = false
+				}
+			}
+			if canCompose {
+				for _, chid := range e.Mix {
+					UseAEquip(uid, chid.Info.EquipId)
+				}
+				num, _ := strconv.Atoi(equipId)
+				GainABagItem(uid, &BagItem{
+					Type:    BagItemEquip,
+					GoodsId: num,
+					Count:   1,
+				})
+
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func GetBagItemOfHeroPart(uid string, heroId string) *BagItem {
 	b := GetBag(uid)
 	num, err := strconv.Atoi(heroId)
 	if err == nil {
 		if item, ok := b.HeroParts[num]; ok {
+			return item
+		}
+	}
+	return nil
+}
+
+func GetBagItemOfEquip(uid string, equipId string) *BagItem {
+	b := GetBag(uid)
+	num, err := strconv.Atoi(equipId)
+	if err == nil {
+		if item, ok := b.Equips[num]; ok {
+			return item
+		}
+	}
+	return nil
+}
+
+func GetBagItemOfEquipPart(uid string, equipId string) *BagItem {
+	b := GetBag(uid)
+	num, err := strconv.Atoi(equipId)
+	if err == nil {
+		if item, ok := b.EquipParts[num]; ok {
 			return item
 		}
 	}
@@ -110,6 +167,14 @@ func GainABagItem(uid string, item *BagItem) {
 		} else {
 			completeBagItemHeroPart(item)
 			b.HeroParts[item.GoodsId] = item
+			b.Items = append(b.Items, item)
+		}
+	} else if item.Type == BagItemEquipPart {
+		if _, ok := b.EquipParts[item.GoodsId]; ok {
+			b.EquipParts[item.GoodsId].Count += item.Count
+		} else {
+			completeBagItemEquipPart(item)
+			b.EquipParts[item.GoodsId] = item
 			b.Items = append(b.Items, item)
 		}
 	}
@@ -180,5 +245,15 @@ func completeBagItemHeroPart(item *BagItem) {
 
 		item.HeroInfo = h.Info
 		item.HeroProps = h.Props
+	}
+}
+
+func completeBagItemEquipPart(item *BagItem) {
+	if e, ok := EquipDefineList[strconv.Itoa(item.GoodsId)]; ok {
+		item.Name = e.Info.Name + "(碎片)"
+		item.Desc = e.Info.Desc
+		item.Cost = e.Info.Cost
+
+		item.EquipInfo = e.Info
 	}
 }

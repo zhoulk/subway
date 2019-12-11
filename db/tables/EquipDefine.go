@@ -30,7 +30,8 @@ type EquipDefine struct {
 	Power       int32
 	Cost        int32
 
-	Mix string
+	MixCnt int32
+	Mix    string
 }
 
 func init() {

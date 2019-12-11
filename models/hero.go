@@ -333,6 +333,29 @@ func Wear(uid string, heroUid string, equipUid string) bool {
 	return false
 }
 
+func ComposeEquip(uid string, heroUid string, equipUid string) bool {
+	var target *Hero = GetHero(uid, heroUid)
+
+	if target != nil {
+		// 装备是否穿戴
+		var targetEquip *Equip
+		for _, e := range target.Equips {
+			if e.Uid == equipUid {
+				targetEquip = e
+				break
+			}
+		}
+		// 是否拥有
+		if targetEquip != nil {
+			if ComposeAEquip(uid, targetEquip.Info.EquipId) {
+				targetEquip.Status = EquipStatusWearAcquire
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func GetSelectedHeros(uid string) []*Hero {
 	res := make([]*Hero, 0)
 	heros, _ := GetSelfHeros(uid)
@@ -386,13 +409,35 @@ func GetHero(uid string, heroUid string) *Hero {
 			}
 		}
 	}
-	// 计算碎片
+	// 计算英雄碎片
 	bagItem := GetBagItemOfHeroPart(uid, target.Info.HeroId)
 	if bagItem != nil {
 		target.Info.Parts = int32(bagItem.Count)
 	}
+	// 计算装备碎片
+	for _, e := range target.Equips {
+		calEquipCnt(uid, e)
+	}
 
 	return target
+}
+
+// 计算装备碎片
+func calEquipCnt(uid string, e *Equip) {
+	bagItem := GetBagItemOfEquip(uid, e.Info.EquipId)
+	if bagItem != nil {
+		e.Cnt = bagItem.Count
+	}
+	bagItem = GetBagItemOfEquipPart(uid, e.Info.EquipId)
+	if bagItem != nil {
+		e.Parts = bagItem.Count
+	}
+
+	if e.Mix != nil {
+		for _, child := range e.Mix {
+			calEquipCnt(uid, child)
+		}
+	}
 }
 
 func SelectHero(uid string, heroUid string) bool {

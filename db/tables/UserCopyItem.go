@@ -37,7 +37,13 @@ func PersistentUserCopyItem(userCopyItems []*UserCopyItem) {
 		if u_c_i.Uid != oldUserCopyItem.Uid {
 			tx.Create(&u_c_i)
 		} else {
-			tx.Model(&u_c_i).Where("uid = ? ", u_c_i.Uid).Updates(u_c_i)
+			data := make(map[string]interface{})
+			data["Star"] = u_c_i.Star
+			data["Times"] = u_c_i.Times
+			data["Status"] = u_c_i.Status
+			data["Star"] = u_c_i.Star
+			data["LastTimesDate"] = u_c_i.LastTimesDate
+			tx.Model(&u_c_i).Where("uid = ? ", u_c_i.Uid).Updates(data)
 		}
 	}
 
