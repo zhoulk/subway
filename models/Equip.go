@@ -85,11 +85,13 @@ type EquipInfo struct {
 	Strength    int32 // 力量
 	HP          int32 // 生命值
 	Agility     int32 // 敏捷
-	MP          int32 // 魔法强度
+	MP          int32 //
 	Intelligent int32
 	AD          int32 // 物理攻击
+	AP          int32 // 魔法强度
 	ADCrit      int32 // 物理暴击
 	ADDef       int32 // 物理护甲
+	APDef       int32 // 魔法抗性
 	HPGain      int32 // 生命恢复
 	MPGain      int32 // 能量恢复
 	HPReGain    int32 // 战斗后补充生命

@@ -267,6 +267,7 @@ func CompleteCopy(uid string, cpId int) {
 			cpItem.Status = CopyStatusCompleted
 			cpItem.Star = 3
 			cpItem.Times++
+			cpItem.LastTimesDate = time.Now()
 		}
 
 		// 刷新章节 star  状态
@@ -343,7 +344,7 @@ func CreateCopyItemFromUserCopyItem(t_u_c_i *tables.UserCopyItem) *CopyItem {
 		Star:          t_u_c_i.Star,
 		Times:         t_u_c_i.Times,
 		Status:        t_u_c_i.Status,
-		LastTimesDate: time.Now(),
+		LastTimesDate: t_u_c_i.LastTimesDate,
 	}
 	if cpItemDef, ok := CopyItemDic[t_u_c_i.CopyItemId]; ok {
 		res.TotalTimes = cpItemDef.TotalTimes

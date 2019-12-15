@@ -123,7 +123,11 @@ func (h *Hero) SetHeroLevel(level int32) {
 }
 
 func (h *Hero) SetFloorLevel(floor int16) {
-	h.Info.Floor = floor
+	if floor > h.Info.Floor {
+		h.Info.Floor = floor
+		RefreshHero(h)
+		h.Equips = GetEquipDefines(HeroFloorDefine[h.Info.HeroId][h.Info.Floor])
+	}
 }
 
 func (h *Hero) SetStar(star int16) {
@@ -285,7 +289,6 @@ func HeroFloorUp(uid string, heroUid string) bool {
 		}
 		if isAll {
 			target.SetFloorLevel(target.Info.Floor + 1)
-			target.Equips = GetEquipDefines(HeroFloorDefine[target.Info.HeroId][target.Info.Floor])
 			return true
 		}
 	}
@@ -584,19 +587,40 @@ func RefreshHero(h *Hero) {
 	h.Props.Agility = h.Props.AgilityGrow * h.Info.Level / 100
 	h.Props.Intelligent = h.Props.IntelligentGrow * h.Info.Level / 100
 
-	h.Props.HP = def.Props.HP + h.Props.Strength*18
-	h.Props.ADDef = def.Props.ADDef + (h.Props.Strength*14+h.Props.Agility*7)/100
-	h.Props.AP = def.Props.AP + h.Props.Intelligent*24/10
-	h.Props.APDef = def.Props.APDef + h.Props.Intelligent*1/10
-	h.Props.ADCrit = def.Props.ADCrit + h.Props.Agility*4/10
+	h.Props.AD = def.Props.AD
+	h.Props.HP = def.Props.HP
+	h.Props.ADDef = def.Props.ADDef
+	h.Props.AP = def.Props.AP
+	h.Props.APDef = def.Props.APDef
+	h.Props.ADCrit = def.Props.ADCrit
 
+	// 进阶加成
+	for i := 1; int16(i) < h.Info.Floor; i++ {
+		equips := GetEquipDefines(HeroFloorDefine[h.Info.HeroId][int16(i)])
+		for _, e := range equips {
+			h.Props.AD += e.Info.AD
+			h.Props.AP += e.Info.AP
+			h.Props.ADDef += e.Info.ADDef
+			h.Props.APDef += e.Info.APDef
+			h.Props.Strength += e.Info.Strength
+			h.Props.Agility += e.Info.Agility
+			h.Props.Intelligent += e.Info.Intelligent
+			h.Props.HP += e.Info.HP
+		}
+	}
+
+	h.Props.HP += h.Props.Strength * 18
+	h.Props.ADDef += (h.Props.Strength*14 + h.Props.Agility*7) / 100
+	h.Props.AP += h.Props.Intelligent * 24 / 10
+	h.Props.APDef += h.Props.Intelligent * 1 / 10
+	h.Props.ADCrit += h.Props.Agility * 4 / 10
 	if def.Info.Type == HeroTypeStrength {
-		h.Props.AD = def.Props.AD + (h.Props.Strength*10+h.Props.Agility*4)/10
+		h.Props.AD += (h.Props.Strength*10 + h.Props.Agility*4) / 10
 	}
 	if def.Info.Type == HeroTypeIntelligent {
-		h.Props.AD = def.Props.AD + (h.Props.Intelligent*10+h.Props.Agility*4)/10
+		h.Props.AD += (h.Props.Intelligent*10 + h.Props.Agility*4) / 10
 	}
 	if def.Info.Type == HeroTypeAgility {
-		h.Props.AD = def.Props.AD + h.Props.Agility*14/10
+		h.Props.AD += h.Props.Agility * 14 / 10
 	}
 }
