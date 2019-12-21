@@ -1,0 +1,863 @@
+[
+    {
+        "HeroId": 1001,
+        "Star": 1,
+        "StrengthGrow": 200,
+        "AgilityGrow": 120,
+        "IntelligentGrow": 300
+    },
+    {
+        "HeroId": 1001,
+        "Star": 2,
+        "StrengthGrow": 300,
+        "AgilityGrow": 180,
+        "IntelligentGrow": 460
+    },
+    {
+        "HeroId": 1001,
+        "Star": 3,
+        "StrengthGrow": 400,
+        "AgilityGrow": 240,
+        "IntelligentGrow": 620
+    },
+    {
+        "HeroId": 1001,
+        "Star": 4,
+        "StrengthGrow": 500,
+        "AgilityGrow": 300,
+        "IntelligentGrow": 780
+    },
+    {
+        "HeroId": 1001,
+        "Star": 5,
+        "StrengthGrow": 600,
+        "AgilityGrow": 360,
+        "IntelligentGrow": 940
+    },
+    {
+        "HeroId": 1002,
+        "Star": 1,
+        "StrengthGrow": 230,
+        "AgilityGrow": 120,
+        "IntelligentGrow": 270
+    },
+    {
+        "HeroId": 1002,
+        "Star": 2,
+        "StrengthGrow": 320,
+        "AgilityGrow": 200,
+        "IntelligentGrow": 395
+    },
+    {
+        "HeroId": 1002,
+        "Star": 3,
+        "StrengthGrow": 410,
+        "AgilityGrow": 280,
+        "IntelligentGrow": 520
+    },
+    {
+        "HeroId": 1002,
+        "Star": 4,
+        "StrengthGrow": 500,
+        "AgilityGrow": 360,
+        "IntelligentGrow": 645
+    },
+    {
+        "HeroId": 1002,
+        "Star": 5,
+        "StrengthGrow": 590,
+        "AgilityGrow": 440,
+        "IntelligentGrow": 770
+    },
+    {
+        "HeroId": 1003,
+        "Star": 1,
+        "StrengthGrow": 270,
+        "AgilityGrow": 170,
+        "IntelligentGrow": 180
+    },
+    {
+        "HeroId": 1003,
+        "Star": 2,
+        "StrengthGrow": 405,
+        "AgilityGrow": 255,
+        "IntelligentGrow": 270
+    },
+    {
+        "HeroId": 1003,
+        "Star": 3,
+        "StrengthGrow": 540,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1003,
+        "Star": 4,
+        "StrengthGrow": 675,
+        "AgilityGrow": 425,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1003,
+        "Star": 5,
+        "StrengthGrow": 810,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1004,
+        "Star": 2,
+        "StrengthGrow": 435,
+        "AgilityGrow": 255,
+        "IntelligentGrow": 240
+    },
+    {
+        "HeroId": 1004,
+        "Star": 3,
+        "StrengthGrow": 580,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 320
+    },
+    {
+        "HeroId": 1004,
+        "Star": 4,
+        "StrengthGrow": 725,
+        "AgilityGrow": 425,
+        "IntelligentGrow": 400
+    },
+    {
+        "HeroId": 1004,
+        "Star": 5,
+        "StrengthGrow": 870,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 480
+    },
+    {
+        "HeroId": 1005,
+        "Star": 3,
+        "StrengthGrow": 400,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 500
+    },
+    {
+        "HeroId": 1005,
+        "Star": 4,
+        "StrengthGrow": 500,
+        "AgilityGrow": 425,
+        "IntelligentGrow": 625
+    },
+    {
+        "HeroId": 1005,
+        "Star": 5,
+        "StrengthGrow": 600,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 750
+    },
+    {
+        "HeroId": 1006,
+        "Star": 1,
+        "StrengthGrow": 120,
+        "AgilityGrow": 200,
+        "IntelligentGrow": 300
+    },
+    {
+        "HeroId": 1006,
+        "Star": 2,
+        "StrengthGrow": 180,
+        "AgilityGrow": 300,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1006,
+        "Star": 3,
+        "StrengthGrow": 240,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 600
+    },
+    {
+        "HeroId": 1006,
+        "Star": 4,
+        "StrengthGrow": 300,
+        "AgilityGrow": 500,
+        "IntelligentGrow": 750
+    },
+    {
+        "HeroId": 1006,
+        "Star": 5,
+        "StrengthGrow": 360,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 900
+    },
+    {
+        "HeroId": 1007,
+        "Star": 1,
+        "StrengthGrow": 200,
+        "AgilityGrow": 240,
+        "IntelligentGrow": 190
+    },
+    {
+        "HeroId": 1007,
+        "Star": 2,
+        "StrengthGrow": 300,
+        "AgilityGrow": 360,
+        "IntelligentGrow": 285
+    },
+    {
+        "HeroId": 1007,
+        "Star": 3,
+        "StrengthGrow": 400,
+        "AgilityGrow": 480,
+        "IntelligentGrow": 380
+    },
+    {
+        "HeroId": 1007,
+        "Star": 4,
+        "StrengthGrow": 500,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 475
+    },
+    {
+        "HeroId": 1007,
+        "Star": 5,
+        "StrengthGrow": 600,
+        "AgilityGrow": 720,
+        "IntelligentGrow": 570
+    },
+    {
+        "HeroId": 1008,
+        "Star": 1,
+        "StrengthGrow": 170,
+        "AgilityGrow": 290,
+        "IntelligentGrow": 210
+    },
+    {
+        "HeroId": 1008,
+        "Star": 2,
+        "StrengthGrow": 255,
+        "AgilityGrow": 435,
+        "IntelligentGrow": 315
+    },
+    {
+        "HeroId": 1008,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 580,
+        "IntelligentGrow": 420
+    },
+    {
+        "HeroId": 1008,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 725,
+        "IntelligentGrow": 525
+    },
+    {
+        "HeroId": 1008,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 870,
+        "IntelligentGrow": 630
+    },
+    {
+        "HeroId": 1009,
+        "Star": 1,
+        "StrengthGrow": 170,
+        "AgilityGrow": 150,
+        "IntelligentGrow": 320
+    },
+    {
+        "HeroId": 1009,
+        "Star": 2,
+        "StrengthGrow": 225,
+        "AgilityGrow": 265,
+        "IntelligentGrow": 485
+    },
+    {
+        "HeroId": 1009,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 380,
+        "IntelligentGrow": 650
+    },
+    {
+        "HeroId": 1009,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 495,
+        "IntelligentGrow": 815
+    },
+    {
+        "HeroId": 1009,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 610,
+        "IntelligentGrow": 980
+    },
+    {
+        "HeroId": 1010,
+        "Star": 3,
+        "StrengthGrow": 480,
+        "AgilityGrow": 480,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1010,
+        "Star": 4,
+        "StrengthGrow": 600,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1010,
+        "Star": 5,
+        "StrengthGrow": 720,
+        "AgilityGrow": 720,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1011,
+        "Star": 2,
+        "StrengthGrow": 255,
+        "AgilityGrow": 250,
+        "IntelligentGrow": 420
+    },
+    {
+        "HeroId": 1011,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 550
+    },
+    {
+        "HeroId": 1011,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 430,
+        "IntelligentGrow": 680
+    },
+    {
+        "HeroId": 1011,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 520,
+        "IntelligentGrow": 810
+    },
+    {
+        "HeroId": 1012,
+        "Star": 2,
+        "StrengthGrow": 255,
+        "AgilityGrow": 255,
+        "IntelligentGrow": 435
+    },
+    {
+        "HeroId": 1012,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 580
+    },
+    {
+        "HeroId": 1012,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 425,
+        "IntelligentGrow": 725
+    },
+    {
+        "HeroId": 1012,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 870
+    },
+    {
+        "HeroId": 1013,
+        "Star": 1,
+        "StrengthGrow": 330,
+        "AgilityGrow": 130,
+        "IntelligentGrow": 220
+    },
+    {
+        "HeroId": 1013,
+        "Star": 2,
+        "StrengthGrow": 495,
+        "AgilityGrow": 195,
+        "IntelligentGrow": 330
+    },
+    {
+        "HeroId": 1013,
+        "Star": 3,
+        "StrengthGrow": 660,
+        "AgilityGrow": 260,
+        "IntelligentGrow": 440
+    },
+    {
+        "HeroId": 1013,
+        "Star": 4,
+        "StrengthGrow": 825,
+        "AgilityGrow": 325,
+        "IntelligentGrow": 550
+    },
+    {
+        "HeroId": 1013,
+        "Star": 5,
+        "StrengthGrow": 990,
+        "AgilityGrow": 390,
+        "IntelligentGrow": 660
+    },
+    {
+        "HeroId": 1014,
+        "Star": 2,
+        "StrengthGrow": 420,
+        "AgilityGrow": 285,
+        "IntelligentGrow": 225
+    },
+    {
+        "HeroId": 1014,
+        "Star": 3,
+        "StrengthGrow": 560,
+        "AgilityGrow": 380,
+        "IntelligentGrow": 300
+    },
+    {
+        "HeroId": 1014,
+        "Star": 4,
+        "StrengthGrow": 700,
+        "AgilityGrow": 475,
+        "IntelligentGrow": 375
+    },
+    {
+        "HeroId": 1014,
+        "Star": 5,
+        "StrengthGrow": 840,
+        "AgilityGrow": 570,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1015,
+        "Star": 1,
+        "StrengthGrow": 300,
+        "AgilityGrow": 150,
+        "IntelligentGrow": 170
+    },
+    {
+        "HeroId": 1015,
+        "Star": 2,
+        "StrengthGrow": 470,
+        "AgilityGrow": 240,
+        "IntelligentGrow": 270
+    },
+    {
+        "HeroId": 1015,
+        "Star": 3,
+        "StrengthGrow": 640,
+        "AgilityGrow": 330,
+        "IntelligentGrow": 370
+    },
+    {
+        "HeroId": 1015,
+        "Star": 4,
+        "StrengthGrow": 810,
+        "AgilityGrow": 420,
+        "IntelligentGrow": 470
+    },
+    {
+        "HeroId": 1015,
+        "Star": 5,
+        "StrengthGrow": 980,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 570
+    },
+    {
+        "HeroId": 1016,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 620,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1016,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 790,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1016,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 960,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1017,
+        "Star": 2,
+        "StrengthGrow": 375,
+        "AgilityGrow": 420,
+        "IntelligentGrow": 285
+    },
+    {
+        "HeroId": 1017,
+        "Star": 3,
+        "StrengthGrow": 520,
+        "AgilityGrow": 560,
+        "IntelligentGrow": 380
+    },
+    {
+        "HeroId": 1017,
+        "Star": 4,
+        "StrengthGrow": 665,
+        "AgilityGrow": 700,
+        "IntelligentGrow": 475
+    },
+    {
+        "HeroId": 1017,
+        "Star": 5,
+        "StrengthGrow": 810,
+        "AgilityGrow": 840,
+        "IntelligentGrow": 570
+    },
+    {
+        "HeroId": 1018,
+        "Star": 3,
+        "StrengthGrow": 500,
+        "AgilityGrow": 320,
+        "IntelligentGrow": 580
+    },
+    {
+        "HeroId": 1018,
+        "Star": 4,
+        "StrengthGrow": 625,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 725
+    },
+    {
+        "HeroId": 1018,
+        "Star": 5,
+        "StrengthGrow": 750,
+        "AgilityGrow": 480,
+        "IntelligentGrow": 870
+    },
+    {
+        "HeroId": 1019,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 320
+    },
+    {
+        "HeroId": 1019,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 750,
+        "IntelligentGrow": 400
+    },
+    {
+        "HeroId": 1019,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 900,
+        "IntelligentGrow": 480
+    },
+    {
+        "HeroId": 1020,
+        "Star": 2,
+        "StrengthGrow": 180,
+        "AgilityGrow": 150,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1020,
+        "Star": 3,
+        "StrengthGrow": 240,
+        "AgilityGrow": 200,
+        "IntelligentGrow": 680
+    },
+    {
+        "HeroId": 1020,
+        "Star": 4,
+        "StrengthGrow": 300,
+        "AgilityGrow": 250,
+        "IntelligentGrow": 820
+    },
+    {
+        "HeroId": 1020,
+        "Star": 5,
+        "StrengthGrow": 360,
+        "AgilityGrow": 300,
+        "IntelligentGrow": 960
+    },
+    {
+        "HeroId": 1021,
+        "Star": 3,
+        "StrengthGrow": 340,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 500
+    },
+    {
+        "HeroId": 1021,
+        "Star": 4,
+        "StrengthGrow": 425,
+        "AgilityGrow": 500,
+        "IntelligentGrow": 625
+    },
+    {
+        "HeroId": 1021,
+        "Star": 5,
+        "StrengthGrow": 510,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 750
+    },
+    {
+        "HeroId": 1022,
+        "Star": 2,
+        "StrengthGrow": 390,
+        "AgilityGrow": 300,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1022,
+        "Star": 3,
+        "StrengthGrow": 520,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 490
+    },
+    {
+        "HeroId": 1022,
+        "Star": 4,
+        "StrengthGrow": 650,
+        "AgilityGrow": 500,
+        "IntelligentGrow": 620
+    },
+    {
+        "HeroId": 1022,
+        "Star": 5,
+        "StrengthGrow": 780,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 750
+    },
+    {
+        "HeroId": 1023,
+        "Star": 2,
+        "StrengthGrow": 275,
+        "AgilityGrow": 225,
+        "IntelligentGrow": 470
+    },
+    {
+        "HeroId": 1023,
+        "Star": 3,
+        "StrengthGrow": 380,
+        "AgilityGrow": 300,
+        "IntelligentGrow": 640
+    },
+    {
+        "HeroId": 1023,
+        "Star": 4,
+        "StrengthGrow": 485,
+        "AgilityGrow": 375,
+        "IntelligentGrow": 810
+    },
+    {
+        "HeroId": 1023,
+        "Star": 5,
+        "StrengthGrow": 590,
+        "AgilityGrow": 450,
+        "IntelligentGrow": 980
+    },
+    {
+        "HeroId": 1024,
+        "Star": 3,
+        "StrengthGrow": 630,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 210
+    },
+    {
+        "HeroId": 1024,
+        "Star": 4,
+        "StrengthGrow": 790,
+        "AgilityGrow": 650,
+        "IntelligentGrow": 250
+    },
+    {
+        "HeroId": 1024,
+        "Star": 5,
+        "StrengthGrow": 950,
+        "AgilityGrow": 790,
+        "IntelligentGrow": 290
+    },
+    {
+        "HeroId": 1025,
+        "Star": 3,
+        "StrengthGrow": 640,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 280
+    },
+    {
+        "HeroId": 1025,
+        "Star": 4,
+        "StrengthGrow": 800,
+        "AgilityGrow": 500,
+        "IntelligentGrow": 350
+    },
+    {
+        "HeroId": 1025,
+        "Star": 5,
+        "StrengthGrow": 960,
+        "AgilityGrow": 600,
+        "IntelligentGrow": 420
+    },
+    {
+        "HeroId": 1026,
+        "Star": 3,
+        "StrengthGrow": 320,
+        "AgilityGrow": 340,
+        "IntelligentGrow": 600
+    },
+    {
+        "HeroId": 1026,
+        "Star": 4,
+        "StrengthGrow": 400,
+        "AgilityGrow": 425,
+        "IntelligentGrow": 750
+    },
+    {
+        "HeroId": 1026,
+        "Star": 5,
+        "StrengthGrow": 480,
+        "AgilityGrow": 510,
+        "IntelligentGrow": 900
+    },
+    {
+        "HeroId": 1027,
+        "Star": 2,
+        "StrengthGrow": 495,
+        "AgilityGrow": 135,
+        "IntelligentGrow": 330
+    },
+    {
+        "HeroId": 1027,
+        "Star": 3,
+        "StrengthGrow": 660,
+        "AgilityGrow": 180,
+        "IntelligentGrow": 440
+    },
+    {
+        "HeroId": 1027,
+        "Star": 4,
+        "StrengthGrow": 825,
+        "AgilityGrow": 225,
+        "IntelligentGrow": 550
+    },
+    {
+        "HeroId": 1027,
+        "Star": 5,
+        "StrengthGrow": 990,
+        "AgilityGrow": 270,
+        "IntelligentGrow": 660
+    },
+    {
+        "HeroId": 1028,
+        "Star": 2,
+        "StrengthGrow": 390,
+        "AgilityGrow": 420,
+        "IntelligentGrow": 270
+    },
+    {
+        "HeroId": 1028,
+        "Star": 3,
+        "StrengthGrow": 520,
+        "AgilityGrow": 560,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1028,
+        "Star": 4,
+        "StrengthGrow": 650,
+        "AgilityGrow": 700,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1028,
+        "Star": 5,
+        "StrengthGrow": 780,
+        "AgilityGrow": 840,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1029,
+        "Star": 3,
+        "StrengthGrow": 380,
+        "AgilityGrow": 630,
+        "IntelligentGrow": 390
+    },
+    {
+        "HeroId": 1029,
+        "Star": 4,
+        "StrengthGrow": 475,
+        "AgilityGrow": 805,
+        "IntelligentGrow": 490
+    },
+    {
+        "HeroId": 1029,
+        "Star": 5,
+        "StrengthGrow": 570,
+        "AgilityGrow": 980,
+        "IntelligentGrow": 590
+    },
+    {
+        "HeroId": 1030,
+        "Star": 3,
+        "StrengthGrow": 620,
+        "AgilityGrow": 280,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1030,
+        "Star": 4,
+        "StrengthGrow": 780,
+        "AgilityGrow": 350,
+        "IntelligentGrow": 450
+    },
+    {
+        "HeroId": 1030,
+        "Star": 5,
+        "StrengthGrow": 940,
+        "AgilityGrow": 420,
+        "IntelligentGrow": 540
+    },
+    {
+        "HeroId": 1031,
+        "Star": 1,
+        "StrengthGrow": 320,
+        "AgilityGrow": 160,
+        "IntelligentGrow": 240
+    },
+    {
+        "HeroId": 1031,
+        "Star": 2,
+        "StrengthGrow": 480,
+        "AgilityGrow": 240,
+        "IntelligentGrow": 360
+    },
+    {
+        "HeroId": 1031,
+        "Star": 3,
+        "StrengthGrow": 640,
+        "AgilityGrow": 320,
+        "IntelligentGrow": 480
+    },
+    {
+        "HeroId": 1031,
+        "Star": 4,
+        "StrengthGrow": 800,
+        "AgilityGrow": 400,
+        "IntelligentGrow": 600
+    },
+    {
+        "HeroId": 1031,
+        "Star": 5,
+        "StrengthGrow": 960,
+        "AgilityGrow": 480,
+        "IntelligentGrow": 720
+    }
+]

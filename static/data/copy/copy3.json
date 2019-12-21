@@ -1,11 +1,13 @@
 [
     {
-        "CopyId": 1001,
-        "Name": "苹果园",
+        "CopyId": 1021,
+        "Name": "东四十条站",
         "Equips": [
             1001,
-            1002
+            2005,
+            2006
         ],
+        "HeroParts": [],
         "Heros": [
             {
                 "HeroId": "1001",
@@ -22,78 +24,14 @@
         ]
     },
     {
-        "CopyId": 1002,
-        "Name": "古城",
-        "Equips": [
-            1002,
-            1003
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 1003,
-        "Name": "八角游乐园",
-        "Equips": [
-            1002,
-            1004
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 1004,
-        "Name": "八宝山",
-        "Equips": [
-            1002,
-            1005
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 1005,
-        "Name": "玉泉路",
+        "CopyId": 1022,
+        "Name": "工人体育场站",
         "Equips": [
             1006,
-            1007
+            2007,
+            2008
         ],
+        "HeroParts": [],
         "Heros": [
             {
                 "HeroId": "1001",
@@ -110,12 +48,14 @@
         ]
     },
     {
-        "CopyId": 1006,
-        "Name": "五棵松",
+        "CopyId": 1023,
+        "Name": "团结湖站",
         "Equips": [
-            1008,
-            1009
+            2009,
+            2010,
+            2011
         ],
+        "HeroParts": [],
         "Heros": [
             {
                 "HeroId": "1001",
@@ -132,37 +72,87 @@
         ]
     },
     {
-        "CopyId": 2001,
-        "Name": "万寿路站",
+        "CopyId": 1024,
+        "Name": "朝阳公园站",
+        "Equips": [
+            2012,
+            2013,
+            2014
+        ],
+        "HeroParts": [],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 1025,
+        "Name": "石佛营站",
+        "Equips": [
+            1011,
+            2015,
+            2016
+        ],
+        "HeroParts": [],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 1026,
+        "Name": "星火站",
+        "Equips": [
+            1017,
+            2017,
+            2018
+        ],
+        "HeroParts": [],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 2021,
+        "Name": "体育中心站",
         "Equips": [
             1001,
-            1002,
-            1018
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 2002,
-        "Name": "公主坟站",
-        "Equips": [
-            1002,
-            1003
+            2005,
+            2006
         ],
         "HeroParts": [
-            1001
+            1013
         ],
         "Heros": [
             {
@@ -180,64 +170,15 @@
         ]
     },
     {
-        "CopyId": 2003,
-        "Name": "军事博物馆站",
-        "Equips": [
-            1002,
-            1004
-        ],
-        "HeroParts": [
-            1002
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 2004,
-        "Name": "木樨地站",
-        "Equips": [
-            1002,
-            1005
-        ],
-        "HeroParts": [
-            1003
-        ],
-        "Heros": [
-            {
-                "HeroId": "1001",
-                "Level": 1,
-                "Floor": 1,
-                "Star": 1,
-                "SkillLevels": [
-                    1,
-                    1,
-                    1,
-                    1
-                ]
-            }
-        ]
-    },
-    {
-        "CopyId": 2005,
-        "Name": "南礼士路站",
+        "CopyId": 2022,
+        "Name": "平房村站",
         "Equips": [
             1006,
-            1007
+            2007,
+            2008
         ],
         "HeroParts": [
-            1004
+            1014
         ],
         "Heros": [
             {
@@ -255,14 +196,93 @@
         ]
     },
     {
-        "CopyId": 2006,
-        "Name": "复兴门站",
+        "CopyId": 2023,
+        "Name": "东坝中街站",
         "Equips": [
-            1008,
-            1009
+            2009,
+            2010,
+            2011
         ],
         "HeroParts": [
-            1005
+            1011
+        ],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 2024,
+        "Name": "东风站",
+        "Equips": [
+            2012,
+            2013,
+            2014
+        ],
+        "HeroParts": [
+            1003
+        ],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 2025,
+        "Name": "管庄路西口站",
+        "Equips": [
+            1011,
+            2015,
+            2016
+        ],
+        "HeroParts": [
+            1015
+        ],
+        "Heros": [
+            {
+                "HeroId": "1001",
+                "Level": 1,
+                "Floor": 1,
+                "Star": 1,
+                "SkillLevels": [
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            }
+        ]
+    },
+    {
+        "CopyId": 2026,
+        "Name": "楼梓庄桥西站",
+        "Equips": [
+            1017,
+            2017,
+            2018
+        ],
+        "HeroParts": [
+            1016
         ],
         "Heros": [
             {

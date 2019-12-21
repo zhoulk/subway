@@ -1,82 +1,2937 @@
 [
     {
-        "EquipId": "1000",
-        "Name": "树枝",
-        "Level": 1,
-        "Strength": 1,
-        "Agility": 1,
-        "Intelligent": 1,
-        "Desc": "带上它以确保一局GG",
-        "Power": 3,
-        "Cost": 1
-    },
-    {
         "EquipId": "1001",
-        "Name": "敏捷丝袜",
+        "Name": "力量拳套",
         "Level": 1,
-        "Agility": 3,
-        "Desc": "蜘蛛侠Cosplay套装组件",
-        "Power": 3,
-        "Cost": 1
+        "Desc": "无",
+        "Strength": 3
     },
     {
         "EquipId": "1002",
-        "Name": "小圆盾",
+        "Name": "树枝",
         "Level": 1,
-        "ADDef": 2,
-        "Desc": "曾经是某人的马桶盖子",
-        "Power": 4
+        "Desc": "带上它以确保一局GG",
+        "Strength": 1,
+        "Agility": 1,
+        "Intelligent": 1
     },
     {
         "EquipId": "1003",
-        "Name": "补刀斧",
+        "Name": "小魔棒",
         "Level": 1,
-        "AD": 6,
-        "Desc": "无",
-        "Power": 4
+        "Desc": "我能反杀……",
+        "HPGain": 15,
+        "MPGain": 15
     },
     {
         "EquipId": "1004",
-        "Name": "贵族头环",
+        "Name": "回复戒指",
         "Level": 1,
-        "Strength": 2,
-        "Agility": 2,
-        "Intelligent": 2,
-        "Desc": "明明是屌丝头环啊亲！",
-        "Power": 5
+        "Desc": "无",
+        "HPGain": 80
     },
     {
         "EquipId": "1005",
-        "Name": "智力挂件",
+        "Name": "小圆盾",
         "Level": 1,
-        "Strength": 3,
-        "Agility": 3,
-        "Intelligent": 6,
-        "Desc": "考场违禁物品",
-        "Power": 13,
-        "Mix": "[1007,1006,1004]"
+        "Desc": "曾经是某人的马桶盖子。",
+        "ADDef": 2
     },
     {
         "EquipId": "1006",
-        "Name": "智力之篷",
+        "Name": "补刀斧",
         "Level": 1,
-        "Intelligent": 3,
         "Desc": "无",
-        "Power": 3
+        "AD": 6
     },
     {
         "EquipId": "1007",
+        "Name": "贵族头环",
+        "Level": 1,
+        "Desc": "无",
+        "Strength": 2,
+        "Agility": 2,
+        "Intelligent": 2
+    },
+    {
+        "EquipId": "1008",
+        "Name": "鞋",
+        "Level": 1,
+        "Desc": "每个英雄都得穿鞋，美杜莎也不例外",
+        "Strength": 5,
+        "Agility": 5,
+        "Intelligent": 5
+    },
+    {
+        "EquipId": "1009",
+        "Name": "智力之篷",
+        "Level": 1,
+        "Desc": "无",
+        "Intelligent": 3
+    },
+    {
+        "EquipId": "1010",
+        "Name": "艺人面罩",
+        "Level": 1,
+        "Desc": "无",
+        "MPGain": 30
+    },
+    {
+        "EquipId": "1011",
+        "Name": "防御指环",
+        "Level": 1,
+        "Desc": "无",
+        "ADDef": 2
+    },
+    {
+        "EquipId": "1012",
+        "Name": "力量护腕卷轴",
+        "Level": 1,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "1013",
+        "Name": "敏捷丝袜",
+        "Level": 1,
+        "Desc": "蜘蛛侠Cosplay套装组件",
+        "Agility": 3
+    },
+    {
+        "EquipId": "1014",
         "Name": "智力挂件卷轴",
         "Level": 1,
-        "Desc": "可以合成智力挂件"
+        "Desc": "无"
+    },
+    {
+        "EquipId": "1015",
+        "Name": "敏捷系带卷轴",
+        "Level": 1,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "1016",
+        "Name": "回复之巾卷轴",
+        "Level": 1,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "1017",
+        "Name": "攻击利爪",
+        "Level": 1,
+        "Desc": "曾经有位鬼魅般的刺客佩带过它，后来他在挠痒痒的时候把自己杀死了。",
+        "AD": 9
+    },
+    {
+        "EquipId": "1018",
+        "Name": "力量护腕",
+        "Level": 1,
+        "Desc": "",
+        "Mix": "[1001,1007,1012]",
+        "AD": 3,
+        "Strength": 6,
+        "Agility": 3,
+        "Intelligent": 3
+    },
+    {
+        "EquipId": "1019",
+        "Name": "智力挂件",
+        "Level": 1,
+        "Desc": "考场违禁物品",
+        "Mix": "[1007,1009,1014]",
+        "AD": 3,
+        "Strength": 3,
+        "Agility": 3,
+        "Intelligent": 6
+    },
+    {
+        "EquipId": "1020",
+        "Name": "圣殿指环",
+        "Level": 1,
+        "Desc": "",
+        "Mix": "[1010,1004]",
+        "MPGain": 30,
+        "ADDef": 2
+    },
+    {
+        "EquipId": "1021",
+        "Name": "敏捷系带",
+        "Level": 1,
+        "Desc": "这货真的不是电棍。",
+        "Mix": "[1007,1013,1015]",
+        "AD": 3,
+        "Strength": 3,
+        "Agility": 6,
+        "Intelligent": 3
+    },
+    {
+        "EquipId": "1022",
+        "Name": "回复之巾",
+        "Level": 1,
+        "Desc": "",
+        "Mix": "[1004,1002,1016]",
+        "Strength": 2,
+        "Agility": 2,
+        "Intelligent": 2,
+        "HPGain": 120
+    },
+    {
+        "EquipId": "1023",
+        "Name": "屌丝盾",
+        "Level": 1,
+        "Desc": "屌丝终有逆袭日。加油！",
+        "Mix": "[1005,1013,1013]",
+        "Agility": 6,
+        "ADDef": 3
+    },
+    {
+        "EquipId": "2001",
+        "Name": "法力之球",
+        "Level": 2,
+        "Desc": "无",
+        "AP": 30
+    },
+    {
+        "EquipId": "2002",
+        "Name": "敏捷皮靴",
+        "Level": 2,
+        "Desc": "无",
+        "Agility": 6
+    },
+    {
+        "EquipId": "2003",
+        "Name": "智力长袍",
+        "Level": 2,
+        "Desc": "无",
+        "Intelligent": 6
+    },
+    {
+        "EquipId": "2004",
+        "Name": "锁甲",
+        "Level": 2,
+        "Desc": "银鳞胸甲，蓝色品质。",
+        "ADDef": 5
+    },
+    {
+        "EquipId": "2005",
+        "Name": "力量腰带",
+        "Level": 2,
+        "Desc": "无",
+        "Strength": 6
+    },
+    {
+        "EquipId": "2006",
+        "Name": "武士头盔",
+        "Level": 2,
+        "Desc": "像诺基亚一样坚固。",
+        "HPGain": 90,
+        "ADDef": 5
+    },
+    {
+        "EquipId": "2007",
+        "Name": "短棍",
+        "Level": 2,
+        "Desc": "一根棍子",
+        "AD": 10,
+        "ADCrit": 5
+    },
+    {
+        "EquipId": "2008",
+        "Name": "生命之球",
+        "Level": 2,
+        "Desc": "无",
+        "HP": 250
+    },
+    {
+        "EquipId": "2009",
+        "Name": "大魔杖卷轴",
+        "Level": 2,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "2010",
+        "Name": "加速手套",
+        "Level": 2,
+        "Desc": "单身青年必备。",
+        "ADCrit": 8
+    },
+    {
+        "EquipId": "2011",
+        "Name": "虚空宝石",
+        "Level": 2,
+        "Desc": "无",
+        "MPGain": 60
+    },
+    {
+        "EquipId": "2012",
+        "Name": "魂戒卷轴",
+        "Level": 2,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "2013",
+        "Name": "玄铁盾牌卷轴",
+        "Level": 2,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "2014",
+        "Name": "魔抗斗篷",
+        "Level": 2,
+        "Desc": "魔抗斗篷、满级红杖、肉山盾；同时拥有这三件圣器的人，会拥有挑战死神的力量。",
+        "APDef": 5
+    },
+    {
+        "EquipId": "2015",
+        "Name": "元气之球",
+        "Level": 2,
+        "Desc": "无",
+        "AP": 18,
+        "HP": 200
+    },
+    {
+        "EquipId": "2016",
+        "Name": "治疗指环",
+        "Level": 2,
+        "Desc": "无",
+        "HPGain": 150
+    },
+    {
+        "EquipId": "2017",
+        "Name": "夜叉卷轴",
+        "Level": 2,
+        "Desc": "无"
+    },
+    {
+        "EquipId": "2018",
+        "Name": "吸血面具",
+        "Level": 2,
+        "Desc": "没有比这更拉仇恨的了！",
+        "StealHP": 15
+    },
+    {
+        "EquipId": "2019",
+        "Name": "疯脸卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2020",
+        "Name": "散华卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2021",
+        "Name": "梅肯卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2022",
+        "Name": "命匣卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2023",
+        "Name": "勇气勋章卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2024",
+        "Name": "古之耐歌卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2025",
+        "Name": "小毒球",
+        "Level": 2,
+        "Desc": "",
+        "AD": 5
+    },
+    {
+        "EquipId": "2026",
+        "Name": "祭品卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2027",
+        "Name": "大魔杖卷轴",
+        "Level": 2,
+        "Desc": ""
+    },
+    {
+        "EquipId": "2028",
+        "Name": "智力假腿",
+        "Level": 2,
+        "Desc": "用鼠标点击可以切换形态，如果你有鼠标的话。",
+        "Mix": "[1008,2003,2010]",
+        "ADCrit": 15,
+        "Strength": 6,
+        "Agility": 6,
+        "Intelligent": 14
+    },
+    {
+        "EquipId": "2029",
+        "Name": "支配",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2018,2006]",
+        "AD": 20,
+        "ADDef": 5,
+        "StealHP": 15
+    },
+    {
+        "EquipId": "2030",
+        "Name": "勇气勋章",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2004,1010,2023]",
+        "MPGain": 50,
+        "StealADDef": 6
+    },
+    {
+        "EquipId": "2031",
+        "Name": "玄铁盾牌",
+        "Level": 2,
+        "Desc": "带上它以确保一局GG。",
+        "Mix": "[2004,1002,2013]",
+        "Strength": 2,
+        "Agility": 2,
+        "Intelligent": 2,
+        "ADDef": 5
+    },
+    {
+        "EquipId": "2032",
+        "Name": "相位鞋",
+        "Level": 2,
+        "Desc": "请小心地滑。",
+        "Mix": "[1017,1017,1008]",
+        "AD": 24,
+        "Strength": 9,
+        "Agility": 9,
+        "Intelligent": 9
+    },
+    {
+        "EquipId": "2033",
+        "Name": "天鹰之戒",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1020,1021]",
+        "Strength": 3,
+        "Agility": 3,
+        "Intelligent": 3,
+        "MPGain": 20,
+        "ADDef": 3
+    },
+    {
+        "EquipId": "2034",
+        "Name": "魔抗头巾",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2016,1004,1004,2014]",
+        "HPGain": 180,
+        "APDef": 12
+    },
+    {
+        "EquipId": "2035",
+        "Name": "敏捷假腿",
+        "Level": 2,
+        "Desc": "用鼠标点击可以切换形态，如果你有鼠标的话。",
+        "Mix": "[2010,1008,2002]",
+        "ADCrit": 15,
+        "Strength": 6,
+        "Agility": 14,
+        "Intelligent": 6
+    },
+    {
+        "EquipId": "2036",
+        "Name": "秘法鞋",
+        "Level": 2,
+        "Desc": "战斗前闻一闻就会充满怒气",
+        "Mix": "[1008,2001]",
+        "AP": 40,
+        "Strength": 6,
+        "Agility": 6,
+        "Intelligent": 6,
+        "MPGain": 60
+    },
+    {
+        "EquipId": "2037",
+        "Name": "梅肯",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1022,2031,2021]",
+        "Strength": 5,
+        "Agility": 5,
+        "Intelligent": 5,
+        "StealADDef": 5,
+        "Treat": 10
+    },
+    {
+        "EquipId": "2038",
+        "Name": "绿鞋",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1011,1008,1004]",
+        "Strength": 7,
+        "Agility": 7,
+        "Intelligent": 7,
+        "HPGain": 90,
+        "ADDef": 1
+    },
+    {
+        "EquipId": "2039",
+        "Name": "力量假腿",
+        "Level": 2,
+        "Desc": "用鼠标点击可以切换形态，如果你有鼠标的话。",
+        "Mix": "[2010,1008,2005]",
+        "ADCrit": 15,
+        "Strength": 14,
+        "Agility": 6,
+        "Intelligent": 6
+    },
+    {
+        "EquipId": "2040",
+        "Name": "空明禅杖",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2007,1010,2003]",
+        "AD": 15,
+        "ADCrit": 5,
+        "Intelligent": 6,
+        "MPGain": 40
+    },
+    {
+        "EquipId": "2041",
+        "Name": "坚韧法球",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2016,2011]",
+        "AD": 10,
+        "HPReGain": 200,
+        "MPReGain": 75
+    },
+    {
+        "EquipId": "2042",
+        "Name": "祭品",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[2018,1004,1020,2026]",
+        "ADCrit": 15,
+        "MPGain": 40,
+        "ADDef": 5,
+        "StealHP": 16
+    },
+    {
+        "EquipId": "2043",
+        "Name": "魂戒",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1010,1004,2012]",
+        "AP": 12,
+        "HPGain": 120,
+        "MPGain": 30
+    },
+    {
+        "EquipId": "2044",
+        "Name": "命匣",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1010,1001,1001,2022]",
+        "Strength": 6,
+        "HPGain": 70,
+        "MPGain": 50
+    },
+    {
+        "EquipId": "2045",
+        "Name": "古之耐歌",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1018,2003,2024]",
+        "AD": 3,
+        "Strength": 9,
+        "Agility": 9,
+        "Intelligent": 9
+    },
+    {
+        "EquipId": "2046",
+        "Name": "疯脸",
+        "Level": 2,
+        "Desc": "美国队长Cosplay套装组件",
+        "Mix": "[2018,2019]",
+        "ADCrit": 20,
+        "ADDefMinus": 10,
+        "StealHP": 20
+    },
+    {
+        "EquipId": "2047",
+        "Name": "大魔杖",
+        "Level": 2,
+        "Desc": "",
+        "Mix": "[1002,1002,1003,2027]",
+        "Strength": 3,
+        "Agility": 3,
+        "Intelligent": 3,
+        "HPGain": 15,
+        "MPGain": 15
+    },
+    {
+        "EquipId": "2048",
+        "Name": "冲锋盾",
+        "Level": 2,
+        "Desc": "无法撼动之物",
+        "Mix": "[2008,1005,2016]",
+        "HPGain": 240,
+        "ADDef": 4,
+        "HP": 280
     },
     {
         "EquipId": "3001",
+        "Name": "散失卷轴",
+        "Level": 3,
+        "Desc": ""
+    },
+    {
+        "EquipId": "3002",
         "Name": "大剑",
         "Level": 3,
-        "Desc": "不管是用来砍盔甲还是切糕，都游刃有余",
-        "Power": 13,
+        "Desc": "不管是用来砍盔甲还是切糕，都游刃有余。",
+        "AD": 21
+    },
+    {
+        "EquipId": "3003",
+        "Name": "板甲",
+        "Level": 3,
+        "Desc": "厚重的板甲可以保护你的上身，但要小心掉下来砸到脚。（影魔表示毫无压力）",
+        "MixCnt": 5,
+        "ADDef": 10
+    },
+    {
+        "EquipId": "3004",
+        "Name": "绿杖",
+        "Level": 3,
+        "Desc": "",
+        "APCrit": 20,
+        "Strength": 7,
+        "Agility": 7,
+        "Intelligent": 7
+    },
+    {
+        "EquipId": "3005",
+        "Name": "智力法杖",
+        "Level": 3,
+        "Desc": "",
+        "Intelligent": 10
+    },
+    {
+        "EquipId": "3006",
+        "Name": "敏捷之刃",
+        "Level": 3,
+        "Desc": "",
+        "Agility": 10
+    },
+    {
+        "EquipId": "3007",
+        "Name": "阔剑",
+        "Level": 3,
+        "Desc": "",
+        "AD": 18
+    },
+    {
+        "EquipId": "3008",
+        "Name": "标枪",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5,
+        "AD": 24
+    },
+    {
+        "EquipId": "3009",
+        "Name": "力量之斧",
+        "Level": 3,
+        "Desc": "不不，打架千万不能用斧头，无论在气势上还是作用上你就都输了",
+        "MixCnt": 5,
+        "AP": " ",
+        "Strength": 10
+    },
+    {
+        "EquipId": "3010",
+        "Name": "秘银锤",
+        "Level": 3,
+        "Desc": "IT’S HAMMER TIME!",
+        "MixCnt": 5,
+        "AD": 24
+    },
+    {
+        "EquipId": "3011",
+        "Name": "飞鞋卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3012",
+        "Name": "红杖卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3013",
+        "Name": "小电锤卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3014",
+        "Name": "暗影符",
+        "Level": 3,
+        "Desc": "提莫队长神马的简直弱爆了。",
+        "MixCnt": 5,
+        "ADCrit": 15
+    },
+    {
+        "EquipId": "3015",
+        "Name": "鬼手卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3016",
+        "Name": "水晶剑卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3017",
+        "Name": "推推棒卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3018",
+        "Name": "风杖卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3019",
+        "Name": "小人书卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3020",
+        "Name": "黑黄卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3021",
+        "Name": "纷争卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3022",
+        "Name": "暗灭卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3023",
+        "Name": "碎骨锤卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3024",
+        "Name": "鬼手卷轴",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5
+    },
+    {
+        "EquipId": "3025",
+        "Name": "射手指环",
+        "Level": 3,
+        "Desc": "",
+        "MixCnt": 5,
+        "Hit": 8
+    },
+    {
+        "EquipId": "3026",
+        "Name": "飞鞋",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[1008,3011]",
+        "Strength": 25,
+        "Agility": 25,
+        "Intelligent": 25
+    },
+    {
+        "EquipId": "3027",
+        "Name": "黑黄",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3009,3010,3020]",
+        "AD": 24,
+        "Strength": 10,
+        "APDef": 10
+    },
+    {
+        "EquipId": "3028",
+        "Name": "蓝杖",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[2015,3009,3006,3005]",
+        "APCrit": 10,
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10,
+        "HP": 200
+    },
+    {
+        "EquipId": "3029",
+        "Name": "振魂玫瑰",
+        "Level": 3,
+        "Desc": "要三个球才能组成一颗振魂玫瑰，晕！",
+        "Mix": "[2001,2008,2015]",
+        "AP": 40,
+        "HPGain": 100,
+        "MPGain": 32,
+        "HP": 350
+    },
+    {
+        "EquipId": "3030",
+        "Name": "夜叉",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3006,2002,2017]",
+        "ADCrit": 6,
+        "Agility": 16
+    },
+    {
+        "EquipId": "3031",
+        "Name": "血晶石",
+        "Level": 3,
+        "Desc": "可以自杀，小心点错。",
+        "Mix": "[3029,3029]",
+        "AP": 48,
+        "HPGain": 200,
+        "MPGain": 30,
+        "HP": 400,
+        "Treat": 20
+    },
+    {
+        "EquipId": "3032",
+        "Name": "小人书",
+        "Level": 3,
+        "Desc": "我和我的小伙伴都惊呆了。",
+        "Mix": "[3005,2005,3019]",
         "AD": 21,
-        "MixCnt": 10
+        "AP": 21,
+        "Strength": 8,
+        "Intelligent": 15,
+        "HP": 200
+    },
+    {
+        "EquipId": "3033",
+        "Name": "小电锤",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3010,2010,3013]",
+        "AD": 24,
+        "ADCrit": 15
+    },
+    {
+        "EquipId": "3034",
+        "Name": "推推棒",
+        "Level": 3,
+        "Desc": "愿原力与你同在。",
+        "Mix": "[3005,1004,3017]",
+        "Intelligent": 10,
+        "HPGain": 120,
+        "Dodge": 5
+    },
+    {
+        "EquipId": "3035",
+        "Name": "碎骨锤",
+        "Level": 3,
+        "Desc": "无坚不摧之力。",
+        "Mix": "[3008,2005,3023]",
+        "AD": 40,
+        "ADCrit": 10,
+        "Strength": 3
+    },
+    {
+        "EquipId": "3036",
+        "Name": "水晶剑",
+        "Level": 3,
+        "Desc": "易碎品，小心轻放",
+        "Mix": "[3007,1017,3016]",
+        "AD": 30,
+        "ADCrit": 30
+    },
+    {
+        "EquipId": "3037",
+        "Name": "双刀",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3030,3038]",
+        "AD": 12,
+        "ADCrit": 12,
+        "Strength": 16,
+        "Agility": 16
+    },
+    {
+        "EquipId": "3038",
+        "Name": "散华",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3009,2005,2020]",
+        "AD": 10,
+        "Strength": 16
+    },
+    {
+        "EquipId": "3039",
+        "Name": "散失",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3006,3006,2003,3001]",
+        "AD": 20,
+        "Agility": 22,
+        "Intelligent": 4
+    },
+    {
+        "EquipId": "3040",
+        "Name": "梅肯2阶",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[2037,2037]",
+        "Strength": 5,
+        "Agility": 5,
+        "Intelligent": 5,
+        "StealADDef": 5,
+        "Treat": 20
+    },
+    {
+        "EquipId": "3041",
+        "Name": "洛萨",
+        "Level": 3,
+        "Desc": "剑柄上刻着两个字母：AL",
+        "Mix": "[3002,3014]",
+        "AD": 30,
+        "ADCrit": 15
+    },
+    {
+        "EquipId": "3042",
+        "Name": "狂战斧",
+        "Level": 3,
+        "Desc": "拯救世界",
+        "Mix": "[3002,3007,2041]",
+        "AD": 65,
+        "HPGain": 140,
+        "MPGain": 50
+    },
+    {
+        "EquipId": "3043",
+        "Name": "红杖",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[1019,3005,3012]",
+        "AP": 30,
+        "APCrit": 5,
+        "Intelligent": 15
+    },
+    {
+        "EquipId": "3044",
+        "Name": "鬼手",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[2010,1017,2006,3024]",
+        "AD": 9,
+        "ADCrit": 10,
+        "Strength": 25,
+        "ADDef": 5
+    },
+    {
+        "EquipId": "3045",
+        "Name": "风杖",
+        "Level": 3,
+        "Desc": "臭流氓！不许抬头！",
+        "Mix": "[3005,1010,2011,3018]",
+        "Intelligent": 10,
+        "MPGain": 90,
+        "StealAPDef": 5
+    },
+    {
+        "EquipId": "3046",
+        "Name": "纷争",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[2006,2003,2003,3021]",
+        "Intelligent": 12,
+        "StealAPDef": 12
+    },
+    {
+        "EquipId": "3047",
+        "Name": "反伤甲",
+        "Level": 3,
+        "Desc": "好多又长又粗的东西竖起来了耶……",
+        "Mix": "[3007,2004,2003]",
+        "AD": 22,
+        "Intelligent": 10,
+        "ADDef": 5,
+        "APDef": 5
+    },
+    {
+        "EquipId": "3048",
+        "Name": "暗灭",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3010,3010,3022]",
+        "AD": 60,
+        "StealADDef": 7
+    },
+    {
+        "EquipId": "3049",
+        "Name": "阿托斯",
+        "Level": 3,
+        "Desc": "",
+        "Mix": "[3005,3005,2015]",
+        "Intelligent": 25,
+        "StealAPDef": 5,
+        "HP": 325
+    },
+    {
+        "EquipId": "4001",
+        "Name": "极限球",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20,
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10
+    },
+    {
+        "EquipId": "4002",
+        "Name": "振奋石",
+        "Level": 4,
+        "Desc": "我整个人都斯巴达了！",
+        "MixCnt": 20,
+        "ADCrit": 25
+    },
+    {
+        "EquipId": "4003",
+        "Name": "水晶法杖",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20,
+        "Intelligent": 25
+    },
+    {
+        "EquipId": "4004",
+        "Name": "强袭卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4005",
+        "Name": "紫苑卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4006",
+        "Name": "羊刀卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4007",
+        "Name": "魔王刀锋",
+        "Level": 4,
+        "Desc": "路西法大人，这是我这个月的灵魂……",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4008",
+        "Name": "长笛卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4009",
+        "Name": "分身斧卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4010",
+        "Name": "闪避项链",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20,
+        "Dodge": 20
+    },
+    {
+        "EquipId": "4011",
+        "Name": "林肯卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4012",
+        "Name": "刷新珠卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4013",
+        "Name": "金箍棒卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4014",
+        "Name": "大电锤卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20
+    },
+    {
+        "EquipId": "4015",
+        "Name": "掠夺之斧",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "Strength": 25
+    },
+    {
+        "EquipId": "4016",
+        "Name": "冰甲卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50
+    },
+    {
+        "EquipId": "4017",
+        "Name": "远古遗物",
+        "Level": 4,
+        "Desc": "多少执着败给了3800。",
+        "MixCnt": 50,
+        "AD": 60
+    },
+    {
+        "EquipId": "4018",
+        "Name": "角鹰弓",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "Agility": 25
+    },
+    {
+        "EquipId": "4019",
+        "Name": "光耀卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50
+    },
+    {
+        "EquipId": "4020",
+        "Name": "大炮卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50
+    },
+    {
+        "EquipId": "4021",
+        "Name": "龙心卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50
+    },
+    {
+        "EquipId": "4022",
+        "Name": "撒旦卷轴",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50
+    },
+    {
+        "EquipId": "4023",
+        "Name": "永恒冰柱",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "APDef": 20
+    },
+    {
+        "EquipId": "4024",
+        "Name": "神圣种子",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "Treat": 12
+    },
+    {
+        "EquipId": "4025",
+        "Name": "银月长矛",
+        "Level": 4,
+        "Desc": "手短有我",
+        "MixCnt": 50,
+        "AD": 75
+    },
+    {
+        "EquipId": "4026",
+        "Name": "法师抄本",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20,
+        "Intelligent": 10,
+        "SkillUp": 1
+    },
+    {
+        "EquipId": "4027",
+        "Name": "巫师之冠",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "AP": 120
+    },
+    {
+        "EquipId": "4028",
+        "Name": "红宝石吊坠",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "HP": 900
+    },
+    {
+        "EquipId": "4029",
+        "Name": "禁卫军胸甲",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 50,
+        "ADDef": 20
+    },
+    {
+        "EquipId": "4030",
+        "Name": "恶魔之矢",
+        "Level": 4,
+        "Desc": "",
+        "MixCnt": 20,
+        "AD": 30,
+        "ADCrit": 6
+    },
+    {
+        "EquipId": "4031",
+        "Name": "完美之匙",
+        "Level": 4,
+        "Desc": "万能钥匙，盗贼必备",
+        "MixCnt": 50,
+        "APDef": 23
+    },
+    {
+        "EquipId": "4032",
+        "Name": "银灵胸甲",
+        "Level": 4,
+        "Desc": "紫色品质，50金一件",
+        "MixCnt": 50,
+        "ADDef": 23
+    },
+    {
+        "EquipId": "4033",
+        "Name": "刺客护符",
+        "Level": 4,
+        "Desc": "传说一代刺客大师阿尔泰曾经佩戴过这块护符",
+        "MixCnt": 50,
+        "ADCrit": 36
+    },
+    {
+        "EquipId": "4034",
+        "Name": "黑暗法典",
+        "Level": 4,
+        "Desc": "未成年人建议在家长的陪同下阅读此书",
+        "MixCnt": 50,
+        "APCrit": 36
+    },
+    {
+        "EquipId": "4035",
+        "Name": "强袭",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4002,3003,2004, 4004]",
+        "ADCrit": 35,
+        "ADDef": 15,
+        "StealADDef": 5
+    },
+    {
+        "EquipId": "4036",
+        "Name": "静息项链",
+        "Level": 4,
+        "Desc": "戴上后整个人都安静了不少，买来送女友再合适不过了",
+        "MixCnt": 50,
+        "HP": 1024
+    },
+    {
+        "EquipId": "4037",
+        "Name": "巫毒法杖",
+        "Level": 4,
+        "Desc": "小心被咬！",
+        "MixCnt": 50,
+        "AP": 135
+    },
+    {
+        "EquipId": "4038",
+        "Name": "远征军之剑",
+        "Level": 4,
+        "Desc": "居家旅行杀人灭口必备",
+        "MixCnt": 50,
+        "AD": 80
+    },
+    {
+        "EquipId": "4039",
+        "Name": "龙脊战甲",
+        "Level": 4,
+        "Desc": "军工品质，三防战甲",
+        "Mix": "[4036, 4025, 4030]",
+        "AD": 45,
+        "HPGain": 500,
+        "APDef": 25,
+        "HP": 700
+    },
+    {
+        "EquipId": "4040",
+        "Name": "圣贤法袍",
+        "Level": 4,
+        "Desc": "只有魔法学校的优等生才有资格穿上这件法袍",
+        "Mix": "[4036, 4026, 4027]",
+        "AP": 100,
+        "HPGain": 500,
+        "ADDef": 25,
+        "HP": 700
+    },
+    {
+        "EquipId": "4041",
+        "Name": "地灵护袍",
+        "Level": 4,
+        "Desc": "喜庆的衣服适合在过年的时候穿",
+        "Mix": "[4032, 4023, 4030,3025]",
+        "ADDef": 20,
+        "APDef": 20,
+        "HP": 500,
+        "ReduceCtrl": 30
+    },
+    {
+        "EquipId": "4042",
+        "Name": "魔浴长袍",
+        "Level": 4,
+        "Desc": "女王的新浴衣",
+        "Mix": "[4031, 4029, 4026]",
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10,
+        "HPGain": 800,
+        "MPGain": 200,
+        "HP": 500,
+        "ReduceSilence": 5
+    },
+    {
+        "EquipId": "4043",
+        "Name": "弑魔巨剑",
+        "Level": 4,
+        "Desc": "曾经有位英雄用这把剑斩死了一个色魔因此而得名",
+        "Mix": "[4038, 4025, 4030]",
+        "AD": 100,
+        "ADCrit": 25,
+        "ADDef": 7,
+        "StealADDef": 7
+    },
+    {
+        "EquipId": "4044",
+        "Name": "幽冥法杖",
+        "Level": 4,
+        "Desc": "小心捏爆你的球",
+        "Mix": "[4037, 4027, 4026]",
+        "AP": 170,
+        "APCrit": 25,
+        "StealAPDef": 7,
+        "SkillUp": 1
+    },
+    {
+        "EquipId": "4045",
+        "Name": "羊刀",
+        "Level": 4,
+        "Desc": "武功再高，也怕羊刀。",
+        "Mix": "[4003,2011, 4001, 4006]",
+        "Strength": 10,
+        "Agility": 35,
+        "Intelligent": 10,
+        "MPGain": 110,
+        "StealAPDef": 10
+    },
+    {
+        "EquipId": "4046",
+        "Name": "龙心",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[2008, 4015, 4021]",
+        "Strength": 40,
+        "HPGain": 600,
+        "HP": 600
+    },
+    {
+        "EquipId": "4047",
+        "Name": "林肯",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[2041, 4001, 4011]",
+        "AD": 10,
+        "Strength": 15,
+        "Agility": 15,
+        "Intelligent": 15,
+        "APDef": 15
+    },
+    {
+        "EquipId": "4048",
+        "Name": "紫苑",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[2040,2040, 4005]",
+        "AD": 30,
+        "ADCrit": 15,
+        "Intelligent": 25,
+        "MPGain": 100
+    },
+    {
+        "EquipId": "4049",
+        "Name": "长笛",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[2014,1022, 4008]",
+        "HPGain": 100,
+        "APDef": 35
+    },
+    {
+        "EquipId": "4050",
+        "Name": "阴影之书",
+        "Level": 4,
+        "Desc": "一本教授摄影技巧的工具书",
+        "Mix": "[4023,2041, 4051]",
+        "HPGain": 300,
+        "MPGain": 100,
+        "APDef": 26,
+        "HP": 300
+    },
+    {
+        "EquipId": "4051",
+        "Name": "小人书3阶",
+        "Level": 4,
+        "Desc": "我和我的小伙伴都惊呆了。",
+        "Mix": "[4052, 4052]",
+        "AD": 41,
+        "AP": 41,
+        "Strength": 16,
+        "Intelligent": 24,
+        "HP": 400
+    },
+    {
+        "EquipId": "4052",
+        "Name": "小人书2阶",
+        "Level": 4,
+        "Desc": "我和我的小伙伴都惊呆了。",
+        "Mix": "[3032,3032]",
+        "AD": 31,
+        "AP": 31,
+        "Strength": 12,
+        "Intelligent": 21,
+        "HP": 300
+    },
+    {
+        "EquipId": "4053",
+        "Name": "血晶石3阶",
+        "Level": 4,
+        "Desc": "可以自杀，小心点错。",
+        "Mix": "[4054, 4054]",
+        "AP": 72,
+        "HPGain": 200,
+        "MPGain": 30,
+        "HP": 450,
+        "Treat": 40
+    },
+    {
+        "EquipId": "4054",
+        "Name": "血晶石2阶",
+        "Level": 4,
+        "Desc": "可以自杀，小心点错。",
+        "Mix": "[3031,3031]",
+        "AP": 60,
+        "HPGain": 200,
+        "MPGain": 30,
+        "HP": 425,
+        "Treat": 30
+    },
+    {
+        "EquipId": "4055",
+        "Name": "虚无法杖",
+        "Level": 4,
+        "Desc": "某骷髅法师的最爱",
+        "Mix": "[4056, 4057, 4045, 4035]",
+        "ADCrit": 60,
+        "APCrit": 60,
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10
+    },
+    {
+        "EquipId": "4056",
+        "Name": "虚灵",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4018,3004]",
+        "AP": 15,
+        "APCrit": 30,
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10
+    },
+    {
+        "EquipId": "4057",
+        "Name": "红杖4阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4058, 4058]",
+        "AP": 140,
+        "APCrit": 50,
+        "Intelligent": 21
+    },
+    {
+        "EquipId": "4058",
+        "Name": "红杖3阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4059, 4059]",
+        "AP": 90,
+        "APCrit": 30,
+        "Intelligent": 19
+    },
+    {
+        "EquipId": "4059",
+        "Name": "红杖2阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[3043,3043]",
+        "AP": 60,
+        "APCrit": 10,
+        "Intelligent": 17
+    },
+    {
+        "EquipId": "4060",
+        "Name": "天堂",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[3038, 4010]",
+        "AD": 20,
+        "ADCrit": 30,
+        "Strength": 20,
+        "Dodge": 25
+    },
+    {
+        "EquipId": "4061",
+        "Name": "刷新珠2阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4062, 4062]",
+        "AD": 40,
+        "Intelligent": 18,
+        "HPGain": 200,
+        "MPGain": 120,
+        "ReduceMP": 30
+    },
+    {
+        "EquipId": "4062",
+        "Name": "刷新珠",
+        "Level": 4,
+        "Desc": "F5已坏！",
+        "Mix": "[2040,2041, 4012]",
+        "AD": 40,
+        "Intelligent": 6,
+        "HPGain": 200,
+        "MPGain": 100,
+        "ReduceMP": 15
+    },
+    {
+        "EquipId": "4063",
+        "Name": "深渊之刃",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4017,3035]",
+        "AD": 100,
+        "ADCrit": 30,
+        "Strength": 10
+    },
+    {
+        "EquipId": "4064",
+        "Name": "散失3阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4065, 4065]",
+        "AD": 60,
+        "Agility": 34,
+        "Intelligent": 20
+    },
+    {
+        "EquipId": "4065",
+        "Name": "散失2阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[3039,3039]",
+        "AD": 40,
+        "Agility": 28,
+        "Intelligent": 12
+    },
+    {
+        "EquipId": "4066",
+        "Name": "撒旦",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[2029, 4015, 4022]",
+        "AD": 50,
+        "Strength": 25,
+        "ADDef": 15,
+        "StealHP": 25
+    },
+    {
+        "EquipId": "4067",
+        "Name": "女王的浴衣",
+        "Level": 4,
+        "Desc": "你从口袋里摸出一根风干的香蕉。",
+        "Mix": "[4027, 4062,3031,2043]",
+        "Intelligent": 35,
+        "HPGain": 250,
+        "HP": 470,
+        "ReduceSilence": 30
+    },
+    {
+        "EquipId": "4068",
+        "Name": "魔龙之鳞",
+        "Level": 4,
+        "Desc": "来自一位怪物猎人的礼物",
+        "Mix": "[4023, 4046, 4001]",
+        "AD": 16,
+        "Strength": 10,
+        "APDef": 35,
+        "HP": 480
+    },
+    {
+        "EquipId": "4069",
+        "Name": "梅肯4阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4070, 4070]",
+        "Strength": 5,
+        "Agility": 5,
+        "Intelligent": 5,
+        "StealADDef": 5,
+        "Treat": 40
+    },
+    {
+        "EquipId": "4070",
+        "Name": "梅肯3阶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[3040,3040]",
+        "Strength": 5,
+        "Agility": 5,
+        "Intelligent": 5,
+        "StealADDef": 5,
+        "Treat": 30
+    },
+    {
+        "EquipId": "4071",
+        "Name": "金箍棒",
+        "Level": 4,
+        "Desc": "这就是猴子搬来的救兵了。",
+        "Mix": "[3008,3008, 4007, 4013]",
+        "AD": 88,
+        "ADCrit": 15,
+        "StealADDef": 10
+    },
+    {
+        "EquipId": "4072",
+        "Name": "疾行鞋",
+        "Level": 4,
+        "Desc": "请务必成对穿戴以保证身体完整",
+        "Mix": "[3026, 4007, 4002, 4003]",
+        "Strength": 31,
+        "Agility": 31,
+        "Intelligent": 31
+    },
+    {
+        "EquipId": "4073",
+        "Name": "毁灭护符",
+        "Level": 4,
+        "Desc": "小心掉落",
+        "Mix": "[4027, 4026, 4051]",
+        "AP": 100,
+        "Intelligent": 50,
+        "SkillUp": 2
+    },
+    {
+        "EquipId": "4074",
+        "Name": "蝴蝶",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4018, 4010,2007]",
+        "AD": 30,
+        "ADCrit": 30,
+        "Agility": 30,
+        "Dodge": 30
+    },
+    {
+        "EquipId": "4075",
+        "Name": "光耀",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4017, 4019]",
+        "AD": 100,
+        "StealADDef": 10
+    },
+    {
+        "EquipId": "4076",
+        "Name": "分身斧",
+        "Level": 4,
+        "Desc": "",
+        "Mix": "[4001,3030, 4009]",
+        "ADCrit": 16,
+        "Strength": 10,
+        "Agility": 26,
+        "Intelligent": 10,
+        "HP": 250
+    },
+    {
+        "EquipId": "4077",
+        "Name": "大天使之剑",
+        "Level": 4,
+        "Desc": "曾经在某位天使玩蹦极的时候碎成了三块",
+        "Mix": "[4025, 4017,3036,3048]",
+        "AD": 85,
+        "StealADDef": 14,
+        "HP": 250
+    },
+    {
+        "EquipId": "4078",
+        "Name": "大炮",
+        "Level": 4,
+        "Desc": "成吨的伤害！",
+        "Mix": "[4007,3036, 4020]",
+        "AD": 81,
+        "ADCrit": 50
+    },
+    {
+        "EquipId": "4079",
+        "Name": "大电锤",
+        "Level": 4,
+        "Desc": "“如有刮坏请照价赔偿——托尔”",
+        "Mix": "[3033, 4002, 4014]",
+        "AD": 48,
+        "ADCrit": 40
+    },
+    {
+        "EquipId": "4080",
+        "Name": "冰眼",
+        "Level": 4,
+        "Desc": "你的目光冰冷。",
+        "Mix": "[4001, 4001,2015,2025]",
+        "AD": 30,
+        "AP": 60,
+        "Strength": 25,
+        "Agility": 25,
+        "Intelligent": 25,
+        "HP": 250
+    },
+    {
+        "EquipId": "4081",
+        "Name": "冰甲",
+        "Level": 4,
+        "Desc": "可穿戴冰箱，抵抗夏日和龙骑士咳嗽的最佳装备。",
+        "Mix": "[4003,3003, 4016]",
+        "Intelligent": 30,
+        "ADDef": 40
+    },
+    {
+        "EquipId": "5001",
+        "Name": "鹰羽指环",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 60,
+        "Agility": 36
+    },
+    {
+        "EquipId": "5002",
+        "Name": "罗马战旗",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5003",
+        "Name": "火染色剂",
+        "Level": 5,
+        "Desc": "合成双头龙专属装备必需材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5004",
+        "Name": "泰坦战斧",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 60,
+        "Strength": 36
+    },
+    {
+        "EquipId": "5005",
+        "Name": "水晶球",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 60,
+        "Intelligent": 36
+    },
+    {
+        "EquipId": "5006",
+        "Name": "宇宙之石",
+        "Level": 5,
+        "Desc": "合成大魔导师觉醒装备宇宙之石必备材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5007",
+        "Name": "熔火之石",
+        "Level": 5,
+        "Desc": "用于合成凤凰专属装备",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5008",
+        "Name": "蓝宝石法杖",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 80,
+        "AP": 145
+    },
+    {
+        "EquipId": "5009",
+        "Name": "紫檀木",
+        "Level": 5,
+        "Desc": "合成小黑专属装备",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5010",
+        "Name": "麒麟弯刀",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 80,
+        "AD": 90
+    },
+    {
+        "EquipId": "5011",
+        "Name": "龙吼战斧",
+        "Level": 5,
+        "Desc": "同样可以用来砍柴劈木",
+        "MixCnt": 60,
+        "Strength": 43
+    },
+    {
+        "EquipId": "5012",
+        "Name": "神圣法球",
+        "Level": 5,
+        "Desc": "传说当你集齐余下的六颗法球你就一共有七颗了",
+        "MixCnt": 60,
+        "Intelligent": 43
+    },
+    {
+        "EquipId": "5013",
+        "Name": "轻盈之刃",
+        "Level": 5,
+        "Desc": "幻觉：我觉得我又变轻了",
+        "MixCnt": 60,
+        "Agility": 43
+    },
+    {
+        "EquipId": "5014",
+        "Name": "怨灵精华",
+        "Level": 5,
+        "Desc": "死亡先知觉醒装备合成材料。",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5015",
+        "Name": "二极管",
+        "Level": 5,
+        "Desc": "亚龙觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5016",
+        "Name": "绿帽",
+        "Level": 5,
+        "Desc": "风行觉醒装备合成材料。",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5017",
+        "Name": "死神名单",
+        "Level": 5,
+        "Desc": "死灵法师觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5018",
+        "Name": "龙鳞",
+        "Level": 5,
+        "Desc": "",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5019",
+        "Name": "蓝晶石",
+        "Level": 5,
+        "Desc": "骷髅王合成零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5020",
+        "Name": "水晶鞋",
+        "Level": 5,
+        "Desc": "【觉醒装备】",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5021",
+        "Name": "月影锭",
+        "Level": 5,
+        "Desc": "月骑觉醒零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5022",
+        "Name": "安眠药",
+        "Level": 5,
+        "Desc": "死亡骑士觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5023",
+        "Name": "龙珠",
+        "Level": 5,
+        "Desc": "【觉醒装备】",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5024",
+        "Name": "陨石",
+        "Level": 5,
+        "Desc": "术士觉醒装备合成材料。",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5025",
+        "Name": "水族箱",
+        "Level": 5,
+        "Desc": "【潮汐觉醒装备】",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5026",
+        "Name": "眠梦法珠",
+        "Level": 5,
+        "Desc": "仙女龙觉醒装备所需零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5027",
+        "Name": "雪球",
+        "Level": 5,
+        "Desc": "小小觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5028",
+        "Name": "兽骨",
+        "Level": 5,
+        "Desc": "兽王觉醒装备合成零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5029",
+        "Name": "紫隐纱",
+        "Level": 5,
+        "Desc": "圣堂刺客觉醒装备所需零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5030",
+        "Name": "堕天之证",
+        "Level": 5,
+        "Desc": "路西法觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5031",
+        "Name": "吸光涂料",
+        "Level": 5,
+        "Desc": "神灵武士觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5032",
+        "Name": "幻影水晶",
+        "Level": 5,
+        "Desc": "幻影刺客觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5033",
+        "Name": "恶魔之血",
+        "Level": 5,
+        "Desc": "吸血鬼最喜欢这东西了。",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5034",
+        "Name": "兽牙",
+        "Level": 5,
+        "Desc": "巨魔觉醒装备所需零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5035",
+        "Name": "枪管",
+        "Level": 5,
+        "Desc": "直升机觉醒装备合成材料",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5036",
+        "Name": "传说哥签名",
+        "Level": 5,
+        "Desc": "这飘逸的字体……",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5037",
+        "Name": "漂白剂",
+        "Level": 5,
+        "Desc": "喂！这是消毒液！",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5038",
+        "Name": "麒麟之血",
+        "Level": 5,
+        "Desc": "【流浪剑客觉醒装备合成材料】",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5039",
+        "Name": "圣洁羽毛",
+        "Level": 5,
+        "Desc": "获得方式：从鸟类身上拔取",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5040",
+        "Name": "狼魂",
+        "Level": 5,
+        "Desc": "狼人觉醒装备所需零件",
+        "MixCnt": 60
+    },
+    {
+        "EquipId": "5041",
+        "Name": "暗夜战甲",
+        "Level": 5,
+        "Desc": "散发着不详的黑光，帅气的铠甲",
+        "Mix": "[4028, 4025, 4023]",
+        "AD": 100,
+        "APDef": 25,
+        "HP": 800,
+        "Hit": 5
+    },
+    {
+        "EquipId": "5042",
+        "Name": "暗夜金属",
+        "Level": 5,
+        "Desc": "暗夜魔王觉醒装备合成材料",
+        "Mix": "[5041]"
+    },
+    {
+        "EquipId": "5043",
+        "Name": "烈焰之角",
+        "Level": 5,
+        "Desc": "一觉醒来，我就红了。我跟别人说，我变猛了，实际上，我只是上火了。",
+        "Mix": "[5005, 4028, 4027,5003]",
+        "AP": 120,
+        "APCrit": 25,
+        "Intelligent": 60,
+        "HP": 800
+    },
+    {
+        "EquipId": "5044",
+        "Name": "凤羽冠",
+        "Level": 5,
+        "Desc": "无数怨灵聚集在这把武器上",
+        "Mix": "[5007,5005, 4027, 4001]",
+        "AP": 120,
+        "APCrit": 50,
+        "Intelligent": 60
+    },
+    {
+        "EquipId": "5045",
+        "Name": "防爆腰铠",
+        "Level": 5,
+        "Desc": "这个腰带怎么越来越紧了",
+        "Mix": "[5004, 4028, 4025]",
+        "AD": 100,
+        "Strength": 60,
+        "HP": 900
+    },
+    {
+        "EquipId": "5046",
+        "Name": "倚天箭",
+        "Level": 5,
+        "Desc": "倚天一出，谁与争锋！",
+        "Mix": "[5009,5010,5001, 4010]",
+        "AD": 100,
+        "Agility": 50,
+        "APDef": 20,
+        "Dodge": 10
+    },
+    {
+        "EquipId": "5047",
+        "Name": "巫毒娃娃",
+        "Level": 5,
+        "Desc": "我丑，但我很温柔",
+        "Mix": "[5005, 4027, 4003]",
+        "AP": 170,
+        "ADDef": 25,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5048",
+        "Name": "狼王利爪",
+        "Level": 5,
+        "Desc": "上面依稀可见几个字：iOS182“「義」吖康”制造。",
+        "Mix": "[5040,5004, 4025, 4023]",
+        "AD": 100,
+        "Strength": 50,
+        "APDef": 25
+    },
+    {
+        "EquipId": "5049",
+        "Name": "丛林之角",
+        "Level": 5,
+        "Desc": "我这对角价值连城，打人可不要打角啊！",
+        "Mix": "[4028, 4023, 4029]",
+        "ADDef": 25,
+        "APDef": 30,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5050",
+        "Name": "血族面具",
+        "Level": 5,
+        "Desc": "由IET冠军“奇妙的无心”打造",
+        "Mix": "[5005, 4028, 4010]",
+        "Intelligent": 60,
+        "ADDef": 20,
+        "HP": 1200,
+        "Dodge": 10
+    },
+    {
+        "EquipId": "5051",
+        "Name": "月影护盔",
+        "Level": 5,
+        "Desc": "我代表月亮消灭你们！{月骑的专属装备}",
+        "Mix": "[5021,5010, 4025, 4030]",
+        "AD": 120,
+        "ADCrit": 20,
+        "StealADDef": 15
+    },
+    {
+        "EquipId": "5052",
+        "Name": "亡者王冠",
+        "Level": 5,
+        "Desc": "戴上之后就是矮富丑啦！",
+        "Mix": "[5019,5004, 4023, 4028]",
+        "AD": 70,
+        "Strength": 25,
+        "APDef": 20,
+        "HP": 1200
+    },
+    {
+        "EquipId": "5053",
+        "Name": "隐秘面纱",
+        "Level": 5,
+        "Desc": "看到我真是面目的人都得死。",
+        "Mix": "[5010, 4028, 4010,5029]",
+        "AD": 100,
+        "APDef": 25,
+        "HP": 800,
+        "Dodge": 10
+    },
+    {
+        "EquipId": "5054",
+        "Name": "狂野护符",
+        "Level": 5,
+        "Desc": "其实是巨魔小时候换牙掉下来的牙齿做的。",
+        "Mix": "[5034,5001, 4025, 4028]",
+        "AD": 80,
+        "Agility": 30,
+        "APDef": 20,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5055",
+        "Name": "梦之瑶",
+        "Level": 5,
+        "Desc": "戴上它就可以保证你梦游时的安全。",
+        "Mix": "[5005, 4027, 4028,5026]",
+        "AP": 180,
+        "APCrit": 20,
+        "Intelligent": 50,
+        "HP": 800
+    },
+    {
+        "EquipId": "5056",
+        "Name": "百兽盔",
+        "Level": 5,
+        "Desc": "兽王的专属装备",
+        "Mix": "[5028, 4030,5010, 4028]",
+        "AD": 100,
+        "StealADDef": 15,
+        "HP": 800
+    },
+    {
+        "EquipId": "5057",
+        "Name": "神怒之翼",
+        "Level": 5,
+        "Desc": "天怒法师的专属装备",
+        "Mix": "[4027, 4028,5005,5039]",
+        "AP": 160,
+        "Intelligent": 60,
+        "HP": 1200
+    },
+    {
+        "EquipId": "5058",
+        "Name": "斩龙剑",
+        "Level": 5,
+        "Desc": "能够斩龙的只有龙",
+        "Mix": "[5004, 4025, 4030,5018]",
+        "ADCrit": 10,
+        "Strength": 60,
+        "StealADDef": 20
+    },
+    {
+        "EquipId": "5059",
+        "Name": "大帝战盔",
+        "Level": 5,
+        "Desc": "谁说我是杀马特我跟谁急！",
+        "Mix": "[5004, 4025, 4023,5002]",
+        "AD": 100,
+        "ADCrit": 10,
+        "Strength": 60,
+        "APDef": 15
+    },
+    {
+        "EquipId": "5060",
+        "Name": "麒麟臂",
+        "Level": 5,
+        "Desc": "我的麒麟臂时常隐隐作痛。",
+        "Mix": "[5004, 4025, 4023,5038]",
+        "AD": 100,
+        "ADCrit": 10,
+        "Strength": 60,
+        "APDef": 15
+    },
+    {
+        "EquipId": "5061",
+        "Name": "死者之书",
+        "Level": 5,
+        "Desc": "在遥远的东方我叫做生死簿。",
+        "Mix": "[5014,5005, 4027, 4028]",
+        "AP": 180,
+        "APCrit": 20,
+        "Strength": 50,
+        "HP": 800
+    },
+    {
+        "EquipId": "5062",
+        "Name": "毁灭之石",
+        "Level": 5,
+        "Desc": "其实你足够大你就能毁灭世界",
+        "Mix": "[5024,5005, 4027, 4029]",
+        "AP": 200,
+        "Intelligent": 60,
+        "ADDef": 15,
+        "HP": 400
+    },
+    {
+        "EquipId": "5063",
+        "Name": "路西法之翼",
+        "Level": 5,
+        "Desc": "每一位恶魔都是折翼的天使",
+        "Mix": "[5004, 4029, 4023,5030]",
+        "Strength": 60,
+        "ADDef": 25,
+        "APDef": 25
+    },
+    {
+        "EquipId": "5064",
+        "Name": "天牛座圣衣",
+        "Level": 5,
+        "Desc": "【骨弓觉醒装备】谁说只有马才能飞？",
+        "Mix": "[4028, 4029, 4023]",
+        "AD": 100,
+        "HP": 900,
+        "Dodge": 30,
+        "Hit": 10
+    },
+    {
+        "EquipId": "5065",
+        "Name": "圆月弯刀",
+        "Level": 5,
+        "Desc": "曾经属于书本里的武器。",
+        "Mix": "[5008, 4028, 4029]",
+        "AP": 170,
+        "ADDef": 25,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5066",
+        "Name": "侠盗羽帽",
+        "Level": 5,
+        "Desc": "曾经属于一个男人的绿帽子",
+        "Mix": "[5016, 4027, 4028, 4010]",
+        "APCrit": 85,
+        "HP": 900,
+        "Dodge": 15
+    },
+    {
+        "EquipId": "5067",
+        "Name": "黑侠面具",
+        "Level": 5,
+        "Desc": "带上去就可以让人不认得你",
+        "Mix": "[5031,5004, 4029, 4002]",
+        "ADCrit": 30,
+        "Strength": 60,
+        "ADDef": 30
+    },
+    {
+        "EquipId": "5068",
+        "Name": "死神镰刀",
+        "Level": 5,
+        "Desc": "我没有名字，所以不会卍解。",
+        "Mix": "[5017,5005, 4023, 4024]",
+        "AP": 185,
+        "ADDef": 32,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5069",
+        "Name": "火神角盔",
+        "Level": 5,
+        "Desc": "警告：头上戴的犄角不可拆卸",
+        "Mix": "[4029, 4030,5010]",
+        "AD": 100,
+        "ADCrit": 30,
+        "ADDef": 15,
+        "HP": 800
+    },
+    {
+        "EquipId": "5070",
+        "Name": "真理权杖",
+        "Level": 5,
+        "Desc": "没有永恒的真理，也没有永恒的权力",
+        "APCrit": 40
+    },
+    {
+        "EquipId": "5071",
+        "Name": "悦鸟头冠",
+        "Level": 5,
+        "Desc": "戴在头上，能幻听鸟叫",
+        "APDef": 26
+    },
+    {
+        "EquipId": "5072",
+        "Name": "圣光铠甲",
+        "Level": 5,
+        "Desc": "黑暗里发出圣光，告诉敌人，我在这！",
+        "ADDef": 26
+    },
+    {
+        "EquipId": "5073",
+        "Name": "玲珑水晶",
+        "Level": 5,
+        "Desc": "蕴含着无限能量的晶体，切勿食用",
+        "AP": 160
+    },
+    {
+        "EquipId": "5074",
+        "Name": "泣血匕首",
+        "Level": 5,
+        "Desc": "捅过人之后，仿佛会哭泣的匕首",
+        "AD": 100
+    },
+    {
+        "EquipId": "5075",
+        "Name": "水晶藤杖",
+        "Level": 5,
+        "Desc": "将水晶球嵌在藤杖顶端，从此获得无限的能量",
+        "Intelligent": 52
+    },
+    {
+        "EquipId": "5076",
+        "Name": "幻影手刃",
+        "Level": 5,
+        "Desc": "方便携带的致命武器",
+        "Agility": 52
+    },
+    {
+        "EquipId": "5077",
+        "Name": "覆霜之石",
+        "Level": 5,
+        "Desc": "落在这块石头上的霜，永远不会化",
+        "HP": 1200
+    },
+    {
+        "EquipId": "5078",
+        "Name": "影舞者面罩",
+        "Level": 5,
+        "Desc": "戴着面罩在黑夜里战斗，那个表情永远在自嘲",
+        "ReduceHard": 50
+    },
+    {
+        "EquipId": "5079",
+        "Name": "天使羽扇",
+        "Level": 5,
+        "Desc": "天使用它冷却魔法",
+        "AP": 175
+    },
+    {
+        "EquipId": "5080",
+        "Name": "秘法之敌",
+        "Level": 5,
+        "Desc": "使用说明：1.找个智商高的。2.往死里削。",
+        "Mix": "[4025, 4030,5010]",
+        "AD": 120,
+        "StealADDef": 10,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5081",
+        "Name": "天使祈福",
+        "Level": 5,
+        "Desc": "曾经是某职业的象征",
+        "Mix": "[5012, 4034, 4027]",
+        "AP": 200,
+        "APCrit": 30,
+        "Intelligent": 50,
+        "HP": 300
+    },
+    {
+        "EquipId": "5082",
+        "Name": "雪人",
+        "Level": 5,
+        "Desc": "来，叔叔带你打雪仗呀",
+        "Mix": "[5027, 4023]",
+        "ADDef": 30,
+        "APDef": 30,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5083",
+        "Name": "恶魔短刃",
+        "Level": 5,
+        "Desc": "必要时可以当飞到扔出去，但要小心被敌人捡起来反杀",
+        "Mix": "[5013, 4033, 4025]",
+        "AD": 120,
+        "ADCrit": 25,
+        "Agility": 50,
+        "HP": 300
+    },
+    {
+        "EquipId": "5084",
+        "Name": "寒冬之拥",
+        "Level": 5,
+        "Desc": "穿上之后觉得更冷了",
+        "Mix": "[5012, 4031, 4028]",
+        "AP": 100,
+        "Intelligent": 15,
+        "APDef": 35,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5085",
+        "Name": "加特林机炮",
+        "Level": 5,
+        "Desc": "呀！哒哒哒哒哒哒！",
+        "Mix": "[5035,5001, 4030, 4015]",
+        "AD": 100,
+        "ADCrit": 30,
+        "StealADDef": 10,
+        "HP": 500
+    },
+    {
+        "EquipId": "5086",
+        "Name": "梦境之赐",
+        "Level": 5,
+        "Desc": "“亲爱的这个戒指...” “买买买！”",
+        "Mix": "[5012, 4031, 4023, 4036]",
+        "AP": 100,
+        "Intelligent": 20,
+        "ADDef": 40,
+        "HP": 1200
+    },
+    {
+        "EquipId": "5087",
+        "Name": "红色能量石",
+        "Level": 5,
+        "Desc": "哗卟，哗卟，哗卟（闪烁）",
+        "Mix": "[5015,5005, 4028, 4001]",
+        "AD": 60,
+        "AP": 160,
+        "APDef": 20,
+        "HP": 700
+    },
+    {
+        "EquipId": "5088",
+        "Name": "毁灭之伤",
+        "Level": 5,
+        "Desc": "我终于成为完整的男人了！",
+        "Mix": "[5013, 4038,5010]",
+        "AD": 100,
+        "Agility": 65,
+        "StealADDef": 15
+    },
+    {
+        "EquipId": "5089",
+        "Name": "混沌之石",
+        "Level": 5,
+        "Desc": "孙悟空孵化器",
+        "Mix": "[4033, 4034, 4023, 4029]",
+        "AD": 30,
+        "AP": 30,
+        "ADCrit": 10,
+        "APCrit": 10,
+        "Strength": 35,
+        "Agility": 35,
+        "Intelligent": 35,
+        "HPGain": 400,
+        "MPGain": 100
+    },
+    {
+        "EquipId": "5090",
+        "Name": "梦魇兽",
+        "Level": 5,
+        "Desc": "骑上它立马变高帅富有木有",
+        "Mix": "[5022,5004, 4028, 4001]",
+        "AD": 90,
+        "Strength": 60,
+        "HP": 1200
+    },
+    {
+        "EquipId": "5091",
+        "Name": "海市蜃楼",
+        "Level": 5,
+        "Desc": "水晶中隐约可以看见一座城市",
+        "Mix": "[5032,5010, 4028, 4010]",
+        "AD": 100,
+        "Agility": 40,
+        "StealADDef": 15
+    },
+    {
+        "EquipId": "5092",
+        "Name": "邪恶之颅",
+        "Level": 5,
+        "Desc": "人体解剖课程的实验标本",
+        "Mix": "[5012, 4037,5008]",
+        "AP": 200,
+        "Intelligent": 65,
+        "StealAPDef": 15
+    },
+    {
+        "EquipId": "5093",
+        "Name": "厄运之斧",
+        "Level": 5,
+        "Desc": "屠夫用来杀猪的大斧",
+        "Mix": "[5011, 4038,5010]",
+        "AD": 100,
+        "ADCrit": 25,
+        "Strength": 65,
+        "ADDef": 15
+    },
+    {
+        "EquipId": "5094",
+        "Name": "龙魂守护",
+        "Level": 5,
+        "Desc": "可以把它挂在家里当装饰",
+        "Mix": "[5011, 4032, 4036, 4029]",
+        "AD": 50,
+        "Strength": 20,
+        "APDef": 40,
+        "HP": 1200
+    },
+    {
+        "EquipId": "5095",
+        "Name": "末日决斗",
+        "Level": 5,
+        "Desc": "厚重的大剑总是给人安全感",
+        "Mix": "[5011, 4033, 4025]",
+        "AD": 100,
+        "Strength": 50,
+        "APDef": 20,
+        "HP": 400
+    },
+    {
+        "EquipId": "5096",
+        "Name": "先祖图腾",
+        "Level": 5,
+        "Desc": "你的祖先在忽悠着你",
+        "Mix": "[4028,5004, 4025]",
+        "AD": 90,
+        "APDef": 30,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5097",
+        "Name": "妖刀村正",
+        "Level": 5,
+        "Desc": "功夫再高，也怕妖刀",
+        "Mix": "[4030,5010, 4002]",
+        "AD": 100,
+        "ADCrit": 35,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5098",
+        "Name": "屠龙刀",
+        "Level": 5,
+        "Desc": "我这对屠龙刀总觉得像是假货。",
+        "Mix": "[5010, 4023, 4002,5023]",
+        "AD": 90,
+        "AP": 170,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5099",
+        "Name": "混铁战斧",
+        "Level": 5,
+        "Desc": "其实就是混铁棍一半融做斧子",
+        "Mix": "[4023, 4028, 4029]",
+        "ADDef": 30,
+        "APDef": 30,
+        "HP": 800
+    },
+    {
+        "EquipId": "5100",
+        "Name": "章鱼保罗",
+        "Level": 5,
+        "Desc": "世界杯之后我只能当帽子了",
+        "Mix": "[5025,5004, 4029, 4001]",
+        "Strength": 60,
+        "ADDef": 20,
+        "APDef": 30
+    },
+    {
+        "EquipId": "5101",
+        "Name": "巫师白袍",
+        "Level": 5,
+        "Desc": "可能是洗得发白了而已",
+        "Mix": "[5037,5005, 4027, 4001]",
+        "AP": 300,
+        "Intelligent": 70
+    },
+    {
+        "EquipId": "5102",
+        "Name": "传说之枪",
+        "Level": 5,
+        "Desc": "不要迷恋哥，哥只是传说",
+        "Mix": "[5036,5001, 4023, 4025,3025]",
+        "Agility": 60,
+        "APDef": 40,
+        "Hit": 10
+    },
+    {
+        "EquipId": "5103",
+        "Name": "小黑鸭权杖",
+        "Level": 5,
+        "Desc": "撒旦最喜欢黑化你的童年。",
+        "Mix": "[5005, 4028, 4003]",
+        "Intelligent": 80,
+        "StealAPDef": 10,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5104",
+        "Name": "魅惑法杖",
+        "Level": 5,
+        "Desc": "它的曲线恰如我一样优美",
+        "Mix": "[5008, 4028, 4003]",
+        "AP": 300,
+        "Intelligent": 30,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5105",
+        "Name": "吸血鬼之触",
+        "Level": 5,
+        "Desc": "德古拉送给每位夫人的传家宝",
+        "Mix": "[4023,5005, 4027]",
+        "AP": 170,
+        "Intelligent": 60,
+        "APDef": 20
+    },
+    {
+        "EquipId": "5106",
+        "Name": "冰晶之杖",
+        "Level": 5,
+        "Desc": "姓迪的工匠制作了这柄法杖",
+        "Mix": "[5020, 4028, 4023, 4003]",
+        "Intelligent": 30,
+        "APDef": 40,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5107",
+        "Name": "和式战服",
+        "Level": 5,
+        "Desc": "充分展示你的事业线",
+        "Mix": "[5005, 4026, 4027]",
+        "AP": 90,
+        "APCrit": 80,
+        "Intelligent": 30
+    },
+    {
+        "EquipId": "5108",
+        "Name": "主导者之盔",
+        "Level": 5,
+        "Desc": "不是每个头都能戴头盔。",
+        "Mix": "[4002,5004, 4027]",
+        "AP": 200,
+        "APCrit": 30,
+        "Strength": 60
+    },
+    {
+        "EquipId": "5109",
+        "Name": "惩罚之雷",
+        "Level": 5,
+        "Desc": "",
+        "Mix": "[5005, 4023, 4015]",
+        "APCrit": 40,
+        "Strength": 70,
+        "APDef": 20
+    },
+    {
+        "EquipId": "5110",
+        "Name": "男爵手套",
+        "Level": 5,
+        "Desc": "右手带上这个手套真不方便",
+        "Mix": "[5033, 4001,5004, 4029]",
+        "Strength": 60,
+        "ADDef": 50
+    },
+    {
+        "EquipId": "5111",
+        "Name": "正义风衣",
+        "Level": 5,
+        "Desc": "背后写着正义两字的风衣。",
+        "Mix": "[4015, 4029, 4023]",
+        "Strength": 60,
+        "ADDef": 25,
+        "APDef": 25
+    },
+    {
+        "EquipId": "5112",
+        "Name": "海斗士鳞衣",
+        "Level": 5,
+        "Desc": "小宇宙什么的最讨厌了。",
+        "Mix": "[5001, 4028, 4010]",
+        "Agility": 90,
+        "HP": 1000,
+        "Dodge": 30
+    },
+    {
+        "EquipId": "5113",
+        "Name": "暮光圣经",
+        "Level": 5,
+        "Desc": "被禁止传播的书籍。",
+        "Mix": "[5005, 4029, 4015]",
+        "Strength": 40,
+        "Intelligent": 40,
+        "ADDef": 40
+    },
+    {
+        "EquipId": "5114",
+        "Name": "斯巴达披风",
+        "Level": 5,
+        "Desc": "我不是暴露狂，我只是斯巴达。拍拍熊觉醒的专属装备。",
+        "Mix": "[5010, 4025, 4030]",
+        "AD": 120,
+        "ADCrit": 40,
+        "Strength": 30
+    },
+    {
+        "EquipId": "5115",
+        "Name": "海神三叉戟",
+        "Level": 5,
+        "Desc": "我说过的，我不是用来烤鸡翅的。",
+        "Mix": "[5004, 4029,3025]",
+        "Strength": 80,
+        "ADDef": 30,
+        "Hit": 10
+    },
+    {
+        "EquipId": "5116",
+        "Name": "逐日者法典",
+        "Level": 5,
+        "Desc": "讲述了一位叫夸父的中国原始人的凄美故事。",
+        "Mix": "[5005, 4015, 4018, 4029]",
+        "Strength": 30,
+        "Agility": 20,
+        "Intelligent": 20
+    },
+    {
+        "EquipId": "5117",
+        "Name": "无尽长夜法杖",
+        "Level": 5,
+        "Desc": "",
+        "Mix": "[5005, 4027, 4003]",
+        "Intelligent": 60,
+        "HPGain": 200,
+        "ADDef": 15,
+        "APDef": 18
+    },
+    {
+        "EquipId": "5118",
+        "Name": "水晶之塔",
+        "Level": 5,
+        "Desc": "",
+        "Mix": "[5005, 4024, 4015, 4069]",
+        "AP": 55,
+        "HPGain": 100,
+        "Treat": 50
+    },
+    {
+        "EquipId": "5119",
+        "Name": "十字军巨盾",
+        "Level": 5,
+        "Desc": "妈妈再也不用担心我不长肉了",
+        "Mix": "[5004, 4046,2048]",
+        "AD": 22,
+        "Strength": 60,
+        "HPGain": 400,
+        "HP": 1000
+    },
+    {
+        "EquipId": "5120",
+        "Name": "群星之怒",
+        "Level": 5,
+        "Desc": "我要代表星星，消灭你",
+        "Mix": "[5001, 4025,3025]",
+        "AD": 90,
+        "Agility": 60,
+        "HP": 260,
+        "Hit": 12
+    },
+    {
+        "EquipId": "5121",
+        "Name": "欺诈者之剑",
+        "Level": 5,
+        "Desc": "亲，这绝对是正品行货",
+        "Mix": "[5004, 4025, 4066]",
+        "AD": 80,
+        "Strength": 40,
+        "ADDef": 15,
+        "StealHP": 30
+    },
+    {
+        "EquipId": "5122",
+        "Name": "雷霆之怒",
+        "Level": 5,
+        "Desc": "看来这把剑在圣修亚瑞也没有找到合适的主人",
+        "Mix": "[5010, 4017, 4030,3045]",
+        "AD": 125,
+        "Strength": 10,
+        "Agility": 10,
+        "Intelligent": 10,
+        "HPGain": 500
+    },
+    {
+        "EquipId": "5123",
+        "Name": "翡翠之吻",
+        "Level": 5,
+        "Desc": "其实是未成年绿龙的乳牙",
+        "Mix": "[5008, 4057,3004,3045]",
+        "AP": 200,
+        "APCrit": 25,
+        "APDef": 16,
+        "HP": 298
+    },
+    {
+        "EquipId": "5124",
+        "Name": "地覆",
+        "Level": 5,
+        "Desc": "",
+        "Mix": "[5004,5010, 4063]",
+        "AD": 100,
+        "Strength": 60,
+        "HPGain": 200,
+        "MPGain": 50
+    },
+    {
+        "EquipId": "5125",
+        "Name": "不朽之守护",
+        "Level": 5,
+        "Desc": "曾经是肉山的枕头",
+        "Mix": "[4028, 4029, 4046]",
+        "AD": 28,
+        "ADDef": 40,
+        "HP": 1100
+    },
+    {
+        "EquipId": "5126",
+        "Name": "暗月卡牌",
+        "Level": 5,
+        "Desc": "还剩9999张卡牌需要收集",
+        "Mix": "[5008, 4048,3046]",
+        "AP": 130,
+        "ADDef": 10,
+        "APDef": 14,
+        "StealAPDef": 15
     }
 ]

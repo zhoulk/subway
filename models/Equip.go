@@ -5,8 +5,6 @@ import (
 	"strconv"
 	"subway/db/tables"
 	"subway/tool"
-
-	"github.com/astaxie/beego"
 )
 
 var (
@@ -104,9 +102,6 @@ type EquipInfo struct {
 }
 
 func GetEquipDefines(equipIds []string) []*Equip {
-
-	beego.Debug("GetEquipDefines ", equipIds)
-
 	equips := make([]*Equip, 0)
 	for _, equipId := range equipIds {
 		if e, ok := EquipDefineList[equipId]; ok {

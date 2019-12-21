@@ -224,8 +224,12 @@ func battleInitialize(context *BattleContext, heros1 []*models.Hero, heros2 []*m
 
 	for _, h := range heros1 {
 		hh := new(models.Hero)
-		tool.Clone(h, hh)
-		selfHeros = append(selfHeros, &Hero{Hero: hh, Group: 1, Runing: BattleInfo{}, MaxHP: hh.Props.HP, MaxMP: MaxMP})
+		err := tool.Clone(h, hh)
+		if err == nil {
+			selfHeros = append(selfHeros, &Hero{Hero: hh, Group: 1, Runing: BattleInfo{}, MaxHP: hh.Props.HP, MaxMP: MaxMP})
+		} else {
+			beego.Error("battleInitialize   ", err)
+		}
 	}
 
 	for _, h := range heros2 {

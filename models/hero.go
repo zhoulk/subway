@@ -1,12 +1,14 @@
 package models
 
 import (
+	"strconv"
 	"subway/db/tables"
 	"subway/tool"
 )
 
 var (
 	HeroDefineList map[string]*Hero
+	HeroGrowList   map[string]*HeroGrowInfo
 
 	HeroFloorDefine map[string]map[int16][]string
 	HeroSkillDefine map[string][]string
@@ -14,12 +16,19 @@ var (
 
 func init() {
 	HeroDefineList = make(map[string]*Hero)
+	HeroGrowList = make(map[string]*HeroGrowInfo)
 
 	defines := tables.LoadHeroDefine()
 	for _, def := range defines {
 		h := CreateHeroFromHeroDefine(def)
 		h.Status = HeroStatusPart
 		HeroDefineList[def.HeroId] = h
+	}
+
+	growDefins := tables.LoadHeroGrowData()
+	for _, def := range growDefins {
+		g := CreateHeroGrowFromHeroGrowDefine(def)
+		HeroGrowList[g.HeroId] = g
 	}
 
 	HeroFloorDefine = make(map[string]map[int16][]string)
@@ -103,6 +112,14 @@ type HeroProperties struct {
 	StrengthGrow    int32
 	AgilityGrow     int32
 	IntelligentGrow int32
+}
+
+type HeroGrowInfo struct {
+	HeroId          string
+	Star            int
+	StrengthGrow    int
+	AgilityGrow     int
+	IntelligentGrow int
 }
 
 type HeroSecretInfo struct {
@@ -505,6 +522,17 @@ func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
 	h.SetStar(def.Star)
 
 	return h
+}
+
+func CreateHeroGrowFromHeroGrowDefine(def tables.HeroGrowDefine) *HeroGrowInfo {
+	g := &HeroGrowInfo{
+		HeroId:          strconv.Itoa(def.HeroId),
+		Star:            def.Star,
+		StrengthGrow:    def.StrengthGrow,
+		AgilityGrow:     def.AgilityGrow,
+		IntelligentGrow: def.IntelligentGrow,
+	}
+	return g
 }
 
 func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
