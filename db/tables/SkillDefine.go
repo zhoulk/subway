@@ -18,8 +18,11 @@ type SkillDefine struct {
 }
 
 func init() {
-	createSkillDefineTable()
-	initSkillData()
+	beego.Debug("SkillDefine init")
+	if beego.AppConfig.DefaultBool("updateConfigData", true) {
+		createSkillDefineTable()
+		initSkillData()
+	}
 }
 
 func createSkillDefineTable() {

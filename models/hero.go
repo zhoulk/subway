@@ -5,31 +5,33 @@ import (
 	"strconv"
 	"subway/db/tables"
 	"subway/tool"
+
+	"github.com/astaxie/beego"
 )
 
 var (
 	HeroDefineList map[string]*Hero
-	HeroGrowList   map[string]*HeroGrowInfo
+	HeroGrowList   map[string]map[int]*HeroGrowInfo
 
 	HeroFloorDefine map[string]map[int16][]string
 	HeroSkillDefine map[string][]string
 )
 
 func init() {
-	HeroDefineList = make(map[string]*Hero)
-	HeroGrowList = make(map[string]*HeroGrowInfo)
+	beego.Debug("Hero init")
 
-	defines := tables.LoadHeroDefine()
-	for _, def := range defines {
-		h := CreateHeroFromHeroDefine(def)
-		h.Status = HeroStatusPart
-		HeroDefineList[def.HeroId] = h
-	}
-
+	HeroGrowList = make(map[string]map[int]*HeroGrowInfo)
 	growDefins := tables.LoadHeroGrowData()
 	for _, def := range growDefins {
 		g := CreateHeroGrowFromHeroGrowDefine(def)
-		HeroGrowList[g.HeroId] = g
+
+		if grows, ok := HeroGrowList[g.HeroId]; ok {
+			grows[g.Star] = g
+		} else {
+			grows := make(map[int]*HeroGrowInfo)
+			grows[g.Star] = g
+			HeroGrowList[g.HeroId] = grows
+		}
 	}
 
 	HeroFloorDefine = make(map[string]map[int16][]string)
@@ -65,6 +67,19 @@ func init() {
 		} else {
 			HeroSkillDefine[def.HeroId] = []string{def.SkillId}
 		}
+	}
+
+	HeroDefineList = make(map[string]*Hero)
+	defines := tables.LoadHeroDefine()
+	for _, def := range defines {
+		h := CreateHeroFromHeroDefine(def)
+		HeroDefineList[def.HeroId] = h
+
+		h.Status = HeroStatusPart
+		h.Props.SPD = 1000
+		h.SetHeroLevel(1)
+		h.SetFloorLevel(1)
+		h.SetStar(def.Star)
 	}
 }
 
@@ -162,6 +177,13 @@ func (h *Hero) SetFloorLevel(floor int16) {
 func (h *Hero) SetStar(star int16) {
 	h.Info.Star = star
 
+	//beego.Debug("SetStar ", h.Info.HeroId, h.Info.Star, HeroGrowList)
+
+	grow := HeroGrowList[h.Info.HeroId][int(h.Info.Star)]
+	h.Props.StrengthGrow = int32(grow.StrengthGrow)
+	h.Props.AgilityGrow = int32(grow.AgilityGrow)
+	h.Props.IntelligentGrow = int32(grow.IntelligentGrow)
+
 	h.Info.StarUp = int32(20 + (h.Info.Star-1)*10)
 }
 
@@ -178,7 +200,6 @@ func GetHeroDefine(heroId string) *Hero {
 		res := new(Hero)
 		tool.Clone(h, res)
 		res.Uid = tool.UniqueId()
-		res.Info.LevelUpGold = h.Secret.OriginLevelUpGold
 		return res
 	}
 	return nil
@@ -241,7 +262,7 @@ func GetUnCollectHeros(uid string) []*Hero {
 
 func AddHero(uid string, heroId string) *Hero {
 	u, _ := GetUser(uid)
-	// beego.Debug(u)
+	beego.Debug("AddHero  ", u, heroId)
 
 	if u != nil {
 		if u.Heros == nil {
@@ -511,6 +532,7 @@ func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
 			AtkType: def.AtkType,
 			Name:    def.Name,
 			Floor:   def.Floor,
+			Level:   def.Level,
 			Desc:    def.Desc,
 		},
 	}
@@ -531,8 +553,6 @@ func CreateHeroFromHeroDefine(def *tables.HeroDefine) *Hero {
 		IntelligentGrow: def.IntelligentGrow,
 	}
 
-	h.SetStar(def.Star)
-
 	return h
 }
 
@@ -548,6 +568,9 @@ func CreateHeroGrowFromHeroGrowDefine(def tables.HeroGrowDefine) *HeroGrowInfo {
 }
 
 func CreateHeroFromUserHero(t_u_h *tables.UserHero) *Hero {
+
+	beego.Debug("CreateHeroFromUserHero  ", t_u_h.HeroId, t_u_h.SPD)
+
 	if h, ok := HeroDefineList[t_u_h.HeroId]; ok {
 		res := new(Hero)
 		tool.Clone(h, res)
@@ -623,16 +646,19 @@ func RefreshHero(h *Hero) {
 
 	def := HeroDefineList[h.Info.HeroId]
 
-	h.Props.Strength = h.Props.StrengthGrow * h.Info.Level / 100
-	h.Props.Agility = h.Props.AgilityGrow * h.Info.Level / 100
-	h.Props.Intelligent = h.Props.IntelligentGrow * h.Info.Level / 100
-
+	h.Props.Strength = def.Props.Strength
+	h.Props.Agility = def.Props.Agility
+	h.Props.Intelligent = def.Props.Intelligent
 	h.Props.AD = def.Props.AD
 	h.Props.HP = def.Props.HP
 	h.Props.ADDef = def.Props.ADDef
 	h.Props.AP = def.Props.AP
 	h.Props.APDef = def.Props.APDef
 	h.Props.ADCrit = def.Props.ADCrit
+
+	h.Props.Strength += h.Props.StrengthGrow * h.Info.Level / 100
+	h.Props.Agility += h.Props.AgilityGrow * h.Info.Level / 100
+	h.Props.Intelligent += h.Props.IntelligentGrow * h.Info.Level / 100
 
 	// 进阶加成
 	for i := 1; int16(i) < h.Info.Floor; i++ {
@@ -649,18 +675,21 @@ func RefreshHero(h *Hero) {
 		}
 	}
 
-	h.Props.HP += h.Props.Strength * 18
-	h.Props.ADDef += (h.Props.Strength*14 + h.Props.Agility*7) / 100
-	h.Props.AP += h.Props.Intelligent * 24 / 10
-	h.Props.APDef += h.Props.Intelligent * 1 / 10
-	h.Props.ADCrit += h.Props.Agility * 4 / 10
+	strengthOffset := h.Props.Strength - def.Props.Strength
+	agilityOffset := h.Props.Agility - def.Props.Agility
+	intelligentOffset := h.Props.Intelligent - def.Props.Intelligent
+	h.Props.HP += strengthOffset * 18
+	h.Props.ADDef += (strengthOffset*14 + agilityOffset*7) / 100
+	h.Props.AP += intelligentOffset * 24 / 10
+	h.Props.APDef += intelligentOffset * 1 / 10
+	h.Props.ADCrit += agilityOffset * 4 / 10
 	if def.Info.Type == HeroTypeStrength {
-		h.Props.AD += (h.Props.Strength*10 + h.Props.Agility*4) / 10
+		h.Props.AD += (strengthOffset*10 + agilityOffset*4) / 10
 	}
 	if def.Info.Type == HeroTypeIntelligent {
-		h.Props.AD += (h.Props.Intelligent*10 + h.Props.Agility*4) / 10
+		h.Props.AD += (intelligentOffset*10 + agilityOffset*4) / 10
 	}
 	if def.Info.Type == HeroTypeAgility {
-		h.Props.AD += h.Props.Agility * 14 / 10
+		h.Props.AD += agilityOffset * 14 / 10
 	}
 }

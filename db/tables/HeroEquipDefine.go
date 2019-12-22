@@ -16,8 +16,11 @@ type HeroEquipDefine struct {
 }
 
 func init() {
-	createHeroEquipDefineTable()
-	initHeroEquipData()
+	beego.Debug("HeroEquipDefine init")
+	if beego.AppConfig.DefaultBool("updateConfigData", true) {
+		createHeroEquipDefineTable()
+		initHeroEquipData()
+	}
 }
 
 func createHeroEquipDefineTable() {

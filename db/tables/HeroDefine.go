@@ -37,8 +37,11 @@ type HeroDefine struct {
 }
 
 func init() {
-	createHeroDefineTable()
-	initHeroData()
+	beego.Debug("HeroDefine init")
+	if beego.AppConfig.DefaultBool("updateConfigData", true) {
+		createHeroDefineTable()
+		initHeroData()
+	}
 }
 
 func createHeroDefineTable() {

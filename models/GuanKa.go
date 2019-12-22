@@ -12,6 +12,8 @@ var (
 )
 
 func init() {
+	beego.Debug("GuanKa init")
+
 	GuanKaList = make([]*GuanKa, 0)
 
 	defines := tables.LoadGuanKaData()

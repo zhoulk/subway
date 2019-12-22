@@ -36,5 +36,7 @@ func LoadHeroGrowData() []HeroGrowDefine {
 		return nil
 	}
 
+	//beego.Debug("LoadHeroGrowData  ", grows)
+
 	return grows
 }

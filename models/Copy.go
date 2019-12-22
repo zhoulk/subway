@@ -17,6 +17,8 @@ var (
 )
 
 func init() {
+	beego.Debug("Copy init")
+
 	CopyList = make([]*Copy, 0)
 	CopyItemList = make([]*CopyItem, 0)
 	CopyItemDic = make(map[int]*CopyItem)
@@ -24,6 +26,8 @@ func init() {
 
 	defines := tables.LoadCopyData()
 	for _, def := range defines {
+		beego.Debug("CopyItems init ", def.CopyId)
+
 		itemDefines := tables.LoadCopyItems(def.CopyId)
 
 		items := make([]*CopyItem, 0)

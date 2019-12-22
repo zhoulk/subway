@@ -15,8 +15,11 @@ type HeroSkillDefine struct {
 }
 
 func init() {
-	createHeroSkillDefineTable()
-	initHeroSkillData()
+	beego.Debug("HeroSkillDefine init")
+	if beego.AppConfig.DefaultBool("updateConfigData", true) {
+		createHeroSkillDefineTable()
+		initHeroSkillData()
+	}
 }
 
 func createHeroSkillDefineTable() {

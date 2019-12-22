@@ -3,6 +3,8 @@ package models
 import (
 	"subway/db/tables"
 	"subway/tool"
+
+	"github.com/astaxie/beego"
 )
 
 var (
@@ -10,11 +12,15 @@ var (
 )
 
 func init() {
+	beego.Debug("Skill init")
+
 	SkillDefineList = make(map[string]*Skill)
 
 	defines := tables.LoadSkillDefine()
 	for _, def := range defines {
-		SkillDefineList[def.SkillId] = CreateSkillFromSkillDefine(def)
+		s := CreateSkillFromSkillDefine(def)
+		SkillDefineList[def.SkillId] = s
+		s.SetSkillLevel(1)
 	}
 }
 
@@ -53,15 +59,19 @@ func (s *Skill) SetSkillLevel(lv int32) {
 func GetSkillDefine(skillId string) *Skill {
 	if s, ok := SkillDefineList[skillId]; ok {
 		res := new(Skill)
-		tool.Clone(s, res)
-		res.Uid = tool.UniqueId()
-		res.Info.LevelUpGold = s.Secret.OriginLevelUpGold
+		err := tool.Clone(s, res)
+		if err == nil {
+			res.Uid = tool.UniqueId()
+		} else {
+			beego.Error("GetSkillDefine  error ", err)
+		}
 		return res
 	}
 	return nil
 }
 
 func GetSkillDefines(skillIds []string) []*Skill {
+	beego.Debug("GetSkillDefines ", skillIds)
 	skills := make([]*Skill, 0)
 	for _, skillId := range skillIds {
 		if s := GetSkillDefine(skillId); s != nil {

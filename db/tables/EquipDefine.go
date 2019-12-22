@@ -35,8 +35,11 @@ type EquipDefine struct {
 }
 
 func init() {
-	createEquipDefineTable()
-	initEquipData()
+	beego.Debug("EquipDefine init")
+	if beego.AppConfig.DefaultBool("updateConfigData", true) {
+		createEquipDefineTable()
+		initEquipData()
+	}
 }
 
 func createEquipDefineTable() {
