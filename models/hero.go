@@ -1,6 +1,7 @@
 package models
 
 import (
+	"encoding/json"
 	"strconv"
 	"subway/db/tables"
 	"subway/tool"
@@ -34,14 +35,25 @@ func init() {
 	HeroFloorDefine = make(map[string]map[int16][]string)
 	heroEquipDefines := tables.LoadHeroEquipDefine()
 	for _, def := range heroEquipDefines {
-		if floor, ok := HeroFloorDefine[def.HeroId]; ok {
-			if _, ok := floor[def.Floor]; ok {
-				floor[def.Floor] = append(floor[def.Floor], def.EquipId)
+
+		if len(def.EquipId) > 0 {
+			var equipArr []int
+			equipIdArr := make([]string, 0)
+			//读取的数据为json格式，需要进行解码
+			err := json.Unmarshal([]byte(def.EquipId), &equipArr)
+			if err == nil {
+				for _, equipId := range equipArr {
+					equipIdArr = append(equipIdArr, strconv.Itoa(equipId))
+				}
 			}
-		} else {
-			heroFloor := make(map[int16][]string)
-			heroFloor[def.Floor] = []string{def.EquipId}
-			HeroFloorDefine[def.HeroId] = heroFloor
+
+			if floor, ok := HeroFloorDefine[def.HeroId]; ok {
+				floor[def.Floor] = equipIdArr
+			} else {
+				heroFloor := make(map[int16][]string)
+				heroFloor[def.Floor] = equipIdArr
+				HeroFloorDefine[def.HeroId] = heroFloor
+			}
 		}
 	}
 
