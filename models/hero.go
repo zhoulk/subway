@@ -116,6 +116,7 @@ type HeroInfo struct {
 	Type        int8
 	Name        string
 	Level       int32
+	Power       int32
 	LevelUpGold int32
 	Floor       int16 // 阶别
 	Star        int16 // 星星
@@ -136,6 +137,7 @@ type HeroProperties struct {
 	Intelligent     int32
 	Strength        int32
 	ADCrit          int32 // 物理暴击
+	APCrit          int32 // 物理暴击
 	StrengthGrow    int32
 	AgilityGrow     int32
 	IntelligentGrow int32
@@ -217,7 +219,7 @@ func GetSelfHeros(uid string) ([]*Hero, map[string]*Hero) {
 
 				hero := CreateHeroFromUserHero(t_u_h)
 
-				t_h_es := tables.LoadHeroEquips(t_u_h.Uid)
+				t_h_es := tables.LoadHeroEquips(t_u_h.Uid, t_u_h.Floor)
 				for _, t_h_e := range t_h_es {
 					hero.Equips = append(hero.Equips, CreateEquipFromHeroEquip(t_h_e))
 				}
@@ -459,6 +461,8 @@ func GetHero(uid string, heroUid string) *Hero {
 		if e.Status != EquipStatusWearComplete {
 			if BagContainEquip(uid, e.Info.EquipId) {
 				e.Status = EquipStatusWearAcquire
+			} else {
+				e.Status = EquipStatusWearNormal
 			}
 		}
 	}
@@ -692,4 +696,22 @@ func RefreshHero(h *Hero) {
 	if def.Info.Type == HeroTypeAgility {
 		h.Props.AD += agilityOffset * 14 / 10
 	}
+
+	// 计算战力
+	// 	2.1 1攻击 = 1战力
+	// 2.2 1法术强度 = 1战力
+	// 2.3 10点血量 = 1战力
+	// 2.4 1点防御 = 5战力
+	// 2.5 1点魔抗 = 5战力
+	// 2.6 1点物理暴击 = 0.5%战力
+	// 2.7 1点法术暴击 = 0.5%战力
+	power := int32(0)
+	power += h.Props.AD
+	power += h.Props.AP
+	power += h.Props.HP / 10
+	power += h.Props.ADDef * 5
+	power += h.Props.APDef * 5
+	power = int32(float64(power) * (1 + float64(h.Props.ADCrit+h.Props.APCrit)/float64(200)))
+
+	h.Info.Power = power
 }

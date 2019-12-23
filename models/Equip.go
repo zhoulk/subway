@@ -132,11 +132,12 @@ func CreateEquipFromHeroEquip(t_h_e *tables.HeroEquip) *Equip {
 	return nil
 }
 
-func CreateHeroEquipFromEquip(heroUid string, u_h_e *Equip) *tables.HeroEquip {
+func CreateHeroEquipFromEquip(heroUid string, floor int16, u_h_e *Equip) *tables.HeroEquip {
 	return &tables.HeroEquip{
 		Uid:     u_h_e.Uid,
 		HeroUid: heroUid,
 		EquipId: u_h_e.Info.EquipId,
+		Floor:   floor,
 		Status:  u_h_e.Status,
 	}
 }

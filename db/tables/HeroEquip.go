@@ -11,6 +11,7 @@ type HeroEquip struct {
 	Uid     string `gorm:"size:64;unique;not null"`
 	HeroUid string
 	EquipId string
+	Floor   int16
 	Status  int8 // 0 未装备  1 已装备  2 已使用
 
 	gorm.Model
@@ -40,9 +41,9 @@ func PersistentHeroEquip(heroEquips []*HeroEquip) {
 	tx.Commit()
 }
 
-func LoadHeroEquips(heroUid string) []*HeroEquip {
+func LoadHeroEquips(heroUid string, floor int16) []*HeroEquip {
 	var heroEquips []*HeroEquip
-	context.DB().Where("hero_uid = ?", heroUid).Find(&heroEquips)
+	context.DB().Where("hero_uid = ? AND floor = ?", heroUid, floor).Find(&heroEquips)
 
 	return heroEquips
 }

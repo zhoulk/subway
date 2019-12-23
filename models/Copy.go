@@ -291,18 +291,35 @@ func CompleteCopy(uid string, cpId int) {
 				}
 				cp.Status = status
 				cp.Star = star
+
+				if status == CopyStatusCompleted {
+					// 开启下一章节
+					for i := 0; i < len(CopyList); i++ {
+						if cp.Info.CopyId == CopyList[i].Info.CopyId {
+							if i+1 < len(CopyList) {
+								cp := new(Copy)
+								tool.Clone(CopyList[i+1], cp)
+								cp.Uid = tool.UniqueId()
+								cp.Status = CopyStatusNormal
+								u.AddCopy(cp)
+								break
+							}
+						}
+					}
+
+				}
 			}
 		}
 
 		nextCpId := getNextCopyItemId(cpId)
 		if nextCpId != cpId {
 			if cpItem, ok := CopyItemDic[nextCpId]; ok {
-				cp := new(CopyItem)
-				tool.Clone(cpItem, cp)
-				cp.Uid = tool.UniqueId()
-				cp.Status = CopyStatusNormal
-				cp.LastTimesDate = time.Now()
-				u.AddCopyItem(cp)
+				nextCpItem := new(CopyItem)
+				tool.Clone(cpItem, nextCpItem)
+				nextCpItem.Uid = tool.UniqueId()
+				nextCpItem.Status = CopyStatusNormal
+				nextCpItem.LastTimesDate = time.Now()
+				u.AddCopyItem(nextCpItem)
 			}
 		}
 	}

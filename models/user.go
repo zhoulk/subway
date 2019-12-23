@@ -154,7 +154,7 @@ func PersistentUser() {
 			userHeros = append(userHeros, CreateUserHeroFromHero(u.Info.Uid, u_h))
 
 			for _, u_h_e := range u_h.Equips {
-				heroEquips = append(heroEquips, CreateHeroEquipFromEquip(u_h.Uid, u_h_e))
+				heroEquips = append(heroEquips, CreateHeroEquipFromEquip(u_h.Uid, u_h.Info.Floor, u_h_e))
 			}
 
 			for _, u_h_s := range u_h.Skills {
