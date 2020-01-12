@@ -187,6 +187,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["subway/controllers:MapController"] = append(beego.GlobalControllerRouter["subway/controllers:MapController"],
+        beego.ControllerComments{
+            Method: "RandomAPath",
+            Router: `/randomAPath`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["subway/controllers:TechController"] = append(beego.GlobalControllerRouter["subway/controllers:TechController"],
         beego.ControllerComments{
             Method: "GainFirstHero",

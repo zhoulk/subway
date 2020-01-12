@@ -8,8 +8,9 @@
 package routers
 
 import (
-	"github.com/beego/bee/plugins/cors"
 	"subway/controllers"
+
+	"github.com/beego/bee/plugins/cors"
 
 	"github.com/astaxie/beego"
 )
@@ -51,14 +52,19 @@ func init() {
 				&controllers.BattleController{},
 			),
 		),
+		beego.NSNamespace("/map",
+			beego.NSInclude(
+				&controllers.MapController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
-		AllowAllOrigins:true,
-		AllowOrigins:[]string{"https://192.168.0.102", "http://localhost:7456"},
-		AllowMethods:[]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowHeaders:[]string{"token", "key", "Origin", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
-		ExposeHeaders:[]string{"Content-Length", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
-		AllowCredentials:true,
-		}))
+		AllowAllOrigins:  true,
+		AllowOrigins:     []string{"https://192.168.0.102", "http://localhost:7456"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"token", "key", "Origin", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
+		ExposeHeaders:    []string{"Content-Length", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type"},
+		AllowCredentials: true,
+	}))
 }

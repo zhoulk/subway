@@ -1,7 +1,6 @@
 package models
 
 import (
-	"strconv"
 	"subway/db/tables"
 	"subway/tool"
 	"time"
@@ -24,99 +23,99 @@ func init() {
 	CopyItemDic = make(map[int]*CopyItem)
 	CopyItems = make(map[int][]*CopyItem)
 
-	defines := tables.LoadCopyData()
-	for _, def := range defines {
-		beego.Debug("CopyItems init ", def.CopyId)
+	//defines := tables.LoadCopyData()
+	// for _, def := range defines {
+	// 	beego.Debug("CopyItems init ", def.CopyId)
 
-		itemDefines := tables.LoadCopyItems(def.CopyId)
+	// 	itemDefines := tables.LoadCopyItems(def.CopyId)
 
-		items := make([]*CopyItem, 0)
-		for _, itemDef := range itemDefines {
-			heros := make([]*GuanKaHero, 0)
-			for _, gkHero := range itemDef.Heros {
-				heros = append(heros, &GuanKaHero{HeroId: gkHero.HeroId, Level: gkHero.Level, Floor: gkHero.Floor, Star: gkHero.Star, SkillLevels: gkHero.SkillLevels})
-			}
+	// 	items := make([]*CopyItem, 0)
+	// 	for _, itemDef := range itemDefines {
+	// 		heros := make([]*GuanKaHero, 0)
+	// 		for _, gkHero := range itemDef.Heros {
+	// 			heros = append(heros, &GuanKaHero{HeroId: gkHero.HeroId, Level: gkHero.Level, Floor: gkHero.Floor, Star: gkHero.Star, SkillLevels: gkHero.SkillLevels})
+	// 		}
 
-			goods := make([]*CopyGoodItem, 0)
-			for _, cpEquip := range itemDef.Equips {
-				goods = append(goods, &CopyGoodItem{
-					Type:    CopyGoodItemTypeEquip,
-					GoodId:  cpEquip,
-					Count:   1,
-					Percent: 100,
-				})
-			}
-			for _, cpHeroPart := range itemDef.HeroParts {
-				goods = append(goods, &CopyGoodItem{
-					Type:    CopyGoodItemTypeHeroPart,
-					GoodId:  cpHeroPart,
-					Count:   1,
-					Percent: 100,
-				})
-			}
-			for _, cpEquipPart := range itemDef.EquipParts {
-				goods = append(goods, &CopyGoodItem{
-					Type:    CopyGoodItemTypeEquipPart,
-					GoodId:  cpEquipPart,
-					Count:   1,
-					Percent: 100,
-				})
-			}
+	// 		goods := make([]*CopyGoodItem, 0)
+	// 		for _, cpEquip := range itemDef.Equips {
+	// 			goods = append(goods, &CopyGoodItem{
+	// 				Type:    CopyGoodItemTypeEquip,
+	// 				GoodId:  cpEquip,
+	// 				Count:   1,
+	// 				Percent: 100,
+	// 			})
+	// 		}
+	// 		for _, cpHeroPart := range itemDef.HeroParts {
+	// 			goods = append(goods, &CopyGoodItem{
+	// 				Type:    CopyGoodItemTypeHeroPart,
+	// 				GoodId:  cpHeroPart,
+	// 				Count:   1,
+	// 				Percent: 100,
+	// 			})
+	// 		}
+	// 		for _, cpEquipPart := range itemDef.EquipParts {
+	// 			goods = append(goods, &CopyGoodItem{
+	// 				Type:    CopyGoodItemTypeEquipPart,
+	// 				GoodId:  cpEquipPart,
+	// 				Count:   1,
+	// 				Percent: 100,
+	// 			})
+	// 		}
 
-			for _, gd := range goods {
-				if gd.Type == CopyGoodItemTypeEquip {
-					eqpDefs := tables.LoadEquipDefine()
-					for _, e_def := range eqpDefs {
-						if e_def.EquipId == strconv.Itoa(gd.GoodId) {
-							gd.Name = e_def.Name
-							break
-						}
-					}
-				} else if gd.Type == CopyGoodItemTypeHeroPart {
-					heroDefs := tables.LoadHeroDefine()
-					for _, h_def := range heroDefs {
-						if h_def.HeroId == strconv.Itoa(gd.GoodId) {
-							gd.Name = h_def.Name + "(碎片)"
-							break
-						}
-					}
-				} else if gd.Type == CopyGoodItemTypeEquipPart {
-					eqpDefs := tables.LoadEquipDefine()
-					for _, e_def := range eqpDefs {
-						if e_def.EquipId == strconv.Itoa(gd.GoodId) {
-							gd.Name = e_def.Name + "(碎片)"
-							break
-						}
-					}
-				}
-			}
+	// 		for _, gd := range goods {
+	// 			if gd.Type == CopyGoodItemTypeEquip {
+	// 				eqpDefs := tables.LoadEquipDefine()
+	// 				for _, e_def := range eqpDefs {
+	// 					if e_def.EquipId == strconv.Itoa(gd.GoodId) {
+	// 						gd.Name = e_def.Name
+	// 						break
+	// 					}
+	// 				}
+	// 			} else if gd.Type == CopyGoodItemTypeHeroPart {
+	// 				heroDefs := tables.LoadHeroDefine()
+	// 				for _, h_def := range heroDefs {
+	// 					if h_def.HeroId == strconv.Itoa(gd.GoodId) {
+	// 						gd.Name = h_def.Name + "(碎片)"
+	// 						break
+	// 					}
+	// 				}
+	// 			} else if gd.Type == CopyGoodItemTypeEquipPart {
+	// 				eqpDefs := tables.LoadEquipDefine()
+	// 				for _, e_def := range eqpDefs {
+	// 					if e_def.EquipId == strconv.Itoa(gd.GoodId) {
+	// 						gd.Name = e_def.Name + "(碎片)"
+	// 						break
+	// 					}
+	// 				}
+	// 			}
+	// 		}
 
-			cpItem := &CopyItem{
-				CopyItemId: itemDef.CopyId,
-				Name:       itemDef.Name,
-				TotalStar:  3,
-				TotalTimes: 3,
-				Heros:      heros,
-				Goods:      goods,
-				Status:     CopyStatusLock,
-			}
-			items = append(items, cpItem)
+	// 		cpItem := &CopyItem{
+	// 			CopyItemId: itemDef.CopyId,
+	// 			Name:       itemDef.Name,
+	// 			TotalStar:  3,
+	// 			TotalTimes: 3,
+	// 			Heros:      heros,
+	// 			Goods:      goods,
+	// 			Status:     CopyStatusLock,
+	// 		}
+	// 		items = append(items, cpItem)
 
-			CopyItemList = append(CopyItemList, cpItem)
-			CopyItemDic[cpItem.CopyItemId] = cpItem
-		}
-		CopyItems[def.CopyId] = items
+	// 		CopyItemList = append(CopyItemList, cpItem)
+	// 		CopyItemDic[cpItem.CopyItemId] = cpItem
+	// 	}
+	// 	CopyItems[def.CopyId] = items
 
-		cp := &Copy{
-			Info: CopyInfo{
-				CopyId: def.CopyId,
-				Name:   def.Name,
-			},
-			TotalStar: len(itemDefines) * 3,
-			Status:    CopyStatusLock,
-		}
-		CopyList = append(CopyList, cp)
-	}
+	// 	cp := &Copy{
+	// 		Info: CopyInfo{
+	// 			CopyId: def.CopyId,
+	// 			Name:   def.Name,
+	// 		},
+	// 		TotalStar: len(itemDefines) * 3,
+	// 		Status:    CopyStatusLock,
+	// 	}
+	// 	CopyList = append(CopyList, cp)
+	// }
 }
 
 const (
