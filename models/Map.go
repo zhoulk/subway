@@ -37,6 +37,12 @@ type MapItem struct {
 func RandomAPath(uid string, from int32) (int32, []MapItem) {
 	res := make([]MapItem, 0)
 
+	res = append(res, MapItem{
+		Id:   from,
+		Name: MapDic[from],
+		Next: MapChildDic[MapDic[from]],
+	})
+
 	step := rand.Intn(6)
 
 	childs := make([]int32, 0)
