@@ -225,6 +225,15 @@ func init() {
 
     beego.GlobalControllerRouter["subway/controllers:UserController"] = append(beego.GlobalControllerRouter["subway/controllers:UserController"],
         beego.ControllerComments{
+            Method: "PreLogin",
+            Router: `/preLogin`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/controllers:UserController"] = append(beego.GlobalControllerRouter["subway/controllers:UserController"],
+        beego.ControllerComments{
             Method: "UserInfo",
             Router: `/userInfo`,
             AllowHTTPMethods: []string{"post"},
@@ -236,6 +245,15 @@ func init() {
         beego.ControllerComments{
             Method: "AllZone",
             Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/controllers:ZoneController"] = append(beego.GlobalControllerRouter["subway/controllers:ZoneController"],
+        beego.ControllerComments{
+            Method: "SelfZone",
+            Router: `/self`,
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),
             Filters: nil,

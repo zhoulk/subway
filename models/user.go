@@ -7,11 +7,18 @@ import (
 )
 
 var (
-	UserList map[string]*User
+	UserList    map[string]*User
+	AccountList map[string]*Account
 )
 
 func init() {
 	UserList = make(map[string]*User)
+	AccountList = make(map[string]*Account)
+}
+
+type Account struct {
+	AccountId string
+	OpenId    string
 }
 
 type User struct {
@@ -99,6 +106,25 @@ func GetUser(uid string) (u *User, err error) {
 
 func GetAllUsers() map[string]*User {
 	return UserList
+}
+
+func GetAccount(openId string) *Account {
+	if u, ok := AccountList[openId]; ok {
+		return u
+	}
+	return nil
+}
+
+func AddAccount(openId string) *Account {
+	if u, ok := AccountList[openId]; ok {
+		return u
+	}
+	accountId := tool.UniqueId()
+	AccountList[openId] = &Account{
+		AccountId: accountId,
+		OpenId:    openId,
+	}
+	return AccountList[openId]
 }
 
 func Login(zoneId int, openId string, username string) *User {
