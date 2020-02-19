@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"subway/models"
+	"subway/gate/models"
 
 	"github.com/astaxie/beego"
 )

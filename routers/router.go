@@ -10,6 +10,9 @@ package routers
 import (
 	"subway/controllers"
 
+	gate "subway/gate/controllers"
+	hall "subway/hall/controllers"
+
 	"github.com/beego/bee/plugins/cors"
 
 	"github.com/astaxie/beego"
@@ -17,14 +20,22 @@ import (
 
 func init() {
 	ns := beego.NewNamespace("/subway",
-		beego.NSNamespace("/user",
-			beego.NSInclude(
-				&controllers.UserController{},
+		beego.NSNamespace("/gate",
+			beego.NSNamespace("/user",
+				beego.NSInclude(
+					&gate.UserController{},
+				),
+			), beego.NSNamespace("/zone",
+				beego.NSInclude(
+					&gate.ZoneController{},
+				),
 			),
 		),
-		beego.NSNamespace("/zone",
-			beego.NSInclude(
-				&controllers.ZoneController{},
+		beego.NSNamespace("/hall",
+			beego.NSNamespace("/role",
+				beego.NSInclude(
+					&hall.RoleController{},
+				),
 			),
 		),
 		beego.NSNamespace("/hero",
