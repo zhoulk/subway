@@ -56,6 +56,7 @@ func (u *RoleController) UpdateRoleInfo() {
 	name := u.GetString("name")
 	roleInfo := models.GetRoleInfo(roleId)
 	if roleInfo != nil {
+		roleInfo.RoleId = roleId
 		roleInfo.Name = name
 		roleInfo = models.AddRoleInfo(roleInfo)
 

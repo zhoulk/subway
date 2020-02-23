@@ -37,6 +37,16 @@ func init() {
 					&hall.RoleController{},
 				),
 			),
+			beego.NSNamespace("/house",
+				beego.NSInclude(
+					&hall.HouseController{},
+				),
+			),
+			beego.NSNamespace("/bag",
+				beego.NSInclude(
+					&hall.BagController{},
+				),
+			),
 		),
 		beego.NSNamespace("/hero",
 			beego.NSInclude(
@@ -51,11 +61,6 @@ func init() {
 		beego.NSNamespace("/gk",
 			beego.NSInclude(
 				&controllers.GuanKaController{},
-			),
-		),
-		beego.NSNamespace("/bag",
-			beego.NSInclude(
-				&controllers.BagController{},
 			),
 		),
 		beego.NSNamespace("/battle",

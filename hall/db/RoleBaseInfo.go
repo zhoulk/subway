@@ -48,6 +48,8 @@ func PersistentRoleBaseInfo(roleBaseInfos []*RoleBaseInfo) {
 func LoadRoleBaseInfo(roleId string) *RoleBaseInfo {
 	var roleBaseInfo RoleBaseInfo
 	context.DB().Where("role_id = ?", roleId).First(&roleBaseInfo)
-
-	return &roleBaseInfo
+	if roleBaseInfo.RoleId == roleId {
+		return &roleBaseInfo
+	}
+	return nil
 }
