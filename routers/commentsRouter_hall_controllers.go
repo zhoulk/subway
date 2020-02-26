@@ -16,6 +16,33 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["subway/hall/controllers:EquipController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:EquipController"],
+        beego.ControllerComments{
+            Method: "EquipDetail",
+            Router: `/equipDetail`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/hall/controllers:HeroController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:HeroController"],
+        beego.ControllerComments{
+            Method: "HeroDetail",
+            Router: `/heroDetail`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["subway/hall/controllers:HeroController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:HeroController"],
+        beego.ControllerComments{
+            Method: "HeroList",
+            Router: `/heroList`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["subway/hall/controllers:HouseController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:HouseController"],
         beego.ControllerComments{
             Method: "DiamondRandom",

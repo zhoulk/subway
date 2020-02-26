@@ -16,6 +16,9 @@ type RoleHeroItemInfo struct {
 	Uid    string `gorm:"size:64;unique;not null"`
 	RoleId string
 	HeroId int32
+	Level  int32
+	Floor  int32
+	Star   int32
 
 	gorm.Model
 }
@@ -54,4 +57,10 @@ func LoadRoleHeroInfo(roelId string) *RoleHeroInfo {
 		}
 	}
 	return nil
+}
+
+func LoadRoleHeroItemInfo(heroUid string) *RoleHeroItemInfo {
+	var roleHeroItem RoleHeroItemInfo
+	context.DB().Where("uid = ?", heroUid).First(&roleHeroItem)
+	return &roleHeroItem
 }

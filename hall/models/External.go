@@ -4,5 +4,5 @@ func Persistent() {
 	PersistentRoleInfo()
 	PersistentHouseInfo()
 	PersistentBagInfo()
-	PersistentRoleHeroInfo()
+	PersistentHeroInfo()
 }

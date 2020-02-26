@@ -47,10 +47,15 @@ func init() {
 					&hall.BagController{},
 				),
 			),
-		),
-		beego.NSNamespace("/hero",
-			beego.NSInclude(
-				&controllers.HeroController{},
+			beego.NSNamespace("/hero",
+				beego.NSInclude(
+					&hall.HeroController{},
+				),
+			),
+			beego.NSNamespace("/equip",
+				beego.NSInclude(
+					&hall.EquipController{},
+				),
 			),
 		),
 		beego.NSNamespace("/tech",

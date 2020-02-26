@@ -70,7 +70,7 @@ func DiamondRandom(roleId string) *ProductInfo {
 	houseInfo.DiamondTimes--
 	houseInfo.LastDiamondTime = time.Now()
 	// 随机出英雄 装备
-	hero := CreateAHero()
+	hero := RandAHero(roleId)
 	product := &ProductInfo{
 		ProductId: hero.Uid,
 		ItemId:    hero.HeroId,
@@ -79,7 +79,7 @@ func DiamondRandom(roleId string) *ProductInfo {
 		Count:     1,
 	}
 	// 存储到用户
-	AddHero(roleId, hero)
+	AddRoleHero(roleId, hero)
 	return product
 }
 
