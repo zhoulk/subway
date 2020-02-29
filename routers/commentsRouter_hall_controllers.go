@@ -88,4 +88,13 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["subway/hall/controllers:SkillController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:SkillController"],
+        beego.ControllerComments{
+            Method: "SkillDetail",
+            Router: `/skillDetail`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
 }

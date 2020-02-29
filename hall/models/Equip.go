@@ -25,6 +25,7 @@ func CreateAEquip(equipId int32) *EquipInfo {
 		EquipId: equipId,
 		Name:    "",
 	}
+	AddEquip(equip)
 	return equip
 }
 

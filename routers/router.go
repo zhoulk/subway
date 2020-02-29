@@ -57,6 +57,11 @@ func init() {
 					&hall.EquipController{},
 				),
 			),
+			beego.NSNamespace("/skill",
+				beego.NSInclude(
+					&hall.SkillController{},
+				),
+			),
 		),
 		beego.NSNamespace("/tech",
 			beego.NSInclude(

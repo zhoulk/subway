@@ -55,3 +55,9 @@ func LoadHeroSkillInfo(heroUid string) *HeroSkillInfo {
 	}
 	return nil
 }
+
+func LoadHeroSkillItemInfo(skillUid string) *HeroSkillItemInfo {
+	var heroSkillItem HeroSkillItemInfo
+	context.DB().Where("uid = ?", skillUid).First(&heroSkillItem)
+	return &heroSkillItem
+}
