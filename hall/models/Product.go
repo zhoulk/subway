@@ -24,5 +24,6 @@ func CreateAProduct(t int8) *ProductInfo {
 		ItemId:    1002,
 		Type:      t,
 		Name:      "测试",
+		Count:     1,
 	}
 }

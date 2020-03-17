@@ -7,9 +7,9 @@ import (
 )
 
 const (
-	HeroTypeStrength    int8 = 1
-	HeroTypeAgility     int8 = 2
-	HeroTypeIntelligent int8 = 3
+	HeroTypeAtk     int8 = 1
+	HeroTypeDefence int8 = 2
+	HeroTypeAssist  int8 = 3
 )
 
 var (
@@ -28,6 +28,7 @@ type HeroInfo struct {
 	Name   string
 	Floor  int32
 	Star   int32
+	God    int32
 	Level  int32
 }
 
@@ -44,7 +45,7 @@ func CreateAHero(roleId string, heroId int32) *HeroInfo {
 		Floor:  1,
 		Star:   1,
 		Level:  1,
-		Type:   HeroTypeIntelligent,
+		Type:   HeroTypeAssist,
 	}
 	AddHero(hero)
 	return hero
@@ -76,11 +77,13 @@ func PersistentHeroInfo() {
 }
 
 func CreateRoleHeroItemInfoFromTableRoleHeroItemInfo(a *tables.RoleHeroItemInfo) *HeroInfo {
+	define := GetHeroDefine(a.HeroId)
 	return &HeroInfo{
 		Uid:    a.Uid,
 		RoleId: a.RoleId,
 		HeroId: a.HeroId,
-		Name:   "",
+		Type:   define.Type,
+		Name:   define.Name,
 		Floor:  a.Floor,
 		Level:  a.Level,
 		Star:   a.Star,

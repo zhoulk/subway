@@ -23,6 +23,18 @@ func (u *HeroController) HeroList() {
 	u.ServeJSON()
 }
 
+// @Title heroPartList
+// @Description heroPartList
+// @Param	roleId		query 	string	true		"The username for login"
+// @Success 200 {string}
+// @router /heroPartList [post]
+func (u *HeroController) HeroPartList() {
+	roleId := u.GetString("roleId")
+	roelHeroPart := models.GetRoleHeroPart(roleId)
+	u.Data["json"] = models.Response{Code: 200, Msg: "success", Data: ConvertRoleHeroPartToResponse(roelHeroPart)}
+	u.ServeJSON()
+}
+
 // @Title heroDetail
 // @Description heroDetail
 // @Param	roleId		query 	string	true		"The username for login"
@@ -61,6 +73,16 @@ func ConvertRoleHeroToResponse(roleHero *models.RoleHero) *ResponseRoleHero {
 	return res
 }
 
+func ConvertRoleHeroPartToResponse(roleHeroPart *models.RoleHeroPart) *ResponseRoleHeroPart {
+	res := &ResponseRoleHeroPart{
+		Items: make([]*ResponseHeroPartInfo, 0),
+	}
+	for _, item := range roleHeroPart.HeroParts {
+		res.Items = append(res.Items, ConvertRoleHeroPartItemToResponse(item))
+	}
+	return res
+}
+
 func ConvertRoleHeroItemToResponse(heroInfo *models.HeroInfo) *ResponseHeroInfo {
 	return &ResponseHeroInfo{
 		Uid:    heroInfo.Uid,
@@ -69,6 +91,15 @@ func ConvertRoleHeroItemToResponse(heroInfo *models.HeroInfo) *ResponseHeroInfo 
 		Floor:  heroInfo.Floor,
 		Level:  heroInfo.Level,
 		Star:   heroInfo.Star,
+		God:    heroInfo.God,
+	}
+}
+
+func ConvertRoleHeroPartItemToResponse(heroInfo *models.HeroPartInfo) *ResponseHeroPartInfo {
+	return &ResponseHeroPartInfo{
+		Uid:    heroInfo.Uid,
+		HeroId: heroInfo.HeroId,
+		Num:    heroInfo.Num,
 	}
 }
 
@@ -110,6 +141,17 @@ type ResponseHeroInfo struct {
 	Floor  int32
 	Level  int32
 	Star   int32
+	God    int32
+}
+
+type ResponseRoleHeroPart struct {
+	Items []*ResponseHeroPartInfo
+}
+
+type ResponseHeroPartInfo struct {
+	Uid    string
+	HeroId int32
+	Num    int32
 }
 
 type ResponseHeroDetailInfo struct {

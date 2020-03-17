@@ -56,9 +56,17 @@ func GoldRandom(roleId string) *ProductInfo {
 	houseInfo.GoldTimes--
 	houseInfo.LastGoldTime = time.Now()
 	// 随机出碎片 物品
-	product := CreateAProduct(ProductTypeHeroPart)
+	// product := CreateAProduct(ProductTypeHeroPart)
+	heroPart := RandAHeroPart(roleId)
+	product := &ProductInfo{
+		ProductId: heroPart.Uid,
+		ItemId:    heroPart.HeroId,
+		Type:      ProductTypeHeroPart,
+		Name:      "",
+		Count:     1,
+	}
 	// 存储到背包
-	AddProduct(roleId, product)
+	AddRoleHeroPart(roleId, heroPart)
 	return product
 }
 

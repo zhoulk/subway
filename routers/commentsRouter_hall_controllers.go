@@ -43,6 +43,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["subway/hall/controllers:HeroController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:HeroController"],
+        beego.ControllerComments{
+            Method: "HeroPartList",
+            Router: `/heroPartList`,
+            AllowHTTPMethods: []string{"post"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["subway/hall/controllers:HouseController"] = append(beego.GlobalControllerRouter["subway/hall/controllers:HouseController"],
         beego.ControllerComments{
             Method: "DiamondRandom",

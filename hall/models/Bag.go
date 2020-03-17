@@ -15,10 +15,10 @@ func init() {
 
 type BagInfo struct {
 	RoleId     string
-	Expends    map[string]*ProductInfo
-	Equips     map[string]*ProductInfo
-	HeroParts  map[string]*ProductInfo
-	EquipParts map[string]*ProductInfo
+	Expends    map[int32]*ProductInfo
+	Equips     map[int32]*ProductInfo
+	HeroParts  map[int32]*ProductInfo
+	EquipParts map[int32]*ProductInfo
 }
 
 func GetBag(roleId string) *BagInfo {
@@ -35,10 +35,10 @@ func GetBag(roleId string) *BagInfo {
 
 	bagInfo := &BagInfo{
 		RoleId:     roleId,
-		Expends:    make(map[string]*ProductInfo),
-		Equips:     make(map[string]*ProductInfo),
-		HeroParts:  make(map[string]*ProductInfo),
-		EquipParts: make(map[string]*ProductInfo),
+		Expends:    make(map[int32]*ProductInfo),
+		Equips:     make(map[int32]*ProductInfo),
+		HeroParts:  make(map[int32]*ProductInfo),
+		EquipParts: make(map[int32]*ProductInfo),
 	}
 	BagList[roleId] = bagInfo
 
@@ -52,16 +52,32 @@ func AddProduct(roleId string, productInfo *ProductInfo) {
 
 	bagInfo := GetBag(roleId)
 	if productInfo.Type == ProductTypeHeroPart {
-		bagInfo.HeroParts[productInfo.ProductId] = productInfo
+		if p, ok := bagInfo.HeroParts[productInfo.ItemId]; ok {
+			p.Count += productInfo.Count
+		} else {
+			bagInfo.HeroParts[productInfo.ItemId] = productInfo
+		}
 	}
 	if productInfo.Type == ProductTypeExpend {
-		bagInfo.Expends[productInfo.ProductId] = productInfo
+		if p, ok := bagInfo.Expends[productInfo.ItemId]; ok {
+			p.Count += productInfo.Count
+		} else {
+			bagInfo.Expends[productInfo.ItemId] = productInfo
+		}
 	}
 	if productInfo.Type == ProductTypeEquip {
-		bagInfo.Equips[productInfo.ProductId] = productInfo
+		if p, ok := bagInfo.Equips[productInfo.ItemId]; ok {
+			p.Count += productInfo.Count
+		} else {
+			bagInfo.Equips[productInfo.ItemId] = productInfo
+		}
 	}
 	if productInfo.Type == ProductTypeEquipPart {
-		bagInfo.EquipParts[productInfo.ProductId] = productInfo
+		if p, ok := bagInfo.EquipParts[productInfo.ItemId]; ok {
+			p.Count += productInfo.Count
+		} else {
+			bagInfo.EquipParts[productInfo.ItemId] = productInfo
+		}
 	}
 }
 
@@ -77,23 +93,23 @@ func PersistentBagInfo() {
 func CreateBagInfoFromTableBagInfo(a *tables.BagInfo) *BagInfo {
 	bagInfo := &BagInfo{
 		RoleId:     a.RoleId,
-		Expends:    make(map[string]*ProductInfo),
-		Equips:     make(map[string]*ProductInfo),
-		HeroParts:  make(map[string]*ProductInfo),
-		EquipParts: make(map[string]*ProductInfo),
+		Expends:    make(map[int32]*ProductInfo),
+		Equips:     make(map[int32]*ProductInfo),
+		HeroParts:  make(map[int32]*ProductInfo),
+		EquipParts: make(map[int32]*ProductInfo),
 	}
 	for _, t_item := range a.Items {
 		if t_item.ItemType == ProductTypeHeroPart {
-			bagInfo.HeroParts[t_item.Uid] = CreateProductInfoFromTableBagItemInfo(t_item)
+			bagInfo.HeroParts[t_item.ItemId] = CreateProductInfoFromTableBagItemInfo(t_item)
 		}
 		if t_item.ItemType == ProductTypeExpend {
-			bagInfo.Expends[t_item.Uid] = CreateProductInfoFromTableBagItemInfo(t_item)
+			bagInfo.Expends[t_item.ItemId] = CreateProductInfoFromTableBagItemInfo(t_item)
 		}
 		if t_item.ItemType == ProductTypeEquip {
-			bagInfo.Equips[t_item.Uid] = CreateProductInfoFromTableBagItemInfo(t_item)
+			bagInfo.Equips[t_item.ItemId] = CreateProductInfoFromTableBagItemInfo(t_item)
 		}
 		if t_item.ItemType == ProductTypeEquipPart {
-			bagInfo.EquipParts[t_item.Uid] = CreateProductInfoFromTableBagItemInfo(t_item)
+			bagInfo.EquipParts[t_item.ItemId] = CreateProductInfoFromTableBagItemInfo(t_item)
 		}
 	}
 	return bagInfo
